@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  crux:
+    build: server
+    # environment:
+    volumes:
+      - ./server/db:/var/lib/crux/db
+    ports:
+      - 3000:3000
+
+  client:
+    build: client
+    volumes:
+      - /home/node/node_modules
+      - /home/node/dist
+      - ./client:/home/node

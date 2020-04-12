@@ -1,0 +1,45 @@
+{
+  "name": "crux-hrtbt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "ava",
+    "test:watch": "ava --watch",
+    "build": "tsc",
+    "dev": "tsc-watch --onSuccess 'node dist/index.js'",
+    "link": "npm run build && cd dist && npm link",
+    "lint": "eslint '*/**/*.ts'",
+    "fix": "npm run -s lint -- --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/faker": "^4.1.11",
+    "@types/got": "^9.6.9",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "ava": "^3.6.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^2.0.4",
+    "ts-node": "^8.8.2",
+    "tsc-watch": "^4.2.3",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "faker": "^4.1.0",
+    "got": "^10.7.0",
+    "jsedn": "^0.4.1"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
+}

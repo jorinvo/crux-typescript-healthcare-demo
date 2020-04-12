@@ -1,0 +1,1046 @@
+{:log
+ [{:path [],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.10.1"},
+   :use-coord {:mvn/version "1.10.1"},
+   :coord-id {:mvn/version "1.10.1"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib org.clojure/test.check,
+   :coord {:mvn/version "0.10.0-alpha4"},
+   :use-coord {:mvn/version "0.10.0-alpha4"},
+   :coord-id {:mvn/version "0.10.0-alpha4"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib juxt/crux-http-server,
+   :coord {:mvn/version "20.03-1.8.0-alpha"},
+   :use-coord {:mvn/version "20.03-1.8.0-alpha"},
+   :coord-id {:mvn/version "20.03-1.8.0-alpha"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib juxt/crux-cli,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib juxt/crux-core,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib juxt/crux-rocksdb,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib juxt/crux-decorators,
+   :coord {:mvn/version "20.01-1.6.2-alpha"},
+   :use-coord {:mvn/version "20.01-1.6.2-alpha"},
+   :coord-id {:mvn/version "20.01-1.6.2-alpha"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib org.rocksdb/rocksdbjni,
+   :coord {:mvn/version "5.17.2"},
+   :use-coord {:mvn/version "5.17.2"},
+   :coord-id {:mvn/version "5.17.2"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [org.clojure/clojure],
+   :lib org.clojure/spec.alpha,
+   :coord {:mvn/version "0.2.176"},
+   :use-coord {:mvn/version "0.2.176"},
+   :coord-id {:mvn/version "0.2.176"},
+   :include true,
+   :reason :new-dep}
+  {:path [org.clojure/clojure],
+   :lib org.clojure/core.specs.alpha,
+   :coord {:mvn/version "0.2.44"},
+   :use-coord {:mvn/version "0.2.44"},
+   :coord-id {:mvn/version "0.2.44"},
+   :include true,
+   :reason :new-dep}
+  {:path [org.clojure/test.check],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.7.0"},
+   :use-coord {:mvn/version "1.7.0"},
+   :coord-id {:mvn/version "1.7.0"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-http-server],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.10.1"},
+   :use-coord {:mvn/version "1.10.1"},
+   :coord-id {:mvn/version "1.10.1"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-http-server],
+   :lib juxt/crux-core,
+   :coord {:mvn/version "20.03-1.8.0-alpha"},
+   :use-coord {:mvn/version "20.03-1.8.0-alpha"},
+   :coord-id {:mvn/version "20.03-1.8.0-alpha"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-http-server],
+   :lib ring/ring-core,
+   :coord {:mvn/version "1.8.0"},
+   :use-coord {:mvn/version "1.8.0"},
+   :coord-id {:mvn/version "1.8.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-http-server],
+   :lib ring/ring-jetty-adapter,
+   :coord {:mvn/version "1.8.0"},
+   :use-coord {:mvn/version "1.8.0"},
+   :coord-id {:mvn/version "1.8.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-http-server],
+   :lib ring/ring-codec,
+   :coord {:mvn/version "1.1.2"},
+   :use-coord {:mvn/version "1.1.2"},
+   :coord-id {:mvn/version "1.1.2"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-http-server],
+   :lib ring-cors/ring-cors,
+   :coord {:mvn/version "0.1.13"},
+   :use-coord {:mvn/version "0.1.13"},
+   :coord-id {:mvn/version "0.1.13"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-cli],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.10.1"},
+   :use-coord {:mvn/version "1.10.1"},
+   :coord-id {:mvn/version "1.10.1"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-cli],
+   :lib org.clojure/tools.cli,
+   :coord {:mvn/version "0.4.2"},
+   :use-coord {:mvn/version "0.4.2"},
+   :coord-id {:mvn/version "0.4.2"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-cli],
+   :lib ch.qos.logback/logback-classic,
+   :coord {:mvn/version "1.2.3", :exclusions #{org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "1.2.3", :exclusions #{org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "1.2.3"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-cli],
+   :lib juxt/crux-core,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-cli],
+   :lib juxt/crux-http-server,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-core],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.10.1"},
+   :use-coord {:mvn/version "1.10.1"},
+   :coord-id {:mvn/version "1.10.1"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-core],
+   :lib org.clojure/tools.logging,
+   :coord {:mvn/version "0.5.0"},
+   :use-coord {:mvn/version "0.5.0"},
+   :coord-id {:mvn/version "0.5.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-core],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.29"},
+   :use-coord {:mvn/version "1.7.29"},
+   :coord-id {:mvn/version "1.7.29"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-core],
+   :lib org.clojure/spec.alpha,
+   :coord {:mvn/version "0.2.176"},
+   :use-coord {:mvn/version "0.2.176"},
+   :coord-id {:mvn/version "0.2.176"},
+   :include false,
+   :reason :same-version}
+  {:path [juxt/crux-core],
+   :lib com.stuartsierra/dependency,
+   :coord {:mvn/version "0.2.0"},
+   :use-coord {:mvn/version "0.2.0"},
+   :coord-id {:mvn/version "0.2.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-core],
+   :lib com.taoensso/nippy,
+   :coord {:mvn/version "2.14.0"},
+   :use-coord {:mvn/version "2.14.0"},
+   :coord-id {:mvn/version "2.14.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-core],
+   :lib org.clojure/tools.reader,
+   :coord {:mvn/version "1.3.2"},
+   :use-coord {:mvn/version "1.3.2"},
+   :coord-id {:mvn/version "1.3.2"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-core],
+   :lib com.taoensso/encore,
+   :coord {:mvn/version "2.114.0"},
+   :use-coord {:mvn/version "2.114.0"},
+   :coord-id {:mvn/version "2.114.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-core],
+   :lib org.agrona/agrona,
+   :coord {:mvn/version "1.0.7"},
+   :use-coord {:mvn/version "1.0.7"},
+   :coord-id {:mvn/version "1.0.7"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.10.1"},
+   :use-coord {:mvn/version "1.10.1"},
+   :coord-id {:mvn/version "1.10.1"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-rocksdb],
+   :lib juxt/crux-core,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-rocksdb],
+   :lib org.rocksdb/rocksdbjni,
+   :coord {:mvn/version "6.5.3"},
+   :use-coord {:mvn/version "6.5.3"},
+   :coord-id {:mvn/version "6.5.3"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-rocksdb],
+   :lib com.github.jnr/jnr-ffi,
+   :coord {:mvn/version "2.1.12"},
+   :use-coord {:mvn/version "2.1.12"},
+   :coord-id {:mvn/version "2.1.12"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-decorators],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.10.1"},
+   :use-coord {:mvn/version "1.10.1"},
+   :coord-id {:mvn/version "1.10.1"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-decorators],
+   :lib juxt/crux-core,
+   :coord {:mvn/version "20.01-1.6.2-alpha"},
+   :use-coord {:mvn/version "20.01-1.6.2-alpha"},
+   :coord-id {:mvn/version "20.01-1.6.2-alpha"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-http-server ring/ring-core],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.7.0"},
+   :use-coord {:mvn/version "1.7.0"},
+   :coord-id {:mvn/version "1.7.0"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-http-server ring/ring-core],
+   :lib ring/ring-codec,
+   :coord {:mvn/version "1.1.2"},
+   :use-coord {:mvn/version "1.1.2"},
+   :coord-id {:mvn/version "1.1.2"},
+   :include false,
+   :reason :same-version}
+  {:path [juxt/crux-http-server ring/ring-core],
+   :lib commons-io/commons-io,
+   :coord {:mvn/version "2.6"},
+   :use-coord {:mvn/version "2.6"},
+   :coord-id {:mvn/version "2.6"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-http-server ring/ring-core],
+   :lib commons-fileupload/commons-fileupload,
+   :coord {:mvn/version "1.4"},
+   :use-coord {:mvn/version "1.4"},
+   :coord-id {:mvn/version "1.4"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-http-server ring/ring-core],
+   :lib crypto-random/crypto-random,
+   :coord {:mvn/version "1.2.0"},
+   :use-coord {:mvn/version "1.2.0"},
+   :coord-id {:mvn/version "1.2.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-http-server ring/ring-core],
+   :lib crypto-equality/crypto-equality,
+   :coord {:mvn/version "1.0.0"},
+   :use-coord {:mvn/version "1.0.0"},
+   :coord-id {:mvn/version "1.0.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-http-server ring/ring-jetty-adapter],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.7.0"},
+   :use-coord {:mvn/version "1.7.0"},
+   :coord-id {:mvn/version "1.7.0"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-http-server ring/ring-jetty-adapter],
+   :lib ring/ring-core,
+   :coord {:mvn/version "1.8.0"},
+   :use-coord {:mvn/version "1.8.0"},
+   :coord-id {:mvn/version "1.8.0"},
+   :include false,
+   :reason :same-version}
+  {:path [juxt/crux-http-server ring/ring-jetty-adapter],
+   :lib ring/ring-servlet,
+   :coord {:mvn/version "1.8.0"},
+   :use-coord {:mvn/version "1.8.0"},
+   :coord-id {:mvn/version "1.8.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-http-server ring/ring-jetty-adapter],
+   :lib org.eclipse.jetty/jetty-server,
+   :coord {:mvn/version "9.4.22.v20191022"},
+   :use-coord {:mvn/version "9.4.22.v20191022"},
+   :coord-id {:mvn/version "9.4.22.v20191022"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-http-server ring/ring-codec],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.5.1"},
+   :use-coord {:mvn/version "1.5.1"},
+   :coord-id {:mvn/version "1.5.1"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-http-server ring/ring-codec],
+   :lib commons-codec/commons-codec,
+   :coord {:mvn/version "1.11"},
+   :use-coord {:mvn/version "1.11"},
+   :coord-id {:mvn/version "1.11"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-http-server ring-cors/ring-cors],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.10.0"},
+   :use-coord {:mvn/version "1.10.0"},
+   :coord-id {:mvn/version "1.10.0"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-cli org.clojure/tools.cli],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.8.0"},
+   :use-coord {:mvn/version "1.8.0"},
+   :coord-id {:mvn/version "1.8.0"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-cli ch.qos.logback/logback-classic],
+   :lib ch.qos.logback/logback-core,
+   :coord {:mvn/version "1.2.3"},
+   :use-coord {:mvn/version "1.2.3"},
+   :coord-id {:mvn/version "1.2.3"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-cli ch.qos.logback/logback-classic],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :excluded}
+  {:path [juxt/crux-core org.clojure/tools.logging],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.4.0"},
+   :use-coord {:mvn/version "1.4.0"},
+   :coord-id {:mvn/version "1.4.0"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-core com.taoensso/nippy],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.5.1"},
+   :use-coord {:mvn/version "1.5.1"},
+   :coord-id {:mvn/version "1.5.1"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-core com.taoensso/nippy],
+   :lib org.clojure/tools.reader,
+   :coord {:mvn/version "1.1.1"},
+   :use-coord {:mvn/version "1.1.1"},
+   :coord-id {:mvn/version "1.1.1"},
+   :include false,
+   :reason :older-version}
+  {:path [juxt/crux-core com.taoensso/nippy],
+   :lib com.taoensso/encore,
+   :coord {:mvn/version "2.93.0"},
+   :use-coord {:mvn/version "2.93.0"},
+   :coord-id {:mvn/version "2.93.0"},
+   :include false,
+   :reason :older-version}
+  {:path [juxt/crux-core com.taoensso/nippy],
+   :lib org.iq80.snappy/snappy,
+   :coord {:mvn/version "0.4"},
+   :use-coord {:mvn/version "0.4"},
+   :coord-id {:mvn/version "0.4"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-core com.taoensso/nippy],
+   :lib org.tukaani/xz,
+   :coord {:mvn/version "1.6"},
+   :use-coord {:mvn/version "1.6"},
+   :coord-id {:mvn/version "1.6"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-core com.taoensso/nippy],
+   :lib net.jpountz.lz4/lz4,
+   :coord {:mvn/version "1.3"},
+   :use-coord {:mvn/version "1.3"},
+   :coord-id {:mvn/version "1.3"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-core org.clojure/tools.reader],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.5.1"},
+   :use-coord {:mvn/version "1.5.1"},
+   :coord-id {:mvn/version "1.5.1"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-core com.taoensso/encore],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.5.1"},
+   :use-coord {:mvn/version "1.5.1"},
+   :coord-id {:mvn/version "1.5.1"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-core com.taoensso/encore],
+   :lib org.clojure/tools.reader,
+   :coord {:mvn/version "1.3.2"},
+   :use-coord {:mvn/version "1.3.2"},
+   :coord-id {:mvn/version "1.3.2"},
+   :include false,
+   :reason :same-version}
+  {:path [juxt/crux-core com.taoensso/encore],
+   :lib com.taoensso/truss,
+   :coord {:mvn/version "1.5.0"},
+   :use-coord {:mvn/version "1.5.0"},
+   :coord-id {:mvn/version "1.5.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib com.github.jnr/jffi,
+   :coord {:mvn/version "1.2.23"},
+   :use-coord {:mvn/version "1.2.23"},
+   :coord-id {:mvn/version "1.2.23"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib com.github.jnr/jffi$native,
+   :coord {:mvn/version "1.2.23"},
+   :use-coord {:mvn/version "1.2.23"},
+   :coord-id {:mvn/version "1.2.23"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib org.ow2.asm/asm,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib org.ow2.asm/asm-commons,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib org.ow2.asm/asm-analysis,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib org.ow2.asm/asm-tree,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib org.ow2.asm/asm-util,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib com.github.jnr/jnr-a64asm,
+   :coord {:mvn/version "1.0.0"},
+   :use-coord {:mvn/version "1.0.0"},
+   :coord-id {:mvn/version "1.0.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib com.github.jnr/jnr-x86asm,
+   :coord {:mvn/version "1.0.2"},
+   :use-coord {:mvn/version "1.0.2"},
+   :coord-id {:mvn/version "1.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [juxt/crux-http-server
+    ring/ring-core
+    commons-fileupload/commons-fileupload],
+   :lib commons-io/commons-io,
+   :coord {:mvn/version "2.2"},
+   :use-coord {:mvn/version "2.2"},
+   :coord-id {:mvn/version "2.2"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [juxt/crux-http-server ring/ring-core crypto-random/crypto-random],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.2.1"},
+   :use-coord {:mvn/version "1.2.1"},
+   :coord-id {:mvn/version "1.2.1"},
+   :include false,
+   :reason :use-top}
+  {:path
+   [juxt/crux-http-server ring/ring-core crypto-random/crypto-random],
+   :lib commons-codec/commons-codec,
+   :coord {:mvn/version "1.6"},
+   :use-coord {:mvn/version "1.6"},
+   :coord-id {:mvn/version "1.6"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [juxt/crux-http-server
+    ring/ring-core
+    crypto-equality/crypto-equality],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.2.1"},
+   :use-coord {:mvn/version "1.2.1"},
+   :coord-id {:mvn/version "1.2.1"},
+   :include false,
+   :reason :use-top}
+  {:path
+   [juxt/crux-http-server ring/ring-jetty-adapter ring/ring-servlet],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.7.0"},
+   :use-coord {:mvn/version "1.7.0"},
+   :coord-id {:mvn/version "1.7.0"},
+   :include false,
+   :reason :use-top}
+  {:path
+   [juxt/crux-http-server ring/ring-jetty-adapter ring/ring-servlet],
+   :lib ring/ring-core,
+   :coord {:mvn/version "1.8.0"},
+   :use-coord {:mvn/version "1.8.0"},
+   :coord-id {:mvn/version "1.8.0"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-http-server
+    ring/ring-jetty-adapter
+    org.eclipse.jetty/jetty-server],
+   :lib javax.servlet/javax.servlet-api,
+   :coord {:mvn/version "3.1.0"},
+   :use-coord {:mvn/version "3.1.0"},
+   :coord-id {:mvn/version "3.1.0"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [juxt/crux-http-server
+    ring/ring-jetty-adapter
+    org.eclipse.jetty/jetty-server],
+   :lib org.eclipse.jetty/jetty-http,
+   :coord {:mvn/version "9.4.22.v20191022"},
+   :use-coord {:mvn/version "9.4.22.v20191022"},
+   :coord-id {:mvn/version "9.4.22.v20191022"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [juxt/crux-http-server
+    ring/ring-jetty-adapter
+    org.eclipse.jetty/jetty-server],
+   :lib org.eclipse.jetty/jetty-io,
+   :coord {:mvn/version "9.4.22.v20191022"},
+   :use-coord {:mvn/version "9.4.22.v20191022"},
+   :coord-id {:mvn/version "9.4.22.v20191022"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-core com.taoensso/encore com.taoensso/truss],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.5.1"},
+   :use-coord {:mvn/version "1.5.1"},
+   :coord-id {:mvn/version "1.5.1"},
+   :include false,
+   :reason :use-top}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-commons],
+   :lib org.ow2.asm/asm,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-commons],
+   :lib org.ow2.asm/asm-tree,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-commons],
+   :lib org.ow2.asm/asm-analysis,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-analysis],
+   :lib org.ow2.asm/asm-tree,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-tree],
+   :lib org.ow2.asm/asm,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-util],
+   :lib org.ow2.asm/asm,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-util],
+   :lib org.ow2.asm/asm-tree,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-util],
+   :lib org.ow2.asm/asm-analysis,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-http-server
+    ring/ring-jetty-adapter
+    org.eclipse.jetty/jetty-server
+    org.eclipse.jetty/jetty-http],
+   :lib org.eclipse.jetty/jetty-util,
+   :coord {:mvn/version "9.4.22.v20191022"},
+   :use-coord {:mvn/version "9.4.22.v20191022"},
+   :coord-id {:mvn/version "9.4.22.v20191022"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [juxt/crux-http-server
+    ring/ring-jetty-adapter
+    org.eclipse.jetty/jetty-server
+    org.eclipse.jetty/jetty-http],
+   :lib org.eclipse.jetty/jetty-io,
+   :coord {:mvn/version "9.4.22.v20191022"},
+   :use-coord {:mvn/version "9.4.22.v20191022"},
+   :coord-id {:mvn/version "9.4.22.v20191022"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-http-server
+    ring/ring-jetty-adapter
+    org.eclipse.jetty/jetty-server
+    org.eclipse.jetty/jetty-io],
+   :lib org.eclipse.jetty/jetty-util,
+   :coord {:mvn/version "9.4.22.v20191022"},
+   :use-coord {:mvn/version "9.4.22.v20191022"},
+   :coord-id {:mvn/version "9.4.22.v20191022"},
+   :include false,
+   :reason :same-version}],
+ :vmap
+ {org.clojure/clojure
+  {:versions
+   {{:mvn/version "1.10.1"}
+    {:mvn/version "1.10.1", :deps/manifest :mvn}},
+   :paths {{:mvn/version "1.10.1"} #{[]}},
+   :select {:mvn/version "1.10.1"},
+   :top true},
+  com.github.jnr/jnr-ffi
+  {:versions
+   {{:mvn/version "2.1.12"}
+    {:mvn/version "2.1.12", :deps/manifest :mvn}},
+   :paths {{:mvn/version "2.1.12"} #{[juxt/crux-rocksdb]}},
+   :select {:mvn/version "2.1.12"}},
+  commons-codec/commons-codec
+  {:versions
+   {{:mvn/version "1.11"} {:mvn/version "1.11", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.11"} #{[juxt/crux-http-server ring/ring-codec]}},
+   :select {:mvn/version "1.11"}},
+  org.clojure/tools.logging
+  {:versions
+   {{:mvn/version "0.5.0"}
+    {:mvn/version "0.5.0", :deps/manifest :mvn}},
+   :paths {{:mvn/version "0.5.0"} #{[juxt/crux-core]}},
+   :select {:mvn/version "0.5.0"}},
+  org.clojure/core.specs.alpha
+  {:versions
+   {{:mvn/version "0.2.44"}
+    {:mvn/version "0.2.44", :deps/manifest :mvn}},
+   :paths {{:mvn/version "0.2.44"} #{[org.clojure/clojure]}},
+   :select {:mvn/version "0.2.44"}},
+  org.tukaani/xz
+  {:versions
+   {{:mvn/version "1.6"} {:mvn/version "1.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.6"} #{[juxt/crux-core com.taoensso/nippy]}},
+   :select {:mvn/version "1.6"}},
+  juxt/crux-decorators
+  {:versions
+   {{:mvn/version "20.01-1.6.2-alpha"}
+    {:mvn/version "20.01-1.6.2-alpha", :deps/manifest :mvn}},
+   :paths {{:mvn/version "20.01-1.6.2-alpha"} #{[]}},
+   :select {:mvn/version "20.01-1.6.2-alpha"},
+   :top true},
+  org.clojure/spec.alpha
+  {:versions
+   {{:mvn/version "0.2.176"}
+    {:mvn/version "0.2.176", :deps/manifest :mvn}},
+   :paths {{:mvn/version "0.2.176"} #{[org.clojure/clojure]}},
+   :select {:mvn/version "0.2.176"}},
+  org.clojure/tools.cli
+  {:versions
+   {{:mvn/version "0.4.2"}
+    {:mvn/version "0.4.2", :deps/manifest :mvn}},
+   :paths {{:mvn/version "0.4.2"} #{[juxt/crux-cli]}},
+   :select {:mvn/version "0.4.2"}},
+  commons-fileupload/commons-fileupload
+  {:versions
+   {{:mvn/version "1.4"} {:mvn/version "1.4", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.4"} #{[juxt/crux-http-server ring/ring-core]}},
+   :select {:mvn/version "1.4"}},
+  org.eclipse.jetty/jetty-http
+  {:versions
+   {{:mvn/version "9.4.22.v20191022"}
+    {:mvn/version "9.4.22.v20191022", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "9.4.22.v20191022"}
+    #{[juxt/crux-http-server
+       ring/ring-jetty-adapter
+       org.eclipse.jetty/jetty-server]}},
+   :select {:mvn/version "9.4.22.v20191022"}},
+  org.eclipse.jetty/jetty-util
+  {:versions
+   {{:mvn/version "9.4.22.v20191022"}
+    {:mvn/version "9.4.22.v20191022", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "9.4.22.v20191022"}
+    #{[juxt/crux-http-server
+       ring/ring-jetty-adapter
+       org.eclipse.jetty/jetty-server
+       org.eclipse.jetty/jetty-http]}},
+   :select {:mvn/version "9.4.22.v20191022"}},
+  com.taoensso/encore
+  {:versions
+   {{:mvn/version "2.114.0"}
+    {:mvn/version "2.114.0", :deps/manifest :mvn}},
+   :paths {{:mvn/version "2.114.0"} #{[juxt/crux-core]}},
+   :select {:mvn/version "2.114.0"}},
+  org.rocksdb/rocksdbjni
+  {:versions
+   {{:mvn/version "5.17.2"}
+    {:mvn/version "5.17.2", :deps/manifest :mvn}},
+   :paths {{:mvn/version "5.17.2"} #{[]}},
+   :select {:mvn/version "5.17.2"},
+   :top true},
+  com.github.jnr/jffi$native
+  {:versions
+   {{:mvn/version "1.2.23"}
+    {:mvn/version "1.2.23", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.2.23"}
+    #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
+   :select {:mvn/version "1.2.23"}},
+  net.jpountz.lz4/lz4
+  {:versions
+   {{:mvn/version "1.3"} {:mvn/version "1.3", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3"} #{[juxt/crux-core com.taoensso/nippy]}},
+   :select {:mvn/version "1.3"}},
+  ring-cors/ring-cors
+  {:versions
+   {{:mvn/version "0.1.13"}
+    {:mvn/version "0.1.13", :deps/manifest :mvn}},
+   :paths {{:mvn/version "0.1.13"} #{[juxt/crux-http-server]}},
+   :select {:mvn/version "0.1.13"}},
+  org.iq80.snappy/snappy
+  {:versions
+   {{:mvn/version "0.4"} {:mvn/version "0.4", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "0.4"} #{[juxt/crux-core com.taoensso/nippy]}},
+   :select {:mvn/version "0.4"}},
+  ch.qos.logback/logback-core
+  {:versions
+   {{:mvn/version "1.2.3"}
+    {:mvn/version "1.2.3", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.2.3"}
+    #{[juxt/crux-cli ch.qos.logback/logback-classic]}},
+   :select {:mvn/version "1.2.3"}},
+  ring/ring-jetty-adapter
+  {:versions
+   {{:mvn/version "1.8.0"}
+    {:mvn/version "1.8.0", :deps/manifest :mvn}},
+   :paths {{:mvn/version "1.8.0"} #{[juxt/crux-http-server]}},
+   :select {:mvn/version "1.8.0"}},
+  commons-io/commons-io
+  {:versions
+   {{:mvn/version "2.6"} {:mvn/version "2.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.6"} #{[juxt/crux-http-server ring/ring-core]}},
+   :select {:mvn/version "2.6"}},
+  org.ow2.asm/asm-util
+  {:versions
+   {{:mvn/version "7.1"} {:mvn/version "7.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "7.1"}
+    #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
+   :select {:mvn/version "7.1"}},
+  org.agrona/agrona
+  {:versions
+   {{:mvn/version "1.0.7"}
+    {:mvn/version "1.0.7", :deps/manifest :mvn}},
+   :paths {{:mvn/version "1.0.7"} #{[juxt/crux-core]}},
+   :select {:mvn/version "1.0.7"}},
+  org.ow2.asm/asm
+  {:versions
+   {{:mvn/version "7.1"} {:mvn/version "7.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "7.1"}
+    #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
+   :select {:mvn/version "7.1"}},
+  com.github.jnr/jnr-a64asm
+  {:versions
+   {{:mvn/version "1.0.0"}
+    {:mvn/version "1.0.0", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.0.0"}
+    #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
+   :select {:mvn/version "1.0.0"}},
+  com.taoensso/truss
+  {:versions
+   {{:mvn/version "1.5.0"}
+    {:mvn/version "1.5.0", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.5.0"} #{[juxt/crux-core com.taoensso/encore]}},
+   :select {:mvn/version "1.5.0"}},
+  juxt/crux-rocksdb
+  {:versions
+   {{:mvn/version "20.04-1.8.1-alpha"}
+    {:mvn/version "20.04-1.8.1-alpha", :deps/manifest :mvn}},
+   :paths {{:mvn/version "20.04-1.8.1-alpha"} #{[]}},
+   :select {:mvn/version "20.04-1.8.1-alpha"},
+   :top true},
+  org.ow2.asm/asm-commons
+  {:versions
+   {{:mvn/version "7.1"} {:mvn/version "7.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "7.1"}
+    #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
+   :select {:mvn/version "7.1"}},
+  crypto-random/crypto-random
+  {:versions
+   {{:mvn/version "1.2.0"}
+    {:mvn/version "1.2.0", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.2.0"} #{[juxt/crux-http-server ring/ring-core]}},
+   :select {:mvn/version "1.2.0"}},
+  ring/ring-codec
+  {:versions
+   {{:mvn/version "1.1.2"}
+    {:mvn/version "1.1.2", :deps/manifest :mvn}},
+   :paths {{:mvn/version "1.1.2"} #{[juxt/crux-http-server]}},
+   :select {:mvn/version "1.1.2"}},
+  crypto-equality/crypto-equality
+  {:versions
+   {{:mvn/version "1.0.0"}
+    {:mvn/version "1.0.0", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.0.0"} #{[juxt/crux-http-server ring/ring-core]}},
+   :select {:mvn/version "1.0.0"}},
+  org.eclipse.jetty/jetty-io
+  {:versions
+   {{:mvn/version "9.4.22.v20191022"}
+    {:mvn/version "9.4.22.v20191022", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "9.4.22.v20191022"}
+    #{[juxt/crux-http-server
+       ring/ring-jetty-adapter
+       org.eclipse.jetty/jetty-server]}},
+   :select {:mvn/version "9.4.22.v20191022"}},
+  org.clojure/tools.reader
+  {:versions
+   {{:mvn/version "1.3.2"}
+    {:mvn/version "1.3.2", :deps/manifest :mvn}},
+   :paths {{:mvn/version "1.3.2"} #{[juxt/crux-core]}},
+   :select {:mvn/version "1.3.2"}},
+  juxt/crux-http-server
+  {:versions
+   {{:mvn/version "20.03-1.8.0-alpha"}
+    {:mvn/version "20.03-1.8.0-alpha", :deps/manifest :mvn}},
+   :paths {{:mvn/version "20.03-1.8.0-alpha"} #{[]}},
+   :select {:mvn/version "20.03-1.8.0-alpha"},
+   :top true},
+  com.github.jnr/jnr-x86asm
+  {:versions
+   {{:mvn/version "1.0.2"}
+    {:mvn/version "1.0.2", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.0.2"}
+    #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
+   :select {:mvn/version "1.0.2"}},
+  com.taoensso/nippy
+  {:versions
+   {{:mvn/version "2.14.0"}
+    {:mvn/version "2.14.0", :deps/manifest :mvn}},
+   :paths {{:mvn/version "2.14.0"} #{[juxt/crux-core]}},
+   :select {:mvn/version "2.14.0"}},
+  javax.servlet/javax.servlet-api
+  {:versions
+   {{:mvn/version "3.1.0"}
+    {:mvn/version "3.1.0", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "3.1.0"}
+    #{[juxt/crux-http-server
+       ring/ring-jetty-adapter
+       org.eclipse.jetty/jetty-server]}},
+   :select {:mvn/version "3.1.0"}},
+  com.github.jnr/jffi
+  {:versions
+   {{:mvn/version "1.2.23"}
+    {:mvn/version "1.2.23", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.2.23"}
+    #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
+   :select {:mvn/version "1.2.23"}},
+  org.slf4j/slf4j-api
+  {:versions
+   {{:mvn/version "1.7.29"}
+    {:mvn/version "1.7.29", :deps/manifest :mvn}},
+   :paths {{:mvn/version "1.7.29"} #{[juxt/crux-core]}},
+   :select {:mvn/version "1.7.29"}},
+  org.clojure/test.check
+  {:versions
+   {{:mvn/version "0.10.0-alpha4"}
+    {:mvn/version "0.10.0-alpha4", :deps/manifest :mvn}},
+   :paths {{:mvn/version "0.10.0-alpha4"} #{[]}},
+   :select {:mvn/version "0.10.0-alpha4"},
+   :top true},
+  org.ow2.asm/asm-analysis
+  {:versions
+   {{:mvn/version "7.1"} {:mvn/version "7.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "7.1"}
+    #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
+   :select {:mvn/version "7.1"}},
+  juxt/crux-core
+  {:versions
+   {{:mvn/version "20.04-1.8.1-alpha"}
+    {:mvn/version "20.04-1.8.1-alpha", :deps/manifest :mvn}},
+   :paths {{:mvn/version "20.04-1.8.1-alpha"} #{[]}},
+   :select {:mvn/version "20.04-1.8.1-alpha"},
+   :top true},
+  juxt/crux-cli
+  {:versions
+   {{:mvn/version "20.04-1.8.1-alpha"}
+    {:mvn/version "20.04-1.8.1-alpha", :deps/manifest :mvn}},
+   :paths {{:mvn/version "20.04-1.8.1-alpha"} #{[]}},
+   :select {:mvn/version "20.04-1.8.1-alpha"},
+   :top true},
+  ring/ring-servlet
+  {:versions
+   {{:mvn/version "1.8.0"}
+    {:mvn/version "1.8.0", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.8.0"}
+    #{[juxt/crux-http-server ring/ring-jetty-adapter]}},
+   :select {:mvn/version "1.8.0"}},
+  ch.qos.logback/logback-classic
+  {:versions
+   {{:mvn/version "1.2.3"}
+    {:mvn/version "1.2.3",
+     :exclusions #{org.slf4j/slf4j-api},
+     :deps/manifest :mvn}},
+   :paths {{:mvn/version "1.2.3"} #{[juxt/crux-cli]}},
+   :select {:mvn/version "1.2.3"}},
+  com.stuartsierra/dependency
+  {:versions
+   {{:mvn/version "0.2.0"}
+    {:mvn/version "0.2.0", :deps/manifest :mvn}},
+   :paths {{:mvn/version "0.2.0"} #{[juxt/crux-core]}},
+   :select {:mvn/version "0.2.0"}},
+  org.eclipse.jetty/jetty-server
+  {:versions
+   {{:mvn/version "9.4.22.v20191022"}
+    {:mvn/version "9.4.22.v20191022", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "9.4.22.v20191022"}
+    #{[juxt/crux-http-server ring/ring-jetty-adapter]}},
+   :select {:mvn/version "9.4.22.v20191022"}},
+  ring/ring-core
+  {:versions
+   {{:mvn/version "1.8.0"}
+    {:mvn/version "1.8.0", :deps/manifest :mvn}},
+   :paths {{:mvn/version "1.8.0"} #{[juxt/crux-http-server]}},
+   :select {:mvn/version "1.8.0"}},
+  org.ow2.asm/asm-tree
+  {:versions
+   {{:mvn/version "7.1"} {:mvn/version "7.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "7.1"}
+    #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
+   :select {:mvn/version "7.1"}}},
+ :exclusions
+ {[juxt/crux-cli ch.qos.logback/logback-classic]
+  #{org.slf4j/slf4j-api}}}
