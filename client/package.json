@@ -4,6 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "all": "npm i && npm run build && npm start",
+    "start": "node .",
     "test": "ava",
     "test:watch": "ava --watch",
     "build": "tsc",
@@ -30,9 +32,9 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "env-var": "^6.0.4",
     "faker": "^4.1.0",
-    "got": "^10.7.0",
-    "jsedn": "^0.4.1"
+    "got": "^10.7.0"
   },
   "ava": {
     "extensions": [

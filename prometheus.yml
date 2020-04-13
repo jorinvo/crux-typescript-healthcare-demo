@@ -1,0 +1,5 @@
+global:
+scrape_configs:
+  - job_name: 'crux'
+    static_configs:
+      - targets: ['crux:8080']

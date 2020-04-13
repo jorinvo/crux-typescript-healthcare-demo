@@ -1,7 +1,12 @@
-import got from 'got';
-import * as edn from 'jsedn';
+import got, { GotError } from 'got';
 
-import { EDNVal, EDNKeyword, toEDNString, keyword } from './edn';
+import {
+  EDNVal,
+  EDNKeyword,
+  toEDNString,
+  parseEDNString,
+  keyword,
+} from './edn';
 
 export type CruxMap = Map<EDNKeyword, EDNVal>;
 
@@ -11,6 +16,24 @@ const cruxPutKeyword = keyword('crux.tx/put');
 export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
   const httpClient = got.extend({ prefixUrl });
   return {
+    async status() {
+      try {
+        const response = await httpClient.get({
+          headers: { 'Content-Type': 'application/edn' },
+        });
+        const parsed = parseEDNString(response.body, {
+          keywordAsString: true,
+          mapAsObject: true,
+        });
+        return parsed;
+      } catch (e) {
+        if (e instanceof GotError && e.code === 'ECONNREFUSED') {
+          return undefined;
+        }
+        throw e;
+      }
+    },
+
     async submit(
       transactions: Array<
         | [EDNKeyword, Map<EDNKeyword, EDNVal>]
@@ -21,15 +44,59 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
         headers: { 'Content-Type': 'application/edn' },
         body: toEDNString(transactions),
       });
-      return edn.parse(response.body);
+      const parsed = parseEDNString(response.body, {
+        keywordAsString: true,
+        mapAsObject: true,
+      });
+      return {
+        txId: parsed['crux.tx/tx-id'],
+        txTime: parsed['crux.tx/tx-time'],
+      };
     },
 
-		async attributeStats() {
+    async readTxLog() {
+      const response = await httpClient.get('tx-log', {
+        headers: { 'Content-Type': 'application/edn' },
+        searchParams: {
+          'with-ops': true,
+          'after-tx-id': 0
+        },
+      });
+      const parsed = parseEDNString(response.body, {
+        keywordAsString: true,
+        mapAsObject: true,
+      });
+			console.log((parsed as any).list)
+      // return {
+      //   txId: parsed['crux.tx/tx-id'],
+      //   txTime: parsed['crux.tx/tx-time'],
+      // };
+    },
+
+    async awaitTx(txId: number) {
+      const response = await httpClient.get('await-tx', {
+        headers: { 'Content-Type': 'application/edn' },
+        searchParams: { 'tx-id': txId },
+      });
+      const parsed = parseEDNString(response.body, {
+        keywordAsString: true,
+        mapAsObject: true,
+      });
+      return {
+        txId: parsed['crux.tx/tx-id'],
+        txTime: parsed['crux.tx/tx-time'],
+      };
+    },
+
+    async attributeStats() {
       const response = await httpClient.get('attribute-stats', {
         headers: { 'Content-Type': 'application/edn' },
       });
-      return edn.parse(response.body);
-		}
+      return parseEDNString(response.body, {
+        keywordAsString: true,
+        mapAsObject: true,
+      });
+    },
   };
 };
 

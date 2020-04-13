@@ -1,5 +1,5 @@
-import * as edn from 'jsedn';
 import got from 'got';
+import * as env from 'env-var';
 
 import { keyword, EDNVal, EDNKeyword, tagValue } from './edn';
 import { CruxMap, setupCrux, cruxIdKeyword } from './crux';
@@ -37,6 +37,12 @@ const isUUID = (s: string) => {
   return uuidRegex.test(s);
 };
 
+const sleep = (ms: number) => {
+  return new Promise((resolve) => {
+    return setTimeout(resolve, ms);
+  });
+};
+
 // Objects are converted to maps with keywords as keys
 // `id` is used as Crux ID
 // if `id` is a UUID string it is tagged as such, otherwise it is converted to a keyword
@@ -61,7 +67,7 @@ const genTransactions = () => {
   const numPatients = 10;
   const numCases = 15;
   const numFormDefinitions = 10;
-  const numFormsData = 40;
+  const numFormsData = 60;
 
   const departmentIds = departmentTitles.map((title) =>
     title.toLowerCase().replace(' ', '_'),
@@ -106,24 +112,37 @@ const genTransactions = () => {
 
 const run = async () => {
   try {
-    const crux = setupCrux({ prefixUrl: 'http://crux:3000/' });
-    // const crux = setupCrux({ prefixUrl: 'http://localhost:3000/' });
-    const numTransaction = 0;
-    // const numTransaction = 1000;
+    const crux = setupCrux({
+      prefixUrl: env
+        .get('CRUX_URL')
+        .default('http://localhost:3000')
+        .asUrlString(),
+    });
+    // await crux.readTxLog()
+    // return
+    const numTransaction = env
+      .get('NUM_TRANSACTIONS')
+      .required()
+      .asIntPositive();
+    let lastTx;
+    while (!(await crux.status())) {
+      await sleep(1000);
+    }
     for (let i = 0; i < numTransaction; i++) {
       const transactions = genTransactions();
-      // console.log(JSON.stringify(transactions, null, 2));
-      // console.log(transactions);
-      console.log('submitting batch')
-      await crux.submit(transactions);
-      console.log('done')
-      // const response = await crux.submit(transactions);
-      // console.log(response);
+      console.log(`submitting batch ${i}`);
+      const res = await crux.submit(transactions);
+      lastTx = res.txId;
+      // await crux.awaitTx(lastTx);
     }
-		console.log(await crux.attributeStats())
+    if (lastTx) {
+      console.log('awaiting tx', lastTx);
+      await crux.awaitTx(lastTx);
+    }
+    console.log(await crux.attributeStats());
   } catch (error) {
     if (error instanceof got.HTTPError || error instanceof got.ParseError) {
-      console.log(edn.parse(error.response.body));
+      console.log(error.response.body);
     }
 
     console.log(error);

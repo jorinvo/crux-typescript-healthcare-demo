@@ -7,41 +7,6 @@
    :include true,
    :reason :new-top-dep}
   {:path [],
-   :lib org.clojure/test.check,
-   :coord {:mvn/version "0.10.0-alpha4"},
-   :use-coord {:mvn/version "0.10.0-alpha4"},
-   :coord-id {:mvn/version "0.10.0-alpha4"},
-   :include true,
-   :reason :new-top-dep}
-  {:path [],
-   :lib juxt/crux-http-server,
-   :coord {:mvn/version "20.03-1.8.0-alpha"},
-   :use-coord {:mvn/version "20.03-1.8.0-alpha"},
-   :coord-id {:mvn/version "20.03-1.8.0-alpha"},
-   :include true,
-   :reason :new-top-dep}
-  {:path [],
-   :lib juxt/crux-cli,
-   :coord {:mvn/version "20.04-1.8.1-alpha"},
-   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
-   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
-   :include true,
-   :reason :new-top-dep}
-  {:path [],
-   :lib juxt/crux-core,
-   :coord {:mvn/version "20.04-1.8.1-alpha"},
-   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
-   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
-   :include true,
-   :reason :new-top-dep}
-  {:path [],
-   :lib juxt/crux-rocksdb,
-   :coord {:mvn/version "20.04-1.8.1-alpha"},
-   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
-   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
-   :include true,
-   :reason :new-top-dep}
-  {:path [],
    :lib juxt/crux-decorators,
    :coord {:mvn/version "20.01-1.6.2-alpha"},
    :use-coord {:mvn/version "20.01-1.6.2-alpha"},
@@ -53,6 +18,83 @@
    :coord {:mvn/version "5.17.2"},
    :use-coord {:mvn/version "5.17.2"},
    :coord-id {:mvn/version "5.17.2"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib juxt/crux-metrics,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib io.prometheus/simpleclient_hotspot,
+   :coord {:mvn/version "0.8.1"},
+   :use-coord {:mvn/version "0.8.1"},
+   :coord-id {:mvn/version "0.8.1"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib juxt/crux-rocksdb,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib io.prometheus/simpleclient_pushgateway,
+   :coord {:mvn/version "0.8.1"},
+   :use-coord {:mvn/version "0.8.1"},
+   :coord-id {:mvn/version "0.8.1"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib io.prometheus/simpleclient_dropwizard,
+   :coord {:mvn/version "0.8.1"},
+   :use-coord {:mvn/version "0.8.1"},
+   :coord-id {:mvn/version "0.8.1"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib org.dhatim/dropwizard-prometheus,
+   :coord {:mvn/version "2.2.0"},
+   :use-coord {:mvn/version "2.2.0"},
+   :coord-id {:mvn/version "2.2.0"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib juxt/crux-http-server,
+   :coord {:mvn/version "20.03-1.8.0-alpha"},
+   :use-coord {:mvn/version "20.03-1.8.0-alpha"},
+   :coord-id {:mvn/version "20.03-1.8.0-alpha"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib clj-commons/iapetos,
+   :coord {:mvn/version "0.1.9"},
+   :use-coord {:mvn/version "0.1.9"},
+   :coord-id {:mvn/version "0.1.9"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib org.clojure/test.check,
+   :coord {:mvn/version "0.10.0-alpha4"},
+   :use-coord {:mvn/version "0.10.0-alpha4"},
+   :coord-id {:mvn/version "0.10.0-alpha4"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib juxt/crux-core,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :include true,
+   :reason :new-top-dep}
+  {:path [],
+   :lib juxt/crux-cli,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
    :include true,
    :reason :new-top-dep}
   {:path [org.clojure/clojure],
@@ -69,13 +111,126 @@
    :coord-id {:mvn/version "0.2.44"},
    :include true,
    :reason :new-dep}
-  {:path [org.clojure/test.check],
+  {:path [juxt/crux-decorators],
    :lib org.clojure/clojure,
-   :coord {:mvn/version "1.7.0"},
-   :use-coord {:mvn/version "1.7.0"},
-   :coord-id {:mvn/version "1.7.0"},
+   :coord {:mvn/version "1.10.1"},
+   :use-coord {:mvn/version "1.10.1"},
+   :coord-id {:mvn/version "1.10.1"},
    :include false,
    :reason :use-top}
+  {:path [juxt/crux-decorators],
+   :lib juxt/crux-core,
+   :coord {:mvn/version "20.01-1.6.2-alpha"},
+   :use-coord {:mvn/version "20.01-1.6.2-alpha"},
+   :coord-id {:mvn/version "20.01-1.6.2-alpha"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-metrics],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.10.1"},
+   :use-coord {:mvn/version "1.10.1"},
+   :coord-id {:mvn/version "1.10.1"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-metrics],
+   :lib juxt/crux-core,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-metrics],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.1.2"},
+   :use-coord {:mvn/version "4.1.2"},
+   :coord-id {:mvn/version "4.1.2"},
+   :include true,
+   :reason :new-dep}
+  {:path [io.prometheus/simpleclient_hotspot],
+   :lib io.prometheus/simpleclient,
+   :coord {:mvn/version "0.8.1"},
+   :use-coord {:mvn/version "0.8.1"},
+   :coord-id {:mvn/version "0.8.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.10.1"},
+   :use-coord {:mvn/version "1.10.1"},
+   :coord-id {:mvn/version "1.10.1"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-rocksdb],
+   :lib juxt/crux-core,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-rocksdb],
+   :lib org.rocksdb/rocksdbjni,
+   :coord {:mvn/version "6.5.3"},
+   :use-coord {:mvn/version "6.5.3"},
+   :coord-id {:mvn/version "6.5.3"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-rocksdb],
+   :lib com.github.jnr/jnr-ffi,
+   :coord {:mvn/version "2.1.12"},
+   :use-coord {:mvn/version "2.1.12"},
+   :coord-id {:mvn/version "2.1.12"},
+   :include true,
+   :reason :new-dep}
+  {:path [io.prometheus/simpleclient_pushgateway],
+   :lib io.prometheus/simpleclient,
+   :coord {:mvn/version "0.8.1"},
+   :use-coord {:mvn/version "0.8.1"},
+   :coord-id {:mvn/version "0.8.1"},
+   :include false,
+   :reason :same-version}
+  {:path [io.prometheus/simpleclient_pushgateway],
+   :lib io.prometheus/simpleclient_common,
+   :coord {:mvn/version "0.8.1"},
+   :use-coord {:mvn/version "0.8.1"},
+   :coord-id {:mvn/version "0.8.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [io.prometheus/simpleclient_pushgateway],
+   :lib javax.xml.bind/jaxb-api,
+   :coord {:mvn/version "2.3.0"},
+   :use-coord {:mvn/version "2.3.0"},
+   :coord-id {:mvn/version "2.3.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [io.prometheus/simpleclient_dropwizard],
+   :lib io.prometheus/simpleclient,
+   :coord {:mvn/version "0.8.1"},
+   :use-coord {:mvn/version "0.8.1"},
+   :coord-id {:mvn/version "0.8.1"},
+   :include false,
+   :reason :same-version}
+  {:path [io.prometheus/simpleclient_dropwizard],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "3.1.2"},
+   :use-coord {:mvn/version "3.1.2"},
+   :coord-id {:mvn/version "3.1.2"},
+   :include false,
+   :reason :older-version}
+  {:path [org.dhatim/dropwizard-prometheus],
+   :lib io.dropwizard/dropwizard-core,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path [org.dhatim/dropwizard-prometheus],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :older-version}
   {:path [juxt/crux-http-server],
    :lib org.clojure/clojure,
    :coord {:mvn/version "1.10.1"},
@@ -118,40 +273,32 @@
    :coord-id {:mvn/version "0.1.13"},
    :include true,
    :reason :new-dep}
-  {:path [juxt/crux-cli],
+  {:path [clj-commons/iapetos],
+   :lib io.prometheus/simpleclient,
+   :coord {:mvn/version "0.6.0"},
+   :use-coord {:mvn/version "0.6.0"},
+   :coord-id {:mvn/version "0.6.0"},
+   :include false,
+   :reason :older-version}
+  {:path [clj-commons/iapetos],
+   :lib io.prometheus/simpleclient_common,
+   :coord {:mvn/version "0.6.0"},
+   :use-coord {:mvn/version "0.6.0"},
+   :coord-id {:mvn/version "0.6.0"},
+   :include false,
+   :reason :older-version}
+  {:path [clj-commons/iapetos],
+   :lib io.prometheus/simpleclient_pushgateway,
+   :coord {:mvn/version "0.6.0"},
+   :use-coord {:mvn/version "0.6.0"},
+   :coord-id {:mvn/version "0.6.0"},
+   :include false,
+   :reason :use-top}
+  {:path [org.clojure/test.check],
    :lib org.clojure/clojure,
-   :coord {:mvn/version "1.10.1"},
-   :use-coord {:mvn/version "1.10.1"},
-   :coord-id {:mvn/version "1.10.1"},
-   :include false,
-   :reason :use-top}
-  {:path [juxt/crux-cli],
-   :lib org.clojure/tools.cli,
-   :coord {:mvn/version "0.4.2"},
-   :use-coord {:mvn/version "0.4.2"},
-   :coord-id {:mvn/version "0.4.2"},
-   :include true,
-   :reason :new-dep}
-  {:path [juxt/crux-cli],
-   :lib ch.qos.logback/logback-classic,
-   :coord {:mvn/version "1.2.3", :exclusions #{org.slf4j/slf4j-api}},
-   :use-coord
-   {:mvn/version "1.2.3", :exclusions #{org.slf4j/slf4j-api}},
-   :coord-id {:mvn/version "1.2.3"},
-   :include true,
-   :reason :new-dep}
-  {:path [juxt/crux-cli],
-   :lib juxt/crux-core,
-   :coord {:mvn/version "20.04-1.8.1-alpha"},
-   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
-   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
-   :include false,
-   :reason :use-top}
-  {:path [juxt/crux-cli],
-   :lib juxt/crux-http-server,
-   :coord {:mvn/version "20.04-1.8.1-alpha"},
-   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
-   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
+   :coord {:mvn/version "1.7.0"},
+   :use-coord {:mvn/version "1.7.0"},
+   :coord-id {:mvn/version "1.7.0"},
    :include false,
    :reason :use-top}
   {:path [juxt/crux-core],
@@ -217,48 +364,283 @@
    :coord-id {:mvn/version "1.0.7"},
    :include true,
    :reason :new-dep}
-  {:path [juxt/crux-rocksdb],
+  {:path [juxt/crux-cli],
    :lib org.clojure/clojure,
    :coord {:mvn/version "1.10.1"},
    :use-coord {:mvn/version "1.10.1"},
    :coord-id {:mvn/version "1.10.1"},
    :include false,
    :reason :use-top}
-  {:path [juxt/crux-rocksdb],
+  {:path [juxt/crux-cli],
+   :lib org.clojure/tools.cli,
+   :coord {:mvn/version "0.4.2"},
+   :use-coord {:mvn/version "0.4.2"},
+   :coord-id {:mvn/version "0.4.2"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-cli],
+   :lib ch.qos.logback/logback-classic,
+   :coord {:mvn/version "1.2.3", :exclusions #{org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "1.2.3", :exclusions #{org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "1.2.3"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-cli],
    :lib juxt/crux-core,
    :coord {:mvn/version "20.04-1.8.1-alpha"},
    :use-coord {:mvn/version "20.04-1.8.1-alpha"},
    :coord-id {:mvn/version "20.04-1.8.1-alpha"},
    :include false,
    :reason :use-top}
-  {:path [juxt/crux-rocksdb],
-   :lib org.rocksdb/rocksdbjni,
-   :coord {:mvn/version "6.5.3"},
-   :use-coord {:mvn/version "6.5.3"},
-   :coord-id {:mvn/version "6.5.3"},
+  {:path [juxt/crux-cli],
+   :lib juxt/crux-http-server,
+   :coord {:mvn/version "20.04-1.8.1-alpha"},
+   :use-coord {:mvn/version "20.04-1.8.1-alpha"},
+   :coord-id {:mvn/version "20.04-1.8.1-alpha"},
    :include false,
    :reason :use-top}
-  {:path [juxt/crux-rocksdb],
-   :lib com.github.jnr/jnr-ffi,
-   :coord {:mvn/version "2.1.12"},
-   :use-coord {:mvn/version "2.1.12"},
-   :coord-id {:mvn/version "2.1.12"},
+  {:path [juxt/crux-metrics io.dropwizard.metrics/metrics-core],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.29"},
+   :use-coord {:mvn/version "1.7.29"},
+   :coord-id {:mvn/version "1.7.29"},
+   :include false,
+   :reason :same-version}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib com.github.jnr/jffi,
+   :coord {:mvn/version "1.2.23"},
+   :use-coord {:mvn/version "1.2.23"},
+   :coord-id {:mvn/version "1.2.23"},
    :include true,
    :reason :new-dep}
-  {:path [juxt/crux-decorators],
-   :lib org.clojure/clojure,
-   :coord {:mvn/version "1.10.1"},
-   :use-coord {:mvn/version "1.10.1"},
-   :coord-id {:mvn/version "1.10.1"},
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib com.github.jnr/jffi$native,
+   :coord {:mvn/version "1.2.23"},
+   :use-coord {:mvn/version "1.2.23"},
+   :coord-id {:mvn/version "1.2.23"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib org.ow2.asm/asm,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib org.ow2.asm/asm-commons,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib org.ow2.asm/asm-analysis,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib org.ow2.asm/asm-tree,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib org.ow2.asm/asm-util,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib com.github.jnr/jnr-a64asm,
+   :coord {:mvn/version "1.0.0"},
+   :use-coord {:mvn/version "1.0.0"},
+   :coord-id {:mvn/version "1.0.0"},
+   :include true,
+   :reason :new-dep}
+  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :lib com.github.jnr/jnr-x86asm,
+   :coord {:mvn/version "1.0.2"},
+   :use-coord {:mvn/version "1.0.2"},
+   :coord-id {:mvn/version "1.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [io.prometheus/simpleclient_pushgateway
+    io.prometheus/simpleclient_common],
+   :lib io.prometheus/simpleclient,
+   :coord {:mvn/version "0.8.1"},
+   :use-coord {:mvn/version "0.8.1"},
+   :coord-id {:mvn/version "0.8.1"},
    :include false,
-   :reason :use-top}
-  {:path [juxt/crux-decorators],
-   :lib juxt/crux-core,
-   :coord {:mvn/version "20.01-1.6.2-alpha"},
-   :use-coord {:mvn/version "20.01-1.6.2-alpha"},
-   :coord-id {:mvn/version "20.01-1.6.2-alpha"},
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard/dropwizard-util,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard/dropwizard-jackson,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard/dropwizard-validation,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard/dropwizard-configuration,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard/dropwizard-logging,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard/dropwizard-metrics,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard/dropwizard-jersey,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard/dropwizard-servlets,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard/dropwizard-jetty,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard/dropwizard-lifecycle,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "4.0.2"},
    :include false,
-   :reason :use-top}
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard.metrics/metrics-jvm,
+   :coord {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "4.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard.metrics/metrics-jmx,
+   :coord {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "4.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard.metrics/metrics-servlets,
+   :coord
+   {:mvn/version "4.0.2",
+    :exclusions
+    #{com.fasterxml.jackson.core/jackson-databind
+      org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "4.0.2",
+    :exclusions
+    #{com.fasterxml.jackson.core/jackson-databind
+      org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "4.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard.metrics/metrics-healthchecks,
+   :coord {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "4.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib io.dropwizard/dropwizard-request-logging,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib net.sourceforge.argparse4j/argparse4j,
+   :coord {:mvn/version "0.8.1"},
+   :use-coord {:mvn/version "0.8.1"},
+   :coord-id {:mvn/version "0.8.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus io.dropwizard/dropwizard-core],
+   :lib org.eclipse.jetty.toolchain.setuid/jetty-setuid-java,
+   :coord
+   {:mvn/version "1.0.3",
+    :exclusions
+    #{org.eclipse.jetty/jetty-util org.eclipse.jetty/jetty-server}},
+   :use-coord
+   {:mvn/version "1.0.3",
+    :exclusions
+    #{org.eclipse.jetty/jetty-util org.eclipse.jetty/jetty-server}},
+   :coord-id {:mvn/version "1.0.3"},
+   :include true,
+   :reason :new-dep}
   {:path [juxt/crux-http-server ring/ring-core],
    :lib org.clojure/clojure,
    :coord {:mvn/version "1.7.0"},
@@ -350,27 +732,6 @@
    :coord-id {:mvn/version "1.10.0"},
    :include false,
    :reason :use-top}
-  {:path [juxt/crux-cli org.clojure/tools.cli],
-   :lib org.clojure/clojure,
-   :coord {:mvn/version "1.8.0"},
-   :use-coord {:mvn/version "1.8.0"},
-   :coord-id {:mvn/version "1.8.0"},
-   :include false,
-   :reason :use-top}
-  {:path [juxt/crux-cli ch.qos.logback/logback-classic],
-   :lib ch.qos.logback/logback-core,
-   :coord {:mvn/version "1.2.3"},
-   :use-coord {:mvn/version "1.2.3"},
-   :coord-id {:mvn/version "1.2.3"},
-   :include true,
-   :reason :new-dep}
-  {:path [juxt/crux-cli ch.qos.logback/logback-classic],
-   :lib org.slf4j/slf4j-api,
-   :coord {:mvn/version "1.7.25"},
-   :use-coord {:mvn/version "1.7.25"},
-   :coord-id {:mvn/version "1.7.25"},
-   :include false,
-   :reason :excluded}
   {:path [juxt/crux-core org.clojure/tools.logging],
    :lib org.clojure/clojure,
    :coord {:mvn/version "1.4.0"},
@@ -448,69 +809,973 @@
    :coord-id {:mvn/version "1.5.0"},
    :include true,
    :reason :new-dep}
-  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
-   :lib com.github.jnr/jffi,
-   :coord {:mvn/version "1.2.23"},
-   :use-coord {:mvn/version "1.2.23"},
-   :coord-id {:mvn/version "1.2.23"},
+  {:path [juxt/crux-cli org.clojure/tools.cli],
+   :lib org.clojure/clojure,
+   :coord {:mvn/version "1.8.0"},
+   :use-coord {:mvn/version "1.8.0"},
+   :coord-id {:mvn/version "1.8.0"},
+   :include false,
+   :reason :use-top}
+  {:path [juxt/crux-cli ch.qos.logback/logback-classic],
+   :lib ch.qos.logback/logback-core,
+   :coord {:mvn/version "1.2.3"},
+   :use-coord {:mvn/version "1.2.3"},
+   :coord-id {:mvn/version "1.2.3"},
    :include true,
    :reason :new-dep}
-  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
-   :lib com.github.jnr/jffi$native,
-   :coord {:mvn/version "1.2.23"},
-   :use-coord {:mvn/version "1.2.23"},
-   :coord-id {:mvn/version "1.2.23"},
-   :include true,
-   :reason :new-dep}
-  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+  {:path [juxt/crux-cli ch.qos.logback/logback-classic],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-commons],
    :lib org.ow2.asm/asm,
    :coord {:mvn/version "7.1"},
    :use-coord {:mvn/version "7.1"},
    :coord-id {:mvn/version "7.1"},
-   :include true,
-   :reason :new-dep}
-  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
-   :lib org.ow2.asm/asm-commons,
-   :coord {:mvn/version "7.1"},
-   :use-coord {:mvn/version "7.1"},
-   :coord-id {:mvn/version "7.1"},
-   :include true,
-   :reason :new-dep}
-  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
-   :lib org.ow2.asm/asm-analysis,
-   :coord {:mvn/version "7.1"},
-   :use-coord {:mvn/version "7.1"},
-   :coord-id {:mvn/version "7.1"},
-   :include true,
-   :reason :new-dep}
-  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-commons],
    :lib org.ow2.asm/asm-tree,
    :coord {:mvn/version "7.1"},
    :use-coord {:mvn/version "7.1"},
    :coord-id {:mvn/version "7.1"},
-   :include true,
-   :reason :new-dep}
-  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
-   :lib org.ow2.asm/asm-util,
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-commons],
+   :lib org.ow2.asm/asm-analysis,
    :coord {:mvn/version "7.1"},
    :use-coord {:mvn/version "7.1"},
    :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-analysis],
+   :lib org.ow2.asm/asm-tree,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-tree],
+   :lib org.ow2.asm/asm,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-util],
+   :lib org.ow2.asm/asm,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-util],
+   :lib org.ow2.asm/asm-tree,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-util],
+   :lib org.ow2.asm/asm-analysis,
+   :coord {:mvn/version "7.1"},
+   :use-coord {:mvn/version "7.1"},
+   :coord-id {:mvn/version "7.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-util],
+   :lib com.fasterxml.jackson.core/jackson-annotations,
+   :coord {:mvn/version "2.9.0"},
+   :use-coord {:mvn/version "2.9.0"},
+   :coord-id {:mvn/version "2.9.0"},
    :include true,
    :reason :new-dep}
-  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
-   :lib com.github.jnr/jnr-a64asm,
-   :coord {:mvn/version "1.0.0"},
-   :use-coord {:mvn/version "1.0.0"},
-   :coord-id {:mvn/version "1.0.0"},
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-util],
+   :lib com.google.guava/guava,
+   :coord {:mvn/version "24.0-jre"},
+   :use-coord {:mvn/version "24.0-jre"},
+   :coord-id {:mvn/version "24.0-jre"},
    :include true,
    :reason :new-dep}
-  {:path [juxt/crux-rocksdb com.github.jnr/jnr-ffi],
-   :lib com.github.jnr/jnr-x86asm,
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-util],
+   :lib com.google.code.findbugs/jsr305,
+   :coord {:mvn/version "3.0.2"},
+   :use-coord {:mvn/version "3.0.2"},
+   :coord-id {:mvn/version "3.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-util],
+   :lib joda-time/joda-time,
+   :coord {:mvn/version "2.9.9"},
+   :use-coord {:mvn/version "2.9.9"},
+   :coord-id {:mvn/version "2.9.9"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib com.google.guava/guava,
+   :coord {:mvn/version "24.0-jre"},
+   :use-coord {:mvn/version "24.0-jre"},
+   :coord-id {:mvn/version "24.0-jre"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib io.dropwizard/dropwizard-util,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib com.fasterxml.jackson.core/jackson-core,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib com.fasterxml.jackson.core/jackson-annotations,
+   :coord {:mvn/version "2.9.0"},
+   :use-coord {:mvn/version "2.9.0"},
+   :coord-id {:mvn/version "2.9.0"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib com.fasterxml.jackson.core/jackson-databind,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib com.fasterxml.jackson.datatype/jackson-datatype-guava,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib com.fasterxml.jackson.datatype/jackson-datatype-jsr310,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib com.fasterxml.jackson.datatype/jackson-datatype-jdk8,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib com.fasterxml.jackson.module/jackson-module-parameter-names,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib com.fasterxml.jackson.module/jackson-module-afterburner,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib com.fasterxml.jackson.datatype/jackson-datatype-joda,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-validation],
+   :lib io.dropwizard/dropwizard-util,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-validation],
+   :lib org.hibernate/hibernate-validator,
+   :coord {:mvn/version "5.4.2.Final"},
+   :use-coord {:mvn/version "5.4.2.Final"},
+   :coord-id {:mvn/version "5.4.2.Final"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-validation],
+   :lib org.glassfish/javax.el,
+   :coord {:mvn/version "3.0.0"},
+   :use-coord {:mvn/version "3.0.0"},
+   :coord-id {:mvn/version "3.0.0"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-validation],
+   :lib org.javassist/javassist,
+   :coord {:mvn/version "3.22.0-GA"},
+   :use-coord {:mvn/version "3.22.0-GA"},
+   :coord-id {:mvn/version "3.22.0-GA"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-validation],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-configuration],
+   :lib io.dropwizard/dropwizard-jackson,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-configuration],
+   :lib io.dropwizard/dropwizard-validation,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-configuration],
+   :lib com.fasterxml.jackson.dataformat/jackson-dataformat-yaml,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-configuration],
+   :lib org.apache.commons/commons-lang3,
+   :coord {:mvn/version "3.7"},
+   :use-coord {:mvn/version "3.7"},
+   :coord-id {:mvn/version "3.7"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-configuration],
+   :lib org.apache.commons/commons-text,
+   :coord {:mvn/version "1.2"},
+   :use-coord {:mvn/version "1.2"},
+   :coord-id {:mvn/version "1.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging],
+   :lib io.dropwizard/dropwizard-jackson,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging],
+   :lib io.dropwizard/dropwizard-validation,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging],
+   :lib io.dropwizard.metrics/metrics-logback,
+   :coord
+   {:mvn/version "4.0.2",
+    :exclusions #{org.slf4j/slf4j-api ch.qos.logback/logback-classic}},
+   :use-coord
+   {:mvn/version "4.0.2",
+    :exclusions #{org.slf4j/slf4j-api ch.qos.logback/logback-classic}},
+   :coord-id {:mvn/version "4.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging],
+   :lib org.slf4j/jul-to-slf4j,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging],
+   :lib ch.qos.logback/logback-core,
+   :coord {:mvn/version "1.2.3"},
+   :use-coord {:mvn/version "1.2.3"},
+   :coord-id {:mvn/version "1.2.3"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging],
+   :lib ch.qos.logback/logback-classic,
+   :coord {:mvn/version "1.2.3", :exclusions #{org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "1.2.3", :exclusions #{org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "1.2.3"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging],
+   :lib org.slf4j/log4j-over-slf4j,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging],
+   :lib org.slf4j/jcl-over-slf4j,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging],
+   :lib org.eclipse.jetty/jetty-util,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-metrics],
+   :lib io.dropwizard/dropwizard-lifecycle,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-metrics],
+   :lib io.dropwizard/dropwizard-jackson,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-metrics],
+   :lib io.dropwizard/dropwizard-validation,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-metrics],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-metrics],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib io.dropwizard/dropwizard-jackson,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib io.dropwizard/dropwizard-validation,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib io.dropwizard/dropwizard-logging,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib org.glassfish.jersey.core/jersey-server,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib org.glassfish.jersey.ext/jersey-metainf-services,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib org.glassfish.jersey.ext/jersey-bean-validation,
+   :coord
+   {:mvn/version "2.25.1",
+    :exclusions #{org.glassfish.web/javax.el javax.el/javax.el-api}},
+   :use-coord
+   {:mvn/version "2.25.1",
+    :exclusions #{org.glassfish.web/javax.el javax.el/javax.el-api}},
+   :coord-id {:mvn/version "2.25.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib io.dropwizard.metrics/metrics-jersey2,
+   :coord
+   {:mvn/version "4.0.2",
+    :exclusions
+    #{org.glassfish.jersey.core/jersey-server org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "4.0.2",
+    :exclusions
+    #{org.glassfish.jersey.core/jersey-server org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "4.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib org.glassfish.jersey.containers/jersey-container-servlet,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib org.eclipse.jetty/jetty-server,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib org.eclipse.jetty/jetty-webapp,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib org.eclipse.jetty/jetty-continuation,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey],
+   :lib org.apache.commons/commons-lang3,
+   :coord {:mvn/version "3.7"},
+   :use-coord {:mvn/version "3.7"},
+   :coord-id {:mvn/version "3.7"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-servlets],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-servlets],
+   :lib io.dropwizard/dropwizard-util,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-servlets],
+   :lib io.dropwizard.metrics/metrics-annotation,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-servlets],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "4.0.2", :exclusions #{org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-servlets],
+   :lib ch.qos.logback/logback-classic,
+   :coord {:mvn/version "1.2.3", :exclusions #{org.slf4j/slf4j-api}},
+   :use-coord
+   {:mvn/version "1.2.3", :exclusions #{org.slf4j/slf4j-api}},
+   :coord-id {:mvn/version "1.2.3"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty],
+   :lib io.dropwizard/dropwizard-logging,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty],
+   :lib io.dropwizard.metrics/metrics-jetty9,
+   :coord
+   {:mvn/version "4.0.2",
+    :exclusions #{org.slf4j/slf4j-api org.eclipse.jetty/jetty-server}},
+   :use-coord
+   {:mvn/version "4.0.2",
+    :exclusions #{org.slf4j/slf4j-api org.eclipse.jetty/jetty-server}},
+   :coord-id {:mvn/version "4.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty],
+   :lib org.eclipse.jetty/jetty-server,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty],
+   :lib org.eclipse.jetty/jetty-servlet,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty],
+   :lib org.eclipse.jetty/jetty-servlets,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty],
+   :lib org.eclipse.jetty/jetty-http,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-lifecycle],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-lifecycle],
+   :lib com.google.guava/guava,
+   :coord {:mvn/version "24.0-jre"},
+   :use-coord {:mvn/version "24.0-jre"},
+   :coord-id {:mvn/version "24.0-jre"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-lifecycle],
+   :lib org.eclipse.jetty/jetty-server,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-lifecycle],
+   :lib io.dropwizard/dropwizard-util,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-jvm],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-jvm],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-jmx],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-jmx],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-servlets],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-servlets],
+   :lib io.dropwizard.metrics/metrics-healthchecks,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-servlets],
+   :lib io.dropwizard.metrics/metrics-json,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-servlets],
+   :lib io.dropwizard.metrics/metrics-jvm,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-servlets],
+   :lib com.papertrail/profiler,
    :coord {:mvn/version "1.0.2"},
    :use-coord {:mvn/version "1.0.2"},
    :coord-id {:mvn/version "1.0.2"},
    :include true,
    :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-servlets],
+   :lib com.fasterxml.jackson.core/jackson-databind,
+   :coord {:mvn/version "2.9.3"},
+   :use-coord {:mvn/version "2.9.3"},
+   :coord-id {:mvn/version "2.9.3"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-servlets],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-healthchecks],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-request-logging],
+   :lib io.dropwizard/dropwizard-jetty,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-request-logging],
+   :lib io.dropwizard/dropwizard-logging,
+   :coord {:mvn/version "1.3.5"},
+   :use-coord {:mvn/version "1.3.5"},
+   :coord-id {:mvn/version "1.3.5"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-request-logging],
+   :lib ch.qos.logback/logback-access,
+   :coord {:mvn/version "1.2.3"},
+   :use-coord {:mvn/version "1.2.3"},
+   :coord-id {:mvn/version "1.2.3"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    org.eclipse.jetty.toolchain.setuid/jetty-setuid-java],
+   :lib org.eclipse.jetty/jetty-server,
+   :coord {:mvn/version "9.1.0.M0"},
+   :use-coord {:mvn/version "9.1.0.M0"},
+   :coord-id {:mvn/version "9.1.0.M0"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    org.eclipse.jetty.toolchain.setuid/jetty-setuid-java],
+   :lib org.eclipse.jetty/jetty-util,
+   :coord {:mvn/version "9.1.0.M0"},
+   :use-coord {:mvn/version "9.1.0.M0"},
+   :coord-id {:mvn/version "9.1.0.M0"},
+   :include false,
+   :reason :excluded}
   {:path
    [juxt/crux-http-server
     ring/ring-core
@@ -582,7 +1847,7 @@
    :use-coord {:mvn/version "9.4.22.v20191022"},
    :coord-id {:mvn/version "9.4.22.v20191022"},
    :include true,
-   :reason :new-dep}
+   :reason :newer-version}
   {:path
    [juxt/crux-http-server
     ring/ring-jetty-adapter
@@ -601,67 +1866,919 @@
    :include false,
    :reason :use-top}
   {:path
-   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-commons],
-   :lib org.ow2.asm/asm,
-   :coord {:mvn/version "7.1"},
-   :use-coord {:mvn/version "7.1"},
-   :coord-id {:mvn/version "7.1"},
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-util
+    com.google.guava/guava],
+   :lib com.google.code.findbugs/jsr305,
+   :coord {:mvn/version "1.3.9"},
+   :use-coord {:mvn/version "1.3.9"},
+   :coord-id {:mvn/version "1.3.9"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-util
+    com.google.guava/guava],
+   :lib org.checkerframework/checker-compat-qual,
+   :coord {:mvn/version "2.0.0"},
+   :use-coord {:mvn/version "2.0.0"},
+   :coord-id {:mvn/version "2.0.0"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-util
+    com.google.guava/guava],
+   :lib com.google.errorprone/error_prone_annotations,
+   :coord {:mvn/version "2.1.3"},
+   :use-coord {:mvn/version "2.1.3"},
+   :coord-id {:mvn/version "2.1.3"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-util
+    com.google.guava/guava],
+   :lib com.google.j2objc/j2objc-annotations,
+   :coord {:mvn/version "1.1"},
+   :use-coord {:mvn/version "1.1"},
+   :coord-id {:mvn/version "1.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-util
+    com.google.guava/guava],
+   :lib org.codehaus.mojo/animal-sniffer-annotations,
+   :coord {:mvn/version "1.14"},
+   :use-coord {:mvn/version "1.14"},
+   :coord-id {:mvn/version "1.14"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.core/jackson-databind],
+   :lib com.fasterxml.jackson.core/jackson-annotations,
+   :coord {:mvn/version "2.9.0"},
+   :use-coord {:mvn/version "2.9.0"},
+   :coord-id {:mvn/version "2.9.0"},
    :include false,
    :reason :same-version}
   {:path
-   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-commons],
-   :lib org.ow2.asm/asm-tree,
-   :coord {:mvn/version "7.1"},
-   :use-coord {:mvn/version "7.1"},
-   :coord-id {:mvn/version "7.1"},
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.core/jackson-databind],
+   :lib com.fasterxml.jackson.core/jackson-core,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
    :include false,
    :reason :same-version}
   {:path
-   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-commons],
-   :lib org.ow2.asm/asm-analysis,
-   :coord {:mvn/version "7.1"},
-   :use-coord {:mvn/version "7.1"},
-   :coord-id {:mvn/version "7.1"},
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-guava],
+   :lib com.google.guava/guava,
+   :coord {:mvn/version "18.0"},
+   :use-coord {:mvn/version "18.0"},
+   :coord-id {:mvn/version "18.0"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-guava],
+   :lib com.fasterxml.jackson.core/jackson-core,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
    :include false,
    :reason :same-version}
   {:path
-   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-analysis],
-   :lib org.ow2.asm/asm-tree,
-   :coord {:mvn/version "7.1"},
-   :use-coord {:mvn/version "7.1"},
-   :coord-id {:mvn/version "7.1"},
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-guava],
+   :lib com.fasterxml.jackson.core/jackson-databind,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
    :include false,
    :reason :same-version}
   {:path
-   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-tree],
-   :lib org.ow2.asm/asm,
-   :coord {:mvn/version "7.1"},
-   :use-coord {:mvn/version "7.1"},
-   :coord-id {:mvn/version "7.1"},
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-jsr310],
+   :lib com.fasterxml.jackson.core/jackson-annotations,
+   :coord {:mvn/version "2.9.0"},
+   :use-coord {:mvn/version "2.9.0"},
+   :coord-id {:mvn/version "2.9.0"},
    :include false,
    :reason :same-version}
   {:path
-   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-util],
-   :lib org.ow2.asm/asm,
-   :coord {:mvn/version "7.1"},
-   :use-coord {:mvn/version "7.1"},
-   :coord-id {:mvn/version "7.1"},
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-jsr310],
+   :lib com.fasterxml.jackson.core/jackson-core,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
    :include false,
    :reason :same-version}
   {:path
-   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-util],
-   :lib org.ow2.asm/asm-tree,
-   :coord {:mvn/version "7.1"},
-   :use-coord {:mvn/version "7.1"},
-   :coord-id {:mvn/version "7.1"},
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-jsr310],
+   :lib com.fasterxml.jackson.core/jackson-databind,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
    :include false,
    :reason :same-version}
   {:path
-   [juxt/crux-rocksdb com.github.jnr/jnr-ffi org.ow2.asm/asm-util],
-   :lib org.ow2.asm/asm-analysis,
-   :coord {:mvn/version "7.1"},
-   :use-coord {:mvn/version "7.1"},
-   :coord-id {:mvn/version "7.1"},
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-jdk8],
+   :lib com.fasterxml.jackson.core/jackson-core,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-jdk8],
+   :lib com.fasterxml.jackson.core/jackson-databind,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.module/jackson-module-parameter-names],
+   :lib com.fasterxml.jackson.core/jackson-core,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.module/jackson-module-parameter-names],
+   :lib com.fasterxml.jackson.core/jackson-databind,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.module/jackson-module-afterburner],
+   :lib com.fasterxml.jackson.core/jackson-core,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.module/jackson-module-afterburner],
+   :lib com.fasterxml.jackson.core/jackson-databind,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-joda],
+   :lib com.fasterxml.jackson.core/jackson-annotations,
+   :coord {:mvn/version "2.9.0"},
+   :use-coord {:mvn/version "2.9.0"},
+   :coord-id {:mvn/version "2.9.0"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-joda],
+   :lib com.fasterxml.jackson.core/jackson-core,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-joda],
+   :lib com.fasterxml.jackson.core/jackson-databind,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jackson
+    com.fasterxml.jackson.datatype/jackson-datatype-joda],
+   :lib joda-time/joda-time,
+   :coord {:mvn/version "2.7"},
+   :use-coord {:mvn/version "2.7"},
+   :coord-id {:mvn/version "2.7"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-validation
+    org.hibernate/hibernate-validator],
+   :lib javax.validation/validation-api,
+   :coord {:mvn/version "1.1.0.Final"},
+   :use-coord {:mvn/version "1.1.0.Final"},
+   :coord-id {:mvn/version "1.1.0.Final"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-validation
+    org.hibernate/hibernate-validator],
+   :lib org.jboss.logging/jboss-logging,
+   :coord {:mvn/version "3.3.0.Final"},
+   :use-coord {:mvn/version "3.3.0.Final"},
+   :coord-id {:mvn/version "3.3.0.Final"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-validation
+    org.hibernate/hibernate-validator],
+   :lib com.fasterxml/classmate,
+   :coord {:mvn/version "1.3.1"},
+   :use-coord {:mvn/version "1.3.1"},
+   :coord-id {:mvn/version "1.3.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-configuration
+    com.fasterxml.jackson.dataformat/jackson-dataformat-yaml],
+   :lib org.yaml/snakeyaml,
+   :coord {:mvn/version "1.18"},
+   :use-coord {:mvn/version "1.18"},
+   :coord-id {:mvn/version "1.18"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-configuration
+    com.fasterxml.jackson.dataformat/jackson-dataformat-yaml],
+   :lib com.fasterxml.jackson.core/jackson-core,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-configuration
+    org.apache.commons/commons-text],
+   :lib org.apache.commons/commons-lang3,
+   :coord {:mvn/version "3.7"},
+   :use-coord {:mvn/version "3.7"},
+   :coord-id {:mvn/version "3.7"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging
+    io.dropwizard.metrics/metrics-logback],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging
+    io.dropwizard.metrics/metrics-logback],
+   :lib ch.qos.logback/logback-classic,
+   :coord {:mvn/version "1.2.3"},
+   :use-coord {:mvn/version "1.2.3"},
+   :coord-id {:mvn/version "1.2.3"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging
+    io.dropwizard.metrics/metrics-logback],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging
+    org.slf4j/jul-to-slf4j],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging
+    org.slf4j/log4j-over-slf4j],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-logging
+    org.slf4j/jcl-over-slf4j],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server],
+   :lib org.glassfish.jersey.core/jersey-common,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server],
+   :lib org.glassfish.jersey.core/jersey-client,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server],
+   :lib javax.ws.rs/javax.ws.rs-api,
+   :coord {:mvn/version "2.0.1"},
+   :use-coord {:mvn/version "2.0.1"},
+   :coord-id {:mvn/version "2.0.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server],
+   :lib org.glassfish.jersey.media/jersey-media-jaxb,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server],
+   :lib javax.annotation/javax.annotation-api,
+   :coord {:mvn/version "1.2"},
+   :use-coord {:mvn/version "1.2"},
+   :coord-id {:mvn/version "1.2"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server],
+   :lib org.glassfish.hk2/hk2-api,
+   :coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :use-coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server],
+   :lib org.glassfish.hk2.external/javax.inject,
+   :coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :use-coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server],
+   :lib org.glassfish.hk2/hk2-locator,
+   :coord {:mvn/version "2.5.0-b32"},
+   :use-coord {:mvn/version "2.5.0-b32"},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server],
+   :lib javax.validation/validation-api,
+   :coord {:mvn/version "1.1.0.Final"},
+   :use-coord {:mvn/version "1.1.0.Final"},
+   :coord-id {:mvn/version "1.1.0.Final"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.ext/jersey-metainf-services],
+   :lib org.glassfish.jersey.core/jersey-common,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.ext/jersey-metainf-services],
+   :lib javax.ws.rs/javax.ws.rs-api,
+   :coord {:mvn/version "2.0.1"},
+   :use-coord {:mvn/version "2.0.1"},
+   :coord-id {:mvn/version "2.0.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.ext/jersey-bean-validation],
+   :lib org.glassfish.hk2.external/javax.inject,
+   :coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :use-coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.ext/jersey-bean-validation],
+   :lib org.glassfish.jersey.core/jersey-common,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.ext/jersey-bean-validation],
+   :lib org.glassfish.jersey.core/jersey-server,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.ext/jersey-bean-validation],
+   :lib javax.validation/validation-api,
+   :coord {:mvn/version "1.1.0.Final"},
+   :use-coord {:mvn/version "1.1.0.Final"},
+   :coord-id {:mvn/version "1.1.0.Final"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.ext/jersey-bean-validation],
+   :lib org.hibernate/hibernate-validator,
+   :coord {:mvn/version "5.1.3.Final"},
+   :use-coord {:mvn/version "5.1.3.Final"},
+   :coord-id {:mvn/version "5.1.3.Final"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.ext/jersey-bean-validation],
+   :lib javax.el/javax.el-api,
+   :coord {:mvn/version "2.2.4"},
+   :use-coord {:mvn/version "2.2.4"},
+   :coord-id {:mvn/version "2.2.4"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.ext/jersey-bean-validation],
+   :lib org.glassfish.web/javax.el,
+   :coord {:mvn/version "2.2.4"},
+   :use-coord {:mvn/version "2.2.4"},
+   :coord-id {:mvn/version "2.2.4"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.ext/jersey-bean-validation],
+   :lib javax.ws.rs/javax.ws.rs-api,
+   :coord {:mvn/version "2.0.1"},
+   :use-coord {:mvn/version "2.0.1"},
+   :coord-id {:mvn/version "2.0.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    io.dropwizard.metrics/metrics-jersey2],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    io.dropwizard.metrics/metrics-jersey2],
+   :lib io.dropwizard.metrics/metrics-annotation,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    io.dropwizard.metrics/metrics-jersey2],
+   :lib org.glassfish.jersey.core/jersey-server,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    io.dropwizard.metrics/metrics-jersey2],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider],
+   :lib com.fasterxml.jackson.jaxrs/jackson-jaxrs-base,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider],
+   :lib com.fasterxml.jackson.module/jackson-module-jaxb-annotations,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.containers/jersey-container-servlet],
+   :lib org.glassfish.jersey.containers/jersey-container-servlet-core,
+   :coord
+   {:mvn/version "2.25.1", :exclusions #{javax.servlet/servlet-api}},
+   :use-coord
+   {:mvn/version "2.25.1", :exclusions #{javax.servlet/servlet-api}},
+   :coord-id {:mvn/version "2.25.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.containers/jersey-container-servlet],
+   :lib org.glassfish.jersey.core/jersey-common,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.containers/jersey-container-servlet],
+   :lib org.glassfish.jersey.core/jersey-server,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.containers/jersey-container-servlet],
+   :lib javax.ws.rs/javax.ws.rs-api,
+   :coord {:mvn/version "2.0.1"},
+   :use-coord {:mvn/version "2.0.1"},
+   :coord-id {:mvn/version "2.0.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.eclipse.jetty/jetty-webapp],
+   :lib org.eclipse.jetty/jetty-xml,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.eclipse.jetty/jetty-webapp],
+   :lib org.eclipse.jetty/jetty-servlet,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-servlets
+    io.dropwizard.metrics/metrics-annotation],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty
+    io.dropwizard.metrics/metrics-jetty9],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty
+    io.dropwizard.metrics/metrics-jetty9],
+   :lib org.eclipse.jetty/jetty-server,
+   :coord {:mvn/version "9.4.8.v20171121"},
+   :use-coord {:mvn/version "9.4.8.v20171121"},
+   :coord-id {:mvn/version "9.4.8.v20171121"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty
+    io.dropwizard.metrics/metrics-jetty9],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty
+    org.eclipse.jetty/jetty-servlet],
+   :lib org.eclipse.jetty/jetty-security,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty
+    org.eclipse.jetty/jetty-servlets],
+   :lib org.eclipse.jetty/jetty-continuation,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty
+    org.eclipse.jetty/jetty-servlets],
+   :lib org.eclipse.jetty/jetty-http,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty
+    org.eclipse.jetty/jetty-servlets],
+   :lib org.eclipse.jetty/jetty-util,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty
+    org.eclipse.jetty/jetty-servlets],
+   :lib org.eclipse.jetty/jetty-io,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty
+    org.eclipse.jetty/jetty-http],
+   :lib org.eclipse.jetty/jetty-util,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :parent-omitted}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty
+    org.eclipse.jetty/jetty-http],
+   :lib org.eclipse.jetty/jetty-io,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :parent-omitted}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-servlets
+    io.dropwizard.metrics/metrics-json],
+   :lib io.dropwizard.metrics/metrics-core,
+   :coord {:mvn/version "4.0.2"},
+   :use-coord {:mvn/version "4.0.2"},
+   :coord-id {:mvn/version "4.0.2"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-servlets
+    io.dropwizard.metrics/metrics-json],
+   :lib com.fasterxml.jackson.core/jackson-databind,
+   :coord {:mvn/version "2.9.3"},
+   :use-coord {:mvn/version "2.9.3"},
+   :coord-id {:mvn/version "2.9.3"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-servlets
+    io.dropwizard.metrics/metrics-json],
+   :lib org.slf4j/slf4j-api,
+   :coord {:mvn/version "1.7.25"},
+   :use-coord {:mvn/version "1.7.25"},
+   :coord-id {:mvn/version "1.7.25"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard.metrics/metrics-servlets
+    com.papertrail/profiler],
+   :lib joda-time/joda-time,
+   :coord {:mvn/version "2.9.1"},
+   :use-coord {:mvn/version "2.9.1"},
+   :coord-id {:mvn/version "2.9.1"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-request-logging
+    ch.qos.logback/logback-access],
+   :lib ch.qos.logback/logback-core,
+   :coord {:mvn/version "1.2.3"},
+   :use-coord {:mvn/version "1.2.3"},
+   :coord-id {:mvn/version "1.2.3"},
    :include false,
    :reason :same-version}
   {:path
@@ -674,7 +2791,7 @@
    :use-coord {:mvn/version "9.4.22.v20191022"},
    :coord-id {:mvn/version "9.4.22.v20191022"},
    :include true,
-   :reason :new-dep}
+   :reason :newer-version}
   {:path
    [juxt/crux-http-server
     ring/ring-jetty-adapter
@@ -696,7 +2813,480 @@
    :use-coord {:mvn/version "9.4.22.v20191022"},
    :coord-id {:mvn/version "9.4.22.v20191022"},
    :include false,
-   :reason :same-version}],
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-common],
+   :lib javax.ws.rs/javax.ws.rs-api,
+   :coord {:mvn/version "2.0.1"},
+   :use-coord {:mvn/version "2.0.1"},
+   :coord-id {:mvn/version "2.0.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-common],
+   :lib javax.annotation/javax.annotation-api,
+   :coord {:mvn/version "1.2"},
+   :use-coord {:mvn/version "1.2"},
+   :coord-id {:mvn/version "1.2"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-common],
+   :lib org.glassfish.jersey.bundles.repackaged/jersey-guava,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-common],
+   :lib org.glassfish.hk2/hk2-api,
+   :coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :use-coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-common],
+   :lib org.glassfish.hk2.external/javax.inject,
+   :coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :use-coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-common],
+   :lib org.glassfish.hk2/hk2-locator,
+   :coord {:mvn/version "2.5.0-b32"},
+   :use-coord {:mvn/version "2.5.0-b32"},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-common],
+   :lib org.glassfish.hk2/osgi-resource-locator,
+   :coord {:mvn/version "1.0.1"},
+   :use-coord {:mvn/version "1.0.1"},
+   :coord-id {:mvn/version "1.0.1"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-client],
+   :lib javax.ws.rs/javax.ws.rs-api,
+   :coord {:mvn/version "2.0.1"},
+   :use-coord {:mvn/version "2.0.1"},
+   :coord-id {:mvn/version "2.0.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-client],
+   :lib org.glassfish.jersey.core/jersey-common,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-client],
+   :lib org.glassfish.hk2/hk2-api,
+   :coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :use-coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-client],
+   :lib org.glassfish.hk2.external/javax.inject,
+   :coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :use-coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.core/jersey-client],
+   :lib org.glassfish.hk2/hk2-locator,
+   :coord {:mvn/version "2.5.0-b32"},
+   :use-coord {:mvn/version "2.5.0-b32"},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.media/jersey-media-jaxb],
+   :lib org.glassfish.jersey.core/jersey-common,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.media/jersey-media-jaxb],
+   :lib org.glassfish.hk2/hk2-api,
+   :coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :use-coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.media/jersey-media-jaxb],
+   :lib org.glassfish.hk2.external/javax.inject,
+   :coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :use-coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.media/jersey-media-jaxb],
+   :lib org.glassfish.hk2/hk2-locator,
+   :coord {:mvn/version "2.5.0-b32"},
+   :use-coord {:mvn/version "2.5.0-b32"},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.jersey.media/jersey-media-jaxb],
+   :lib org.glassfish.hk2/osgi-resource-locator,
+   :coord {:mvn/version "1.0.1"},
+   :use-coord {:mvn/version "1.0.1"},
+   :coord-id {:mvn/version "1.0.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.hk2/hk2-api],
+   :lib javax.inject/javax.inject,
+   :coord {:mvn/version "1"},
+   :use-coord {:mvn/version "1"},
+   :coord-id {:mvn/version "1"},
+   :include false,
+   :reason :excluded}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.hk2/hk2-api],
+   :lib org.glassfish.hk2/hk2-utils,
+   :coord {:mvn/version "2.5.0-b32"},
+   :use-coord {:mvn/version "2.5.0-b32"},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.hk2/hk2-api],
+   :lib org.glassfish.hk2.external/aopalliance-repackaged,
+   :coord {:mvn/version "2.5.0-b32"},
+   :use-coord {:mvn/version "2.5.0-b32"},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include true,
+   :reason :new-dep}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.hk2/hk2-locator],
+   :lib org.glassfish.hk2.external/javax.inject,
+   :coord {:mvn/version "2.5.0-b32"},
+   :use-coord {:mvn/version "2.5.0-b32"},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.hk2/hk2-locator],
+   :lib org.glassfish.hk2.external/aopalliance-repackaged,
+   :coord {:mvn/version "2.5.0-b32"},
+   :use-coord {:mvn/version "2.5.0-b32"},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.hk2/hk2-locator],
+   :lib org.glassfish.hk2/hk2-api,
+   :coord {:mvn/version "2.5.0-b32"},
+   :use-coord {:mvn/version "2.5.0-b32"},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.hk2/hk2-locator],
+   :lib org.glassfish.hk2/hk2-utils,
+   :coord {:mvn/version "2.5.0-b32"},
+   :use-coord {:mvn/version "2.5.0-b32"},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.hk2/hk2-locator],
+   :lib org.javassist/javassist,
+   :coord {:mvn/version "3.20.0-GA"},
+   :use-coord {:mvn/version "3.20.0-GA"},
+   :coord-id {:mvn/version "3.20.0-GA"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider
+    com.fasterxml.jackson.jaxrs/jackson-jaxrs-base],
+   :lib com.fasterxml.jackson.core/jackson-core,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider
+    com.fasterxml.jackson.jaxrs/jackson-jaxrs-base],
+   :lib com.fasterxml.jackson.core/jackson-databind,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider
+    com.fasterxml.jackson.module/jackson-module-jaxb-annotations],
+   :lib com.fasterxml.jackson.core/jackson-annotations,
+   :coord {:mvn/version "2.9.0"},
+   :use-coord {:mvn/version "2.9.0"},
+   :coord-id {:mvn/version "2.9.0"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider
+    com.fasterxml.jackson.module/jackson-module-jaxb-annotations],
+   :lib com.fasterxml.jackson.core/jackson-core,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider
+    com.fasterxml.jackson.module/jackson-module-jaxb-annotations],
+   :lib com.fasterxml.jackson.core/jackson-databind,
+   :coord {:mvn/version "2.9.6"},
+   :use-coord {:mvn/version "2.9.6"},
+   :coord-id {:mvn/version "2.9.6"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.containers/jersey-container-servlet
+    org.glassfish.jersey.containers/jersey-container-servlet-core],
+   :lib org.glassfish.hk2.external/javax.inject,
+   :coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :use-coord
+   {:mvn/version "2.5.0-b32",
+    :exclusions #{javax.inject/javax.inject}},
+   :coord-id {:mvn/version "2.5.0-b32"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.containers/jersey-container-servlet
+    org.glassfish.jersey.containers/jersey-container-servlet-core],
+   :lib org.glassfish.jersey.core/jersey-common,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.containers/jersey-container-servlet
+    org.glassfish.jersey.containers/jersey-container-servlet-core],
+   :lib org.glassfish.jersey.core/jersey-server,
+   :coord {:mvn/version "2.25.1"},
+   :use-coord {:mvn/version "2.25.1"},
+   :coord-id {:mvn/version "2.25.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.containers/jersey-container-servlet
+    org.glassfish.jersey.containers/jersey-container-servlet-core],
+   :lib javax.ws.rs/javax.ws.rs-api,
+   :coord {:mvn/version "2.0.1"},
+   :use-coord {:mvn/version "2.0.1"},
+   :coord-id {:mvn/version "2.0.1"},
+   :include false,
+   :reason :same-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.eclipse.jetty/jetty-webapp
+    org.eclipse.jetty/jetty-xml],
+   :lib org.eclipse.jetty/jetty-util,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jetty
+    org.eclipse.jetty/jetty-servlet
+    org.eclipse.jetty/jetty-security],
+   :lib org.eclipse.jetty/jetty-server,
+   :coord {:mvn/version "9.4.11.v20180605"},
+   :use-coord {:mvn/version "9.4.11.v20180605"},
+   :coord-id {:mvn/version "9.4.11.v20180605"},
+   :include false,
+   :reason :older-version}
+  {:path
+   [org.dhatim/dropwizard-prometheus
+    io.dropwizard/dropwizard-core
+    io.dropwizard/dropwizard-jersey
+    org.glassfish.jersey.core/jersey-server
+    org.glassfish.hk2/hk2-api
+    org.glassfish.hk2/hk2-utils],
+   :lib javax.inject/javax.inject,
+   :coord {:mvn/version "1"},
+   :use-coord {:mvn/version "1"},
+   :coord-id {:mvn/version "1"},
+   :include false,
+   :reason :excluded}],
  :vmap
  {org.clojure/clojure
   {:versions
@@ -705,6 +3295,16 @@
    :paths {{:mvn/version "1.10.1"} #{[]}},
    :select {:mvn/version "1.10.1"},
    :top true},
+  joda-time/joda-time
+  {:versions
+   {{:mvn/version "2.9.9"}
+    {:mvn/version "2.9.9", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.9"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-util]}},
+   :select {:mvn/version "2.9.9"}},
   com.github.jnr/jnr-ffi
   {:versions
    {{:mvn/version "2.1.12"}
@@ -717,12 +3317,103 @@
    :paths
    {{:mvn/version "1.11"} #{[juxt/crux-http-server ring/ring-codec]}},
    :select {:mvn/version "1.11"}},
+  org.eclipse.jetty/jetty-xml
+  {:versions
+   {{:mvn/version "9.4.11.v20180605"}
+    {:mvn/version "9.4.11.v20180605", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "9.4.11.v20180605"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.eclipse.jetty/jetty-webapp]}},
+   :select {:mvn/version "9.4.11.v20180605"}},
+  io.dropwizard.metrics/metrics-healthchecks
+  {:versions
+   {{:mvn/version "4.0.2"}
+    {:mvn/version "4.0.2",
+     :exclusions #{org.slf4j/slf4j-api},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "4.0.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "4.0.2"}},
+  org.eclipse.jetty/jetty-servlet
+  {:versions
+   {{:mvn/version "9.4.11.v20180605"}
+    {:mvn/version "9.4.11.v20180605", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "9.4.11.v20180605"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jetty]}},
+   :select {:mvn/version "9.4.11.v20180605"}},
+  javax.validation/validation-api
+  {:versions
+   {{:mvn/version "1.1.0.Final"}
+    {:mvn/version "1.1.0.Final", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.1.0.Final"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-validation
+       org.hibernate/hibernate-validator]}},
+   :select {:mvn/version "1.1.0.Final"}},
+  com.google.errorprone/error_prone_annotations
+  {:versions
+   {{:mvn/version "2.1.3"}
+    {:mvn/version "2.1.3", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.1.3"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-util
+       com.google.guava/guava]}},
+   :select {:mvn/version "2.1.3"}},
+  io.prometheus/simpleclient
+  {:versions
+   {{:mvn/version "0.8.1"}
+    {:mvn/version "0.8.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "0.8.1"} #{[io.prometheus/simpleclient_hotspot]}},
+   :select {:mvn/version "0.8.1"}},
+  org.apache.commons/commons-lang3
+  {:versions
+   {{:mvn/version "3.7"} {:mvn/version "3.7", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "3.7"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-configuration]}},
+   :select {:mvn/version "3.7"}},
   org.clojure/tools.logging
   {:versions
    {{:mvn/version "0.5.0"}
     {:mvn/version "0.5.0", :deps/manifest :mvn}},
    :paths {{:mvn/version "0.5.0"} #{[juxt/crux-core]}},
    :select {:mvn/version "0.5.0"}},
+  com.fasterxml.jackson.datatype/jackson-datatype-jdk8
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jackson]}},
+   :select {:mvn/version "2.9.6"}},
+  org.glassfish.jersey.core/jersey-common
+  {:versions
+   {{:mvn/version "2.25.1"}
+    {:mvn/version "2.25.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.25.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server]}},
+   :select {:mvn/version "2.25.1"}},
   org.clojure/core.specs.alpha
   {:versions
    {{:mvn/version "0.2.44"}
@@ -735,6 +3426,16 @@
    :paths
    {{:mvn/version "1.6"} #{[juxt/crux-core com.taoensso/nippy]}},
    :select {:mvn/version "1.6"}},
+  io.dropwizard.metrics/metrics-annotation
+  {:versions
+   {{:mvn/version "4.0.2"}
+    {:mvn/version "4.0.2", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "4.0.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-servlets]}},
+   :select {:mvn/version "4.0.2"}},
   juxt/crux-decorators
   {:versions
    {{:mvn/version "20.01-1.6.2-alpha"}
@@ -742,6 +3443,53 @@
    :paths {{:mvn/version "20.01-1.6.2-alpha"} #{[]}},
    :select {:mvn/version "20.01-1.6.2-alpha"},
    :top true},
+  javax.annotation/javax.annotation-api
+  {:versions
+   {{:mvn/version "1.2"} {:mvn/version "1.2", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server]}},
+   :select {:mvn/version "1.2"}},
+  io.dropwizard/dropwizard-core
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"} #{[org.dhatim/dropwizard-prometheus]}},
+   :select {:mvn/version "1.3.5"}},
+  com.fasterxml.jackson.module/jackson-module-jaxb-annotations
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider]}},
+   :select {:mvn/version "2.9.6"}},
+  io.dropwizard/dropwizard-logging
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.3.5"}},
+  com.fasterxml.jackson.core/jackson-databind
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jackson]}},
+   :select {:mvn/version "2.9.6"}},
   org.clojure/spec.alpha
   {:versions
    {{:mvn/version "0.2.176"}
@@ -754,32 +3502,87 @@
     {:mvn/version "0.4.2", :deps/manifest :mvn}},
    :paths {{:mvn/version "0.4.2"} #{[juxt/crux-cli]}},
    :select {:mvn/version "0.4.2"}},
+  org.glassfish.jersey.containers/jersey-container-servlet
+  {:versions
+   {{:mvn/version "2.25.1"}
+    {:mvn/version "2.25.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.25.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey]}},
+   :select {:mvn/version "2.25.1"}},
+  org.glassfish.hk2/hk2-utils
+  {:versions
+   {{:mvn/version "2.5.0-b32"}
+    {:mvn/version "2.5.0-b32", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.5.0-b32"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server
+       org.glassfish.hk2/hk2-api]}},
+   :select {:mvn/version "2.5.0-b32"}},
   commons-fileupload/commons-fileupload
   {:versions
    {{:mvn/version "1.4"} {:mvn/version "1.4", :deps/manifest :mvn}},
    :paths
    {{:mvn/version "1.4"} #{[juxt/crux-http-server ring/ring-core]}},
    :select {:mvn/version "1.4"}},
+  org.codehaus.mojo/animal-sniffer-annotations
+  {:versions
+   {{:mvn/version "1.14"} {:mvn/version "1.14", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.14"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-util
+       com.google.guava/guava]}},
+   :select {:mvn/version "1.14"}},
   org.eclipse.jetty/jetty-http
   {:versions
-   {{:mvn/version "9.4.22.v20191022"}
+   {{:mvn/version "9.4.11.v20180605"}
+    {:mvn/version "9.4.11.v20180605", :deps/manifest :mvn},
+    {:mvn/version "9.4.22.v20191022"}
     {:mvn/version "9.4.22.v20191022", :deps/manifest :mvn}},
    :paths
    {{:mvn/version "9.4.22.v20191022"}
     #{[juxt/crux-http-server
        ring/ring-jetty-adapter
-       org.eclipse.jetty/jetty-server]}},
+       org.eclipse.jetty/jetty-server]},
+    {:mvn/version "9.4.11.v20180605"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jetty]}},
    :select {:mvn/version "9.4.22.v20191022"}},
+  io.dropwizard.metrics/metrics-jvm
+  {:versions
+   {{:mvn/version "4.0.2"}
+    {:mvn/version "4.0.2",
+     :exclusions #{org.slf4j/slf4j-api},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "4.0.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "4.0.2"}},
   org.eclipse.jetty/jetty-util
   {:versions
-   {{:mvn/version "9.4.22.v20191022"}
+   {{:mvn/version "9.4.11.v20180605"}
+    {:mvn/version "9.4.11.v20180605", :deps/manifest :mvn},
+    {:mvn/version "9.4.22.v20191022"}
     {:mvn/version "9.4.22.v20191022", :deps/manifest :mvn}},
    :paths
    {{:mvn/version "9.4.22.v20191022"}
     #{[juxt/crux-http-server
        ring/ring-jetty-adapter
        org.eclipse.jetty/jetty-server
-       org.eclipse.jetty/jetty-http]}},
+       org.eclipse.jetty/jetty-http]},
+    {:mvn/version "9.4.11.v20180605"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-logging]}},
    :select {:mvn/version "9.4.22.v20191022"}},
   com.taoensso/encore
   {:versions
@@ -787,6 +3590,29 @@
     {:mvn/version "2.114.0", :deps/manifest :mvn}},
    :paths {{:mvn/version "2.114.0"} #{[juxt/crux-core]}},
    :select {:mvn/version "2.114.0"}},
+  org.glassfish.hk2.external/javax.inject
+  {:versions
+   {{:mvn/version "2.5.0-b32"}
+    {:mvn/version "2.5.0-b32",
+     :exclusions #{javax.inject/javax.inject},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.5.0-b32"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server]}},
+   :select {:mvn/version "2.5.0-b32"}},
+  org.slf4j/jcl-over-slf4j
+  {:versions
+   {{:mvn/version "1.7.25"}
+    {:mvn/version "1.7.25", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.7.25"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-logging]}},
+   :select {:mvn/version "1.7.25"}},
   org.rocksdb/rocksdbjni
   {:versions
    {{:mvn/version "5.17.2"}
@@ -802,24 +3628,137 @@
    {{:mvn/version "1.2.23"}
     #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
    :select {:mvn/version "1.2.23"}},
+  org.hibernate/hibernate-validator
+  {:versions
+   {{:mvn/version "5.4.2.Final"}
+    {:mvn/version "5.4.2.Final", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "5.4.2.Final"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-validation]}},
+   :select {:mvn/version "5.4.2.Final"}},
+  com.fasterxml.jackson.module/jackson-module-afterburner
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jackson]}},
+   :select {:mvn/version "2.9.6"}},
+  org.glassfish.jersey.containers/jersey-container-servlet-core
+  {:versions
+   {{:mvn/version "2.25.1"}
+    {:mvn/version "2.25.1",
+     :exclusions #{javax.servlet/servlet-api},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.25.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.containers/jersey-container-servlet]}},
+   :select {:mvn/version "2.25.1"}},
   net.jpountz.lz4/lz4
   {:versions
    {{:mvn/version "1.3"} {:mvn/version "1.3", :deps/manifest :mvn}},
    :paths
    {{:mvn/version "1.3"} #{[juxt/crux-core com.taoensso/nippy]}},
    :select {:mvn/version "1.3"}},
+  com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-configuration]}},
+   :select {:mvn/version "2.9.6"}},
   ring-cors/ring-cors
   {:versions
    {{:mvn/version "0.1.13"}
     {:mvn/version "0.1.13", :deps/manifest :mvn}},
    :paths {{:mvn/version "0.1.13"} #{[juxt/crux-http-server]}},
    :select {:mvn/version "0.1.13"}},
+  ch.qos.logback/logback-access
+  {:versions
+   {{:mvn/version "1.2.3"}
+    {:mvn/version "1.2.3", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.2.3"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-request-logging]}},
+   :select {:mvn/version "1.2.3"}},
   org.iq80.snappy/snappy
   {:versions
    {{:mvn/version "0.4"} {:mvn/version "0.4", :deps/manifest :mvn}},
    :paths
    {{:mvn/version "0.4"} #{[juxt/crux-core com.taoensso/nippy]}},
    :select {:mvn/version "0.4"}},
+  org.eclipse.jetty/jetty-continuation
+  {:versions
+   {{:mvn/version "9.4.11.v20180605"}
+    {:mvn/version "9.4.11.v20180605", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "9.4.11.v20180605"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey]}},
+   :select {:mvn/version "9.4.11.v20180605"}},
+  io.dropwizard/dropwizard-request-logging
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.3.5"}},
+  io.dropwizard/dropwizard-util
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.3.5"}},
+  juxt/crux-metrics
+  {:versions
+   {{:mvn/version "20.04-1.8.1-alpha"}
+    {:mvn/version "20.04-1.8.1-alpha", :deps/manifest :mvn}},
+   :paths {{:mvn/version "20.04-1.8.1-alpha"} #{[]}},
+   :select {:mvn/version "20.04-1.8.1-alpha"},
+   :top true},
+  org.glassfish.hk2.external/aopalliance-repackaged
+  {:versions
+   {{:mvn/version "2.5.0-b32"}
+    {:mvn/version "2.5.0-b32", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.5.0-b32"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server
+       org.glassfish.hk2/hk2-api]}},
+   :select {:mvn/version "2.5.0-b32"}},
+  io.dropwizard.metrics/metrics-jersey2
+  {:versions
+   {{:mvn/version "4.0.2"}
+    {:mvn/version "4.0.2",
+     :exclusions
+     #{org.glassfish.jersey.core/jersey-server org.slf4j/slf4j-api},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "4.0.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey]}},
+   :select {:mvn/version "4.0.2"}},
   ch.qos.logback/logback-core
   {:versions
    {{:mvn/version "1.2.3"}
@@ -828,12 +3767,31 @@
    {{:mvn/version "1.2.3"}
     #{[juxt/crux-cli ch.qos.logback/logback-classic]}},
    :select {:mvn/version "1.2.3"}},
+  com.papertrail/profiler
+  {:versions
+   {{:mvn/version "1.0.2"}
+    {:mvn/version "1.0.2", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.0.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard.metrics/metrics-servlets]}},
+   :select {:mvn/version "1.0.2"}},
   ring/ring-jetty-adapter
   {:versions
    {{:mvn/version "1.8.0"}
     {:mvn/version "1.8.0", :deps/manifest :mvn}},
    :paths {{:mvn/version "1.8.0"} #{[juxt/crux-http-server]}},
    :select {:mvn/version "1.8.0"}},
+  net.sourceforge.argparse4j/argparse4j
+  {:versions
+   {{:mvn/version "0.8.1"}
+    {:mvn/version "0.8.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "0.8.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "0.8.1"}},
   commons-io/commons-io
   {:versions
    {{:mvn/version "2.6"} {:mvn/version "2.6", :deps/manifest :mvn}},
@@ -847,6 +3805,47 @@
    {{:mvn/version "7.1"}
     #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
    :select {:mvn/version "7.1"}},
+  org.glassfish.jersey.ext/jersey-metainf-services
+  {:versions
+   {{:mvn/version "2.25.1"}
+    {:mvn/version "2.25.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.25.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey]}},
+   :select {:mvn/version "2.25.1"}},
+  org.jboss.logging/jboss-logging
+  {:versions
+   {{:mvn/version "3.3.0.Final"}
+    {:mvn/version "3.3.0.Final", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "3.3.0.Final"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-validation
+       org.hibernate/hibernate-validator]}},
+   :select {:mvn/version "3.3.0.Final"}},
+  com.fasterxml.jackson.core/jackson-core
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jackson]}},
+   :select {:mvn/version "2.9.6"}},
+  org.yaml/snakeyaml
+  {:versions
+   {{:mvn/version "1.18"} {:mvn/version "1.18", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.18"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-configuration
+       com.fasterxml.jackson.dataformat/jackson-dataformat-yaml]}},
+   :select {:mvn/version "1.18"}},
   org.agrona/agrona
   {:versions
    {{:mvn/version "1.0.7"}
@@ -860,6 +3859,16 @@
    {{:mvn/version "7.1"}
     #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
    :select {:mvn/version "7.1"}},
+  org.slf4j/jul-to-slf4j
+  {:versions
+   {{:mvn/version "1.7.25"}
+    {:mvn/version "1.7.25", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.7.25"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-logging]}},
+   :select {:mvn/version "1.7.25"}},
   com.github.jnr/jnr-a64asm
   {:versions
    {{:mvn/version "1.0.0"}
@@ -868,6 +3877,23 @@
    {{:mvn/version "1.0.0"}
     #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
    :select {:mvn/version "1.0.0"}},
+  org.eclipse.jetty/jetty-security
+  {:versions
+   {{:mvn/version "9.4.11.v20180605"}
+    {:mvn/version "9.4.11.v20180605", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "9.4.11.v20180605"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jetty
+       org.eclipse.jetty/jetty-servlet]}},
+   :select {:mvn/version "9.4.11.v20180605"}},
+  io.dropwizard.metrics/metrics-core
+  {:versions
+   {{:mvn/version "4.1.2"}
+    {:mvn/version "4.1.2", :deps/manifest :mvn}},
+   :paths {{:mvn/version "4.1.2"} #{[juxt/crux-metrics]}},
+   :select {:mvn/version "4.1.2"}},
   com.taoensso/truss
   {:versions
    {{:mvn/version "1.5.0"}
@@ -875,6 +3901,87 @@
    :paths
    {{:mvn/version "1.5.0"} #{[juxt/crux-core com.taoensso/encore]}},
    :select {:mvn/version "1.5.0"}},
+  com.fasterxml.jackson.core/jackson-annotations
+  {:versions
+   {{:mvn/version "2.9.0"}
+    {:mvn/version "2.9.0", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.0"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-util]}},
+   :select {:mvn/version "2.9.0"}},
+  com.fasterxml/classmate
+  {:versions
+   {{:mvn/version "1.3.1"}
+    {:mvn/version "1.3.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-validation
+       org.hibernate/hibernate-validator]}},
+   :select {:mvn/version "1.3.1"}},
+  io.prometheus/simpleclient_hotspot
+  {:versions
+   {{:mvn/version "0.8.1"}
+    {:mvn/version "0.8.1", :deps/manifest :mvn}},
+   :paths {{:mvn/version "0.8.1"} #{[]}},
+   :select {:mvn/version "0.8.1"},
+   :top true},
+  org.apache.commons/commons-text
+  {:versions
+   {{:mvn/version "1.2"} {:mvn/version "1.2", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-configuration]}},
+   :select {:mvn/version "1.2"}},
+  org.javassist/javassist
+  {:versions
+   {{:mvn/version "3.22.0-GA"}
+    {:mvn/version "3.22.0-GA", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "3.22.0-GA"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-validation]}},
+   :select {:mvn/version "3.22.0-GA"}},
+  org.glassfish.hk2/hk2-api
+  {:versions
+   {{:mvn/version "2.5.0-b32"}
+    {:mvn/version "2.5.0-b32",
+     :exclusions #{javax.inject/javax.inject},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.5.0-b32"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server]}},
+   :select {:mvn/version "2.5.0-b32"}},
+  org.eclipse.jetty/jetty-webapp
+  {:versions
+   {{:mvn/version "9.4.11.v20180605"}
+    {:mvn/version "9.4.11.v20180605", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "9.4.11.v20180605"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey]}},
+   :select {:mvn/version "9.4.11.v20180605"}},
+  org.checkerframework/checker-compat-qual
+  {:versions
+   {{:mvn/version "2.0.0"}
+    {:mvn/version "2.0.0", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.0.0"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-util
+       com.google.guava/guava]}},
+   :select {:mvn/version "2.0.0"}},
   juxt/crux-rocksdb
   {:versions
    {{:mvn/version "20.04-1.8.1-alpha"}
@@ -882,6 +3989,72 @@
    :paths {{:mvn/version "20.04-1.8.1-alpha"} #{[]}},
    :select {:mvn/version "20.04-1.8.1-alpha"},
    :top true},
+  io.prometheus/simpleclient_pushgateway
+  {:versions
+   {{:mvn/version "0.8.1"}
+    {:mvn/version "0.8.1", :deps/manifest :mvn}},
+   :paths {{:mvn/version "0.8.1"} #{[]}},
+   :select {:mvn/version "0.8.1"},
+   :top true},
+  com.google.guava/guava
+  {:versions
+   {{:mvn/version "24.0-jre"}
+    {:mvn/version "24.0-jre", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "24.0-jre"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-util]}},
+   :select {:mvn/version "24.0-jre"}},
+  io.dropwizard/dropwizard-configuration
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.3.5"}},
+  io.prometheus/simpleclient_dropwizard
+  {:versions
+   {{:mvn/version "0.8.1"}
+    {:mvn/version "0.8.1", :deps/manifest :mvn}},
+   :paths {{:mvn/version "0.8.1"} #{[]}},
+   :select {:mvn/version "0.8.1"},
+   :top true},
+  com.google.j2objc/j2objc-annotations
+  {:versions
+   {{:mvn/version "1.1"} {:mvn/version "1.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-util
+       com.google.guava/guava]}},
+   :select {:mvn/version "1.1"}},
+  io.dropwizard.metrics/metrics-servlets
+  {:versions
+   {{:mvn/version "4.0.2"}
+    {:mvn/version "4.0.2",
+     :exclusions
+     #{com.fasterxml.jackson.core/jackson-databind
+       org.slf4j/slf4j-api},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "4.0.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "4.0.2"}},
+  com.fasterxml.jackson.datatype/jackson-datatype-joda
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jackson]}},
+   :select {:mvn/version "2.9.6"}},
   org.ow2.asm/asm-commons
   {:versions
    {{:mvn/version "7.1"} {:mvn/version "7.1", :deps/manifest :mvn}},
@@ -889,6 +4062,13 @@
    {{:mvn/version "7.1"}
     #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
    :select {:mvn/version "7.1"}},
+  org.dhatim/dropwizard-prometheus
+  {:versions
+   {{:mvn/version "2.2.0"}
+    {:mvn/version "2.2.0", :deps/manifest :mvn}},
+   :paths {{:mvn/version "2.2.0"} #{[]}},
+   :select {:mvn/version "2.2.0"},
+   :top true},
   crypto-random/crypto-random
   {:versions
    {{:mvn/version "1.2.0"}
@@ -896,6 +4076,17 @@
    :paths
    {{:mvn/version "1.2.0"} #{[juxt/crux-http-server ring/ring-core]}},
    :select {:mvn/version "1.2.0"}},
+  com.fasterxml.jackson.jaxrs/jackson-jaxrs-base
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider]}},
+   :select {:mvn/version "2.9.6"}},
   ring/ring-codec
   {:versions
    {{:mvn/version "1.1.2"}
@@ -909,6 +4100,60 @@
    :paths
    {{:mvn/version "1.0.0"} #{[juxt/crux-http-server ring/ring-core]}},
    :select {:mvn/version "1.0.0"}},
+  io.dropwizard.metrics/metrics-jetty9
+  {:versions
+   {{:mvn/version "4.0.2"}
+    {:mvn/version "4.0.2",
+     :exclusions #{org.slf4j/slf4j-api org.eclipse.jetty/jetty-server},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "4.0.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jetty]}},
+   :select {:mvn/version "4.0.2"}},
+  io.dropwizard/dropwizard-lifecycle
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.3.5"}},
+  org.glassfish.hk2/hk2-locator
+  {:versions
+   {{:mvn/version "2.5.0-b32"}
+    {:mvn/version "2.5.0-b32", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.5.0-b32"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server]}},
+   :select {:mvn/version "2.5.0-b32"}},
+  io.dropwizard.metrics/metrics-logback
+  {:versions
+   {{:mvn/version "4.0.2"}
+    {:mvn/version "4.0.2",
+     :exclusions #{org.slf4j/slf4j-api ch.qos.logback/logback-classic},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "4.0.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-logging]}},
+   :select {:mvn/version "4.0.2"}},
+  org.glassfish.jersey.core/jersey-server
+  {:versions
+   {{:mvn/version "2.25.1"}
+    {:mvn/version "2.25.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.25.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey]}},
+   :select {:mvn/version "2.25.1"}},
   org.eclipse.jetty/jetty-io
   {:versions
    {{:mvn/version "9.4.22.v20191022"}
@@ -919,12 +4164,48 @@
        ring/ring-jetty-adapter
        org.eclipse.jetty/jetty-server]}},
    :select {:mvn/version "9.4.22.v20191022"}},
+  io.dropwizard/dropwizard-metrics
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.3.5"}},
+  org.eclipse.jetty/jetty-servlets
+  {:versions
+   {{:mvn/version "9.4.11.v20180605"}
+    {:mvn/version "9.4.11.v20180605", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "9.4.11.v20180605"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jetty]}},
+   :select {:mvn/version "9.4.11.v20180605"}},
   org.clojure/tools.reader
   {:versions
    {{:mvn/version "1.3.2"}
     {:mvn/version "1.3.2", :deps/manifest :mvn}},
    :paths {{:mvn/version "1.3.2"} #{[juxt/crux-core]}},
    :select {:mvn/version "1.3.2"}},
+  io.dropwizard/dropwizard-jackson
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.3.5"}},
+  io.prometheus/simpleclient_common
+  {:versions
+   {{:mvn/version "0.8.1"}
+    {:mvn/version "0.8.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "0.8.1"}
+    #{[io.prometheus/simpleclient_pushgateway]}},
+   :select {:mvn/version "0.8.1"}},
   juxt/crux-http-server
   {:versions
    {{:mvn/version "20.03-1.8.0-alpha"}
@@ -932,6 +4213,27 @@
    :paths {{:mvn/version "20.03-1.8.0-alpha"} #{[]}},
    :select {:mvn/version "20.03-1.8.0-alpha"},
    :top true},
+  io.dropwizard/dropwizard-jersey
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.3.5"}},
+  org.glassfish.jersey.ext/jersey-bean-validation
+  {:versions
+   {{:mvn/version "2.25.1"}
+    {:mvn/version "2.25.1",
+     :exclusions #{org.glassfish.web/javax.el javax.el/javax.el-api},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.25.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey]}},
+   :select {:mvn/version "2.25.1"}},
   com.github.jnr/jnr-x86asm
   {:versions
    {{:mvn/version "1.0.2"}
@@ -940,6 +4242,13 @@
    {{:mvn/version "1.0.2"}
     #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
    :select {:mvn/version "1.0.2"}},
+  clj-commons/iapetos
+  {:versions
+   {{:mvn/version "0.1.9"}
+    {:mvn/version "0.1.9", :deps/manifest :mvn}},
+   :paths {{:mvn/version "0.1.9"} #{[]}},
+   :select {:mvn/version "0.1.9"},
+   :top true},
   com.taoensso/nippy
   {:versions
    {{:mvn/version "2.14.0"}
@@ -964,12 +4273,45 @@
    {{:mvn/version "1.2.23"}
     #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
    :select {:mvn/version "1.2.23"}},
+  org.eclipse.jetty.toolchain.setuid/jetty-setuid-java
+  {:versions
+   {{:mvn/version "1.0.3"}
+    {:mvn/version "1.0.3",
+     :exclusions
+     #{org.eclipse.jetty/jetty-util org.eclipse.jetty/jetty-server},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.0.3"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.0.3"}},
+  org.glassfish.jersey.core/jersey-client
+  {:versions
+   {{:mvn/version "2.25.1"}
+    {:mvn/version "2.25.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.25.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server]}},
+   :select {:mvn/version "2.25.1"}},
   org.slf4j/slf4j-api
   {:versions
    {{:mvn/version "1.7.29"}
     {:mvn/version "1.7.29", :deps/manifest :mvn}},
    :paths {{:mvn/version "1.7.29"} #{[juxt/crux-core]}},
    :select {:mvn/version "1.7.29"}},
+  com.fasterxml.jackson.module/jackson-module-parameter-names
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jackson]}},
+   :select {:mvn/version "2.9.6"}},
   org.clojure/test.check
   {:versions
    {{:mvn/version "0.10.0-alpha4"}
@@ -977,6 +4319,38 @@
    :paths {{:mvn/version "0.10.0-alpha4"} #{[]}},
    :select {:mvn/version "0.10.0-alpha4"},
    :top true},
+  org.glassfish.jersey.media/jersey-media-jaxb
+  {:versions
+   {{:mvn/version "2.25.1"}
+    {:mvn/version "2.25.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.25.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server]}},
+   :select {:mvn/version "2.25.1"}},
+  com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey]}},
+   :select {:mvn/version "2.9.6"}},
+  io.dropwizard.metrics/metrics-jmx
+  {:versions
+   {{:mvn/version "4.0.2"}
+    {:mvn/version "4.0.2",
+     :exclusions #{org.slf4j/slf4j-api},
+     :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "4.0.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "4.0.2"}},
   org.ow2.asm/asm-analysis
   {:versions
    {{:mvn/version "7.1"} {:mvn/version "7.1", :deps/manifest :mvn}},
@@ -991,6 +4365,28 @@
    :paths {{:mvn/version "20.04-1.8.1-alpha"} #{[]}},
    :select {:mvn/version "20.04-1.8.1-alpha"},
    :top true},
+  com.fasterxml.jackson.datatype/jackson-datatype-guava
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jackson]}},
+   :select {:mvn/version "2.9.6"}},
+  org.glassfish.hk2/osgi-resource-locator
+  {:versions
+   {{:mvn/version "1.0.1"}
+    {:mvn/version "1.0.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.0.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server
+       org.glassfish.jersey.core/jersey-common]}},
+   :select {:mvn/version "1.0.1"}},
   juxt/crux-cli
   {:versions
    {{:mvn/version "20.04-1.8.1-alpha"}
@@ -1020,6 +4416,28 @@
     {:mvn/version "0.2.0", :deps/manifest :mvn}},
    :paths {{:mvn/version "0.2.0"} #{[juxt/crux-core]}},
    :select {:mvn/version "0.2.0"}},
+  io.dropwizard.metrics/metrics-json
+  {:versions
+   {{:mvn/version "4.0.2"}
+    {:mvn/version "4.0.2", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "4.0.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard.metrics/metrics-servlets]}},
+   :select {:mvn/version "4.0.2"}},
+  org.glassfish.jersey.bundles.repackaged/jersey-guava
+  {:versions
+   {{:mvn/version "2.25.1"}
+    {:mvn/version "2.25.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.25.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server
+       org.glassfish.jersey.core/jersey-common]}},
+   :select {:mvn/version "2.25.1"}},
   org.eclipse.jetty/jetty-server
   {:versions
    {{:mvn/version "9.4.22.v20191022"}
@@ -1028,6 +4446,55 @@
    {{:mvn/version "9.4.22.v20191022"}
     #{[juxt/crux-http-server ring/ring-jetty-adapter]}},
    :select {:mvn/version "9.4.22.v20191022"}},
+  io.dropwizard/dropwizard-servlets
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.3.5"}},
+  com.google.code.findbugs/jsr305
+  {:versions
+   {{:mvn/version "3.0.2"}
+    {:mvn/version "3.0.2", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "3.0.2"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-util]}},
+   :select {:mvn/version "3.0.2"}},
+  io.dropwizard/dropwizard-jetty
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.3.5"}},
+  org.slf4j/log4j-over-slf4j
+  {:versions
+   {{:mvn/version "1.7.25"}
+    {:mvn/version "1.7.25", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.7.25"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-logging]}},
+   :select {:mvn/version "1.7.25"}},
+  javax.ws.rs/javax.ws.rs-api
+  {:versions
+   {{:mvn/version "2.0.1"}
+    {:mvn/version "2.0.1", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.0.1"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jersey
+       org.glassfish.jersey.core/jersey-server]}},
+   :select {:mvn/version "2.0.1"}},
   ring/ring-core
   {:versions
    {{:mvn/version "1.8.0"}
@@ -1040,7 +4507,102 @@
    :paths
    {{:mvn/version "7.1"}
     #{[juxt/crux-rocksdb com.github.jnr/jnr-ffi]}},
-   :select {:mvn/version "7.1"}}},
+   :select {:mvn/version "7.1"}},
+  io.dropwizard/dropwizard-validation
+  {:versions
+   {{:mvn/version "1.3.5"}
+    {:mvn/version "1.3.5", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "1.3.5"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core]}},
+   :select {:mvn/version "1.3.5"}},
+  com.fasterxml.jackson.datatype/jackson-datatype-jsr310
+  {:versions
+   {{:mvn/version "2.9.6"}
+    {:mvn/version "2.9.6", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.9.6"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-jackson]}},
+   :select {:mvn/version "2.9.6"}},
+  javax.xml.bind/jaxb-api
+  {:versions
+   {{:mvn/version "2.3.0"}
+    {:mvn/version "2.3.0", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "2.3.0"}
+    #{[io.prometheus/simpleclient_pushgateway]}},
+   :select {:mvn/version "2.3.0"}},
+  org.glassfish/javax.el
+  {:versions
+   {{:mvn/version "3.0.0"}
+    {:mvn/version "3.0.0", :deps/manifest :mvn}},
+   :paths
+   {{:mvn/version "3.0.0"}
+    #{[org.dhatim/dropwizard-prometheus
+       io.dropwizard/dropwizard-core
+       io.dropwizard/dropwizard-validation]}},
+   :select {:mvn/version "3.0.0"}}},
  :exclusions
- {[juxt/crux-cli ch.qos.logback/logback-classic]
+ {[org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   org.eclipse.jetty.toolchain.setuid/jetty-setuid-java]
+  #{org.eclipse.jetty/jetty-util org.eclipse.jetty/jetty-server},
+  [org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   io.dropwizard.metrics/metrics-jvm]
+  #{org.slf4j/slf4j-api},
+  [org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   io.dropwizard/dropwizard-jersey
+   io.dropwizard.metrics/metrics-jersey2]
+  #{org.glassfish.jersey.core/jersey-server org.slf4j/slf4j-api},
+  [org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   io.dropwizard/dropwizard-jetty
+   io.dropwizard.metrics/metrics-jetty9]
+  #{org.slf4j/slf4j-api org.eclipse.jetty/jetty-server},
+  [org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   io.dropwizard.metrics/metrics-servlets]
+  #{com.fasterxml.jackson.core/jackson-databind org.slf4j/slf4j-api},
+  [org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   io.dropwizard.metrics/metrics-jmx]
+  #{org.slf4j/slf4j-api},
+  [org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   io.dropwizard/dropwizard-logging
+   io.dropwizard.metrics/metrics-logback]
+  #{org.slf4j/slf4j-api ch.qos.logback/logback-classic},
+  [org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   io.dropwizard/dropwizard-jersey
+   org.glassfish.jersey.core/jersey-server
+   org.glassfish.hk2.external/javax.inject]
+  #{javax.inject/javax.inject},
+  [org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   io.dropwizard/dropwizard-jersey
+   org.glassfish.jersey.containers/jersey-container-servlet
+   org.glassfish.jersey.containers/jersey-container-servlet-core]
+  #{javax.servlet/servlet-api},
+  [org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   io.dropwizard.metrics/metrics-healthchecks]
+  #{org.slf4j/slf4j-api},
+  [org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   io.dropwizard/dropwizard-jersey
+   org.glassfish.jersey.core/jersey-server
+   org.glassfish.hk2/hk2-api]
+  #{javax.inject/javax.inject},
+  [org.dhatim/dropwizard-prometheus
+   io.dropwizard/dropwizard-core
+   io.dropwizard/dropwizard-jersey
+   org.glassfish.jersey.ext/jersey-bean-validation]
+  #{org.glassfish.web/javax.el javax.el/javax.el-api},
+  [juxt/crux-cli ch.qos.logback/logback-classic]
   #{org.slf4j/slf4j-api}}}

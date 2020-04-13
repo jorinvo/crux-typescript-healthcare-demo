@@ -54,7 +54,7 @@ export const genCase = ({
   };
 };
 
-interface IFormDefinition {
+interface FormDefinition {
   id: string;
   formDefinitionTitle: string;
   formDefinitionFields: (
@@ -108,7 +108,7 @@ const generateFormFieldValue = (
   throw new TypeError('Unknown form field type');
 };
 
-export const genFormDefinition = (): IFormDefinition => {
+export const genFormDefinition = (): FormDefinition => {
   const numFields = faker.random.number({ min: 1, max: 100 });
   const formDefinitionFields = [];
   for (let i = 0; i < numFields; i++) {
@@ -141,7 +141,7 @@ export const genFormData = ({
 }: {
   userIds: string[];
   caseIds: string[];
-  formDefinitions: IFormDefinition[];
+  formDefinitions: FormDefinition[];
 }) => {
   const createdBy = faker.random.arrayElement([
     'user',
@@ -175,7 +175,7 @@ export const genFormDataUpdate = ({
 }: {
   userIds: string[];
   formData: ReturnType<typeof genFormData>;
-  formDefinitions: IFormDefinition[];
+  formDefinitions: FormDefinition[];
 }) => {
   const createdBy = faker.random.arrayElement([
     'user',
@@ -202,10 +202,7 @@ export const genFormDataUpdate = ({
   };
 };
 
-export const genPutTx = (
-  doc: CruxMap,
-  validTime?: Date,
-) => {
+export const genPutTx = (doc: CruxMap, validTime?: Date) => {
   if (faker.random.boolean()) {
     return putTx(doc);
   }

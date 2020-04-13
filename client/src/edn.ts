@@ -1,3 +1,17 @@
+// TODO: support chars
+// TODO: support bigint
+// TODO: support comment
+// TODO: support discard
+// TODO: separate generation and parsing into files
+// TODO: keywords should contain a single slash
+// TODO: Can you tag a tagged val?
+// TODO: keywords and symbols need some care with characters
+// TODO: tag if not one of the well known must contain exactly one slash
+// TODO: What happens with empty doc
+// TODO: Error when wrong closing tag
+// TODO: Streaming maybe
+// TODO: parse options: keywordAsString, mapAsObject
+
 export type EDNVal = EDNTaggableVal | EDNTaggedVal | Date;
 export type EDNTaggableVal =
   | EDNMap
@@ -119,12 +133,14 @@ enum ParseMode {
   idle,
   string,
   escape,
+}
+enum StackItem {
   vector,
   list,
   map,
   set,
+  tag,
 }
-
 const stringEscapeMap = {
   t: '\t',
   r: '\r',
@@ -132,159 +148,167 @@ const stringEscapeMap = {
   '\\': '\\',
   '"': '"',
 };
-
 const spaceChars = [',', ' ', '\t', '\n', '\r'];
+const intRegex = /^[-+]?(0|[1-9][0-9]*)$/;
+const floatRegex = /^[-+]?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?(0|[1-9][0-9]*))?M?$/;
 
-const intRegex = /^[-+]?[0-9][1-9]*$/;
-const floatRegex = /^[-+]?[0-9][1-9]*(\.[0-9]+)?([eE][+-]?[0-9]+)?M?$/;
-
-// TODO: support tag
-// TODO: support #inst
-// TODO: support chars
-// TODO: support bigint
-// TODO: support comment
-// TODO: support discard
-// TODO: keywords should contain a single slash
-// TODO: keywords and symbols need some care with characters
-// TODO: tag if not one of the well known must contain exactly one slash
-// TODO: What happens with empty doc
-// TODO: Error when wrong closing tag
-// TODO: Streaming maybe
-export const parseEDNString = (edn: string): EDNVal => {
+export const parseEDNString = (
+  edn: string,
+  { mapAsObject = false, keywordAsString = false } = {},
+): EDNVal | { [key: string]: EDNVal } => {
   const stack = [];
   let mode = ParseMode.idle;
-  let state ='';
-  let result: EDNVal|undefined;
+  let state = '';
+  let result: EDNVal | undefined;
 
   const updateStack = () => {
     if (stack.length === 0 || result === undefined) {
-      return
+      return;
     }
-    const [prevMode, prevState] = stack[stack.length - 1];
-    if (prevMode === ParseMode.vector) {
+    const [stackItem, prevState] = stack[stack.length - 1];
+    if (stackItem === StackItem.vector) {
       prevState.push(result);
-    } else if (prevMode === ParseMode.list) {
+    } else if (stackItem === StackItem.list) {
       prevState.list.push(result);
-    } else if (prevMode === ParseMode.set) {
+    } else if (stackItem === StackItem.set) {
       prevState.add(result);
-    } else if (prevMode === ParseMode.map) {
+    } else if (stackItem === StackItem.map) {
       if (prevState[1].length > 0) {
         prevState[0].set(prevState[1].pop(), result);
       } else {
         prevState[1].push(result);
       }
+    } else if (stackItem === StackItem.tag) {
+      stack.pop();
+      if (prevState === 'inst') {
+        // TODO: what if invalid date?
+        result = new Date(result as string);
+        return;
+      }
+      result = { tag: prevState, val: result };
+      return;
     }
-  //   // TODO: Else error
+    //   // TODO: Else error
     result = undefined;
-  }
+  };
 
   const match = () => {
     if (state === 'nil') {
-  result = null;
-}
-else if (state === 'true') {
-  result = true;
-}
-else if (state === 'false') {
-  result = false;
-}else if (intRegex.test(state)) {
-  result = parseInt(state, 10);
-}else if (floatRegex.test(state)) {
-  result = parseFloat(state);
-}else if (state[0] === ':') {
-  result = { key: state.substr(1) };
-}else if (state !== '') {
-  result = { sym: state };
-}
-  state =''
-}
+      result = null;
+    } else if (state === 'true') {
+      result = true;
+    } else if (state === 'false') {
+      result = false;
+    } else if (state[0] === ':') {
+      result = keywordAsString ? state.substr(1) : { key: state.substr(1) };
+    } else if (state[0] === '#') {
+      stack.push([StackItem.tag, state.substr(1)]);
+      result = undefined;
+    } else if (intRegex.test(state)) {
+      result = parseInt(state, 10);
+    } else if (floatRegex.test(state)) {
+      result = parseFloat(state);
+    } else if (state !== '') {
+      result = { sym: state };
+    }
+    state = '';
+  };
 
   for (const char of edn.split('')) {
     if (mode === ParseMode.idle) {
-				if (char === '"') {
-				mode = ParseMode.string;
-				state = '';
-				continue;
-			}
+      if (char === '"') {
+        mode = ParseMode.string;
+        state = '';
+        continue;
+      }
       if (spaceChars.includes(char)) {
-        match()
-        updateStack()
-        continue
+        match();
+        updateStack();
+        continue;
       }
       if (char === '}') {
-        match()
-        updateStack()
-        const [prevMode, prevState] = stack.pop();
-        if (prevMode === ParseMode.map) {
+        match();
+        updateStack();
+        const [stackItem, prevState] = stack.pop();
+        if (stackItem === StackItem.map) {
           // TODO: What if map is closed too early?
-          result = prevState[0];
+          if (mapAsObject) {
+            // TODO: what if map has non-stringable keys? keys as JSON?
+            result = [...prevState[0].entries()].reduce((memo, [k, v]) => {
+              return { ...memo, [k]: v };
+            }, {});
+          } else {
+            result = prevState[0];
+          }
         } else {
           result = prevState;
         }
-        updateStack()
+        updateStack();
         continue;
       }
       if (char === ']') {
-        match()
-        updateStack()
-        const [prevMode, prevState] = stack.pop();
+        match();
+        updateStack();
+        const [stackItem, prevState] = stack.pop();
         result = prevState;
-        updateStack()
+        updateStack();
         continue;
       }
       if (char === ')') {
-        match()
-        updateStack()
-        const [prevMode, prevState] = stack.pop();
+        match();
+        updateStack();
+        const [stackItem, prevState] = stack.pop();
         result = prevState;
-        updateStack()
+        updateStack();
         continue;
       }
-			if (char === '[') {
-				stack.push([ParseMode.vector, []]);
-				continue;
-			} else
-			if (char === '(') {
-				stack.push([ParseMode.list, { list: [] }]);
-				continue;
-			}
+      if (char === '[') {
+        stack.push([StackItem.vector, []]);
+        continue;
+      } else if (char === '(') {
+        stack.push([StackItem.list, { list: [] }]);
+        continue;
+      }
 
       state += char;
 
-			if (state === '{') {
-				stack.push([ParseMode.map, [new Map(), []]]);
-        state = ''
-			} else if (state === '#{') {
-        stack.push([ParseMode.set, new Set()]);
-        state = ''
+      if (state === '{') {
+        stack.push([StackItem.map, [new Map(), []]]);
+        state = '';
+      } else if (state === '#{') {
+        stack.push([StackItem.set, new Set()]);
+        state = '';
       }
-        continue;
-    }else if (mode === ParseMode.string) {
+      continue;
+    } else if (mode === ParseMode.string) {
       if (char === '\\') {
         stack.push([mode, state]);
         mode = ParseMode.escape;
-        state = ''
+        state = '';
         continue;
       }
       if (char === '"') {
         mode = ParseMode.idle;
-				result = state
-        updateStack()
-        state = ''
+        result = state;
+        updateStack();
+        state = '';
         continue;
       }
       state += char;
-    }else if (mode === ParseMode.escape) {
+    } else if (mode === ParseMode.escape) {
       // TODO what should happen when escaping other char
       const escapedChar = stringEscapeMap[char];
-      const [prevMode, prevState] = stack.pop();
-      mode = prevMode;
+      const [stackItem, prevState] = stack.pop();
+      mode = stackItem;
       state = prevState + escapedChar;
     }
   }
 
   if (result === undefined) {
-  match()
+    match();
+    // while (stack.length > 0){
+    updateStack();
+    // }
   }
   return result;
 };

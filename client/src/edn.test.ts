@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { toEDNString, parseEDNString } from './edn';
+import { EDNVal, toEDNString, parseEDNString } from './edn';
 
 test('empty string', (t) => {
   t.is(parseEDNString('""'), '');
@@ -33,6 +33,9 @@ test('string with quote symbol', (t) => {
 test('int', (t) => {
   t.is(parseEDNString('928764'), 928764);
 });
+test('int with zeros', (t) => {
+  t.is(parseEDNString('1001'), 1001);
+});
 test('zero', (t) => {
   t.is(parseEDNString('0'), 0);
 });
@@ -48,6 +51,9 @@ test('minus int', (t) => {
 
 test('float', (t) => {
   t.is(parseEDNString('928.764'), 928.764);
+});
+test('float with zeros', (t) => {
+  t.is(parseEDNString('1001.1'), 1001.1);
 });
 test('minus float', (t) => {
   t.is(parseEDNString('-8.74'), -8.74);
@@ -70,6 +76,9 @@ test('float e-', (t) => {
 test('float E-', (t) => {
   t.is(parseEDNString('5.12E-3'), 0.00512);
 });
+test('float e with zeros', (t) => {
+  t.is(parseEDNString('1001.00100e10'), 10010010000000);
+});
 
 test('nil', (t) => {
   t.is(parseEDNString('nil'), null);
@@ -81,25 +90,24 @@ test('false', (t) => {
   t.is(parseEDNString('false'), false);
 });
 
-
 test('symbol with single char', (t) => {
-  t.deepEqual(parseEDNString('='), {sym: '='});
+  t.deepEqual(parseEDNString('='), { sym: '=' });
 });
 test('symbol with multiple chars', (t) => {
-  t.deepEqual(parseEDNString('even?'), {sym: 'even?'});
+  t.deepEqual(parseEDNString('even?'), { sym: 'even?' });
 });
 test('symbol with space after', (t) => {
-  t.deepEqual(parseEDNString('even? '), {sym: 'even?'});
+  t.deepEqual(parseEDNString('even? '), { sym: 'even?' });
 });
 
 test('keyword with single char', (t) => {
-  t.deepEqual(parseEDNString(':a'), {key: 'a'});
+  t.deepEqual(parseEDNString(':a'), { key: 'a' });
 });
 test('keyword with multiple chars', (t) => {
-  t.deepEqual(parseEDNString(':name'), {key: 'name'});
+  t.deepEqual(parseEDNString(':name'), { key: 'name' });
 });
 test('keyword with space after', (t) => {
-  t.deepEqual(parseEDNString(':ns.nested/name '), {key: 'ns.nested/name'});
+  t.deepEqual(parseEDNString(':ns.nested/name '), { key: 'ns.nested/name' });
 });
 
 test('empty vector', (t) => {
@@ -127,14 +135,10 @@ test('vector with vectors', (t) => {
   ]);
 });
 test('vector of vectors', (t) => {
-  t.deepEqual(parseEDNString('[[] [] ]'), [
-    [],[]
-  ]);
+  t.deepEqual(parseEDNString('[[] [] ]'), [[], []]);
 });
 test('vector of vectors without spaces', (t) => {
-  t.deepEqual(parseEDNString('[[][]]'), [
-    [],[]
-  ]);
+  t.deepEqual(parseEDNString('[[][]]'), [[], []]);
 });
 
 test('empty list', (t) => {
@@ -218,5 +222,49 @@ test('map of maps', (t) => {
   t.deepEqual(
     parseEDNString('{true  {"one" {"two", nil }}}'),
     new Map([[true, new Map([['one', new Map([['two', null]])]])]]),
+  );
+});
+
+test('tagged key', (t) => {
+  t.deepEqual(parseEDNString('#ns.a/tag :key'), {
+    tag: 'ns.a/tag',
+    val: { key: 'key' },
+  });
+});
+test('tagged int', (t) => {
+  t.deepEqual(parseEDNString('#my/tag 555'), { tag: 'my/tag', val: 555 });
+});
+
+test('#inst as Date', (t) => {
+  t.deepEqual(
+    parseEDNString('#inst "2020-04-12T21:39:15.482Z"'),
+    new Date('2020-04-12T21:39:15.482Z'),
+  );
+});
+
+test('crux tx response', (t) => {
+  t.deepEqual(
+    parseEDNString(
+      '{:crux.tx/tx-id 2, :crux.tx/tx-time #inst "2020-04-13T08:01:14.261-00:00"}',
+    ),
+    new Map([
+      [{ key: 'crux.tx/tx-id' }, 2 as EDNVal],
+      [
+        { key: 'crux.tx/tx-time' },
+        new Date('2020-04-13T08:01:14.261-00:00') as EDNVal,
+      ],
+    ]),
+  );
+});
+test('crux tx response as object', (t) => {
+  t.deepEqual(
+    parseEDNString(
+      '{:crux.tx/tx-id 2, :crux.tx/tx-time #inst "2020-04-13T08:01:14.261-00:00"}',
+      { mapAsObject: true, keywordAsString: true },
+    ),
+    {
+      'crux.tx/tx-id': 2,
+      'crux.tx/tx-time': new Date('2020-04-13T08:01:14.261-00:00'),
+    },
   );
 });

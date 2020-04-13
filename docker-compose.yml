@@ -3,15 +3,41 @@ version: '3'
 services:
   crux:
     build: server
-    # environment:
     volumes:
-      - ./server/db:/var/lib/crux/db
+      - ./server/db:/usr/lib/crux/db
     ports:
+      # Crux
       - 3000:3000
+      # JMX
+      - 9010:9010
+      # Prometheus metrics
+      - 8080:8080
+    command:
+      - 'clojure'
+      - '-J-Xmx1G'
+      - '-J-XX:+HeapDumpOnOutOfMemoryError'
+      - '-J-Dcom.sun.management.jmxremote=true'
+      - '-J-Dcom.sun.management.jmxremote.local.only=false'
+      - '-J-Dcom.sun.management.jmxremote.authenticate=false'
+      - '-J-Dcom.sun.management.jmxremote.ssl=false'
+      - '-J-Djava.rmi.server.hostname=localhost'
+      - '-J-Dcom.sun.management.jmxremote.port=9010'
+      - '-J-Dcom.sun.management.jmxremote.rmi.port=9010'
+      - '-m'
+      - 'crux.main'
 
   client:
     build: client
+    environment:
+      CRUX_URL: 'http://crux:3000'
+      NUM_TRANSACTIONS: 200
     volumes:
-      - /home/node/node_modules
-      - /home/node/dist
       - ./client:/home/node
+    command: 'npm run all'
+
+  prom:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
