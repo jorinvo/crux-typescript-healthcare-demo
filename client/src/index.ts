@@ -125,6 +125,7 @@ const run = async () => {
       .required()
       .asIntPositive();
     let lastTx;
+    console.log('Waiting for DB to be reachable')
     while (!(await crux.status())) {
       await sleep(1000);
     }

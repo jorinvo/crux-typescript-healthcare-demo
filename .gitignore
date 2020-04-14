@@ -1,4 +1,5 @@
 server/.cpcache
 server/db
+server/event-log
 client/dist
 client/node_modules

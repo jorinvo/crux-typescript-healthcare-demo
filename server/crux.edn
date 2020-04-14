@@ -1,11 +1,13 @@
 {:crux.node/topology [crux.standalone/topology
                       crux.kv.rocksdb/kv-store-with-metrics
                       crux.http-server/module
-                      crux.metrics.dropwizard.prometheus/http-exporter]
+                      ; crux.metrics.dropwizard.prometheus/http-exporter
+                      ]
  :crux.http-server/port 3000
  :crux.kv/db-dir "./db"
  :crux.kv/sync? true
  :crux.standalone/event-log-sync? true
  :crux.standalone/event-log-dir "./event-log"
+ :crux.standalone/event-log-kv-store crux.kv.rocksdb/kv
  :crux.metrics/with-indexer-metrics? false
  :crux.metrics.dropwizard.prometheus/jvm-metrics? true}
