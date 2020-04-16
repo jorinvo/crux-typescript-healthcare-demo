@@ -170,59 +170,54 @@ test('list of lists', (t) => {
 });
 
 test('empty set', (t) => {
-  t.deepEqual(parseEDNString('#{}'), new Set([]));
+  t.deepEqual(parseEDNString('#{}'), { set: [] });
 });
 test('empty set with space', (t) => {
-  t.deepEqual(parseEDNString('#{  }'), new Set([]));
+  t.deepEqual(parseEDNString('#{  }'), { set: [] });
 });
 test('set with single string', (t) => {
-  t.deepEqual(parseEDNString('#{"one"}'), new Set(['one']));
+  t.deepEqual(parseEDNString('#{"one"}'), { set: ['one'] });
 });
 test('set of strings', (t) => {
-  t.deepEqual(
-    parseEDNString('#{"one" "and two"}'),
-    new Set(['one', 'and two']),
-  );
+  t.deepEqual(parseEDNString('#{"one" "and two"}'), {
+    set: ['one', 'and two'],
+  });
 });
 test('set of booleans', (t) => {
-  t.deepEqual(parseEDNString('#{true true}'), new Set([true]));
+  t.deepEqual(parseEDNString('#{true true}'), { set: [true, true] });
 });
 test('set with string and bool', (t) => {
-  t.deepEqual(
-    parseEDNString('#{true "well, then."}'),
-    new Set([true, 'well, then.']),
-  );
+  t.deepEqual(parseEDNString('#{true "well, then."}'), {
+    set: [true, 'well, then.'],
+  });
 });
 test('set of sets', (t) => {
-  t.deepEqual(
-    parseEDNString('#{true  #{"one" #{"two", nil }}}'),
-    new Set([true, new Set(['one', new Set(['two', null])])]),
-  );
+  t.deepEqual(parseEDNString('#{true  #{"one" #{"two", nil }}}'), {
+    set: [true, { set: ['one', { set: ['two', null] }] }],
+  });
 });
 
 test('empty map', (t) => {
-  t.deepEqual(parseEDNString('{}'), new Map([]));
+  t.deepEqual(parseEDNString('{}'), { map: [] });
 });
 test('empty map with space', (t) => {
-  t.deepEqual(parseEDNString('{  }'), new Map([]));
+  t.deepEqual(parseEDNString('{  }'), { map: [] });
 });
 test('map with single string', (t) => {
-  t.deepEqual(parseEDNString('{"one" "two"}'), new Map([['one', 'two']]));
+  t.deepEqual(parseEDNString('{"one" "two"}'), { map: [['one', 'two']] });
 });
 test('map of two', (t) => {
-  t.deepEqual(
-    parseEDNString('{"a" true, "b" false }'),
-    new Map([
+  t.deepEqual(parseEDNString('{"a" true, "b" false }'), {
+    map: [
       ['a', true],
       ['b', false],
-    ]),
-  );
+    ],
+  });
 });
 test('map of maps', (t) => {
-  t.deepEqual(
-    parseEDNString('{true  {"one" {"two", nil }}}'),
-    new Map([[true, new Map([['one', new Map([['two', null]])]])]]),
-  );
+  t.deepEqual(parseEDNString('{true  {"one" {"two", nil }}}'), {
+    map: [[true, { map: [['one', { map: [['two', null]] }]] }]],
+  });
 });
 
 test('tagged key', (t) => {
@@ -247,13 +242,15 @@ test('crux tx response', (t) => {
     parseEDNString(
       '{:crux.tx/tx-id 2, :crux.tx/tx-time #inst "2020-04-13T08:01:14.261-00:00"}',
     ),
-    new Map([
-      [{ key: 'crux.tx/tx-id' }, 2 as EDNVal],
-      [
-        { key: 'crux.tx/tx-time' },
-        new Date('2020-04-13T08:01:14.261-00:00') as EDNVal,
+    {
+      map: [
+        [{ key: 'crux.tx/tx-id' }, 2 as EDNVal],
+        [
+          { key: 'crux.tx/tx-time' },
+          new Date('2020-04-13T08:01:14.261-00:00') as EDNVal,
+        ],
       ],
-    ]),
+    },
   );
 });
 test('crux tx response as object', (t) => {

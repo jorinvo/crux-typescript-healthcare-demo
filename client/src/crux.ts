@@ -8,7 +8,7 @@ import {
   keyword,
 } from './edn';
 
-export type CruxMap = Map<EDNKeyword, EDNVal>;
+export type CruxMap = { map: [EDNKeyword, EDNVal][] };
 
 export const cruxIdKeyword = keyword('crux.db/id');
 const cruxPutKeyword = keyword('crux.tx/put');
@@ -36,8 +36,8 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
 
     async submit(
       transactions: Array<
-        | [EDNKeyword, Map<EDNKeyword, EDNVal>]
-        | [EDNKeyword, Map<EDNKeyword, EDNVal>, Date]
+        | [EDNKeyword, { map: [EDNKeyword, EDNVal][] }]
+        | [EDNKeyword, { map: [EDNKeyword, EDNVal][] }, Date]
       >,
     ) {
       const response = await httpClient.post('tx-log', {
@@ -58,15 +58,18 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
       const response = await httpClient.get('tx-log', {
         headers: { 'Content-Type': 'application/edn' },
         searchParams: {
-          'with-ops': true,
-          'after-tx-id': 0
+          'with-ops': false,
+          'after-tx-id': 9998,
         },
       });
+      console.log('hi');
       const parsed = parseEDNString(response.body, {
         keywordAsString: true,
         mapAsObject: true,
       });
-			console.log((parsed as any).list)
+      console.log('parsed');
+      console.log(JSON.stringify(parsed, null, 2));
+      // console.log((parsed as any).list)
       // return {
       //   txId: parsed['crux.tx/tx-id'],
       //   txTime: parsed['crux.tx/tx-time'],

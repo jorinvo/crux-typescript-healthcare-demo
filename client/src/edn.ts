@@ -26,9 +26,9 @@ export type EDNTaggableVal =
   | EDNChar
   | EDNSymbol
   | EDNList;
-export type EDNMap = Map<EDNVal, EDNVal>;
+export type EDNMap = { map: [EDNVal, EDNVal][] };
 export type EDNVector = EDNVal[];
-export type EDNSet = Set<EDNVal>;
+export type EDNSet = { set: EDNVal[] };
 export type EDNKeyword = { key: string };
 export type EDNChar = { char: string };
 export type EDNSymbol = { sym: string };
@@ -43,7 +43,21 @@ const isEDNSymbol = (value: Record<string, EDNVal>): value is EDNSymbol => {
   return value.sym !== undefined;
 };
 
-const isEDNList = (value: Record<string, EDNVal>): value is EDNList => {
+const isEDNMap = (
+  value: Record<string, EDNVal | [EDNVal, EDNVal][]>,
+): value is EDNMap => {
+  return value.map !== undefined;
+};
+
+const isEDNSet = (
+  value: Record<string, EDNVal | EDNVal[]>,
+): value is EDNSet => {
+  return value.set !== undefined;
+};
+
+const isEDNList = (
+  value: Record<string, EDNVal | EDNVal[]>,
+): value is EDNList => {
   return value.list !== undefined;
 };
 
@@ -72,12 +86,6 @@ export const toEDNString = (value: EDNVal): string => {
     return JSON.stringify(value);
   }
 
-  if (value instanceof Map) {
-    return `{${[...value]
-      .map(([k, v]: [EDNVal, EDNVal]) => `${toEDNString(k)} ${toEDNString(v)}`)
-      .join(' ')}}`;
-  }
-
   if (Array.isArray(value)) {
     return `[${value.map(toEDNString).join(' ')}]`;
   }
@@ -90,10 +98,6 @@ export const toEDNString = (value: EDNVal): string => {
     return JSON.stringify(value);
   }
 
-  if (value instanceof Set) {
-    return `#{${[...value].map(toEDNString).join(' ')}}`;
-  }
-
   if (value === null) {
     return 'nil';
   }
@@ -104,6 +108,16 @@ export const toEDNString = (value: EDNVal): string => {
 
   if (typeof value === 'bigint') {
     return `${value}N`;
+  }
+
+  if (isEDNMap(value)) {
+    return `{${value.map
+      .map(([k, v]: [EDNVal, EDNVal]) => `${toEDNString(k)} ${toEDNString(v)}`)
+      .join(' ')}}`;
+  }
+
+  if (isEDNSet(value)) {
+    return `#{${value.set.map(toEDNString).join(' ')}}`;
   }
 
   if (isEDNKeyword(value)) {
@@ -169,12 +183,12 @@ export const parseEDNString = (
     if (stackItem === StackItem.vector) {
       prevState.push(result);
     } else if (stackItem === StackItem.list) {
-      prevState.list.push(result);
+      prevState.push(result);
     } else if (stackItem === StackItem.set) {
-      prevState.add(result);
+      prevState.push(result);
     } else if (stackItem === StackItem.map) {
       if (prevState[1].length > 0) {
-        prevState[0].set(prevState[1].pop(), result);
+        prevState[0].push([prevState[1].pop(), result]);
       } else {
         prevState[1].push(result);
       }
@@ -214,7 +228,9 @@ export const parseEDNString = (
     state = '';
   };
 
-  for (const char of edn.split('')) {
+  for (let i = 0; i < edn.length; i++) {
+    const char = edn[i];
+    // for (const char of edn.split('')) {
     if (mode === ParseMode.idle) {
       if (char === '"') {
         mode = ParseMode.string;
@@ -234,14 +250,14 @@ export const parseEDNString = (
           // TODO: What if map is closed too early?
           if (mapAsObject) {
             // TODO: what if map has non-stringable keys? keys as JSON?
-            result = [...prevState[0].entries()].reduce((memo, [k, v]) => {
+            result = prevState[0].reduce((memo, [k, v]) => {
               return { ...memo, [k]: v };
             }, {});
           } else {
-            result = prevState[0];
+            result = { map: prevState[0] };
           }
         } else {
-          result = prevState;
+          result = { set: prevState };
         }
         updateStack();
         continue;
@@ -258,7 +274,7 @@ export const parseEDNString = (
         match();
         updateStack();
         const [stackItem, prevState] = stack.pop();
-        result = prevState;
+        result = { list: prevState };
         updateStack();
         continue;
       }
@@ -266,17 +282,17 @@ export const parseEDNString = (
         stack.push([StackItem.vector, []]);
         continue;
       } else if (char === '(') {
-        stack.push([StackItem.list, { list: [] }]);
+        stack.push([StackItem.list, []]);
         continue;
       }
 
       state += char;
 
       if (state === '{') {
-        stack.push([StackItem.map, [new Map(), []]]);
+        stack.push([StackItem.map, [[], []]]);
         state = '';
       } else if (state === '#{') {
-        stack.push([StackItem.set, new Set()]);
+        stack.push([StackItem.set, []]);
         state = '';
       }
       continue;

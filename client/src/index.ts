@@ -29,7 +29,7 @@ const toEDNVal = (value: EDNCompatible): EDNVal => {
   if (Array.isArray(value)) {
     return value.map(toEDNVal);
   }
-  return new Map(Object.entries(value).map(([k, v]) => [k, toEDNVal(v)]));
+  return { map: Object.entries(value).map(([k, v]) => [k, toEDNVal(v)]) };
 };
 
 const uuidRegex = /[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
@@ -54,12 +54,14 @@ const toCruxDoc = ({
   [key: string]: EDNCompatible | undefined;
   id?: string;
 }): CruxMap => {
-  return new Map([
-    [cruxIdKeyword, isUUID(id) ? tagValue('uuid', id) : keyword(id)],
-    ...Object.entries(doc)
-      .filter(([k, v]) => v !== undefined)
-      .map(([k, v]) => [keyword(k), toEDNVal(v)] as [EDNKeyword, EDNVal]),
-  ]);
+  return {
+    map: [
+      [cruxIdKeyword, isUUID(id) ? tagValue('uuid', id) : keyword(id)],
+      ...Object.entries(doc)
+        .filter(([k, v]) => v !== undefined)
+        .map(([k, v]) => [keyword(k), toEDNVal(v)] as [EDNKeyword, EDNVal]),
+    ],
+  };
 };
 
 const genTransactions = () => {
@@ -118,14 +120,15 @@ const run = async () => {
         .default('http://localhost:3000')
         .asUrlString(),
     });
-    // await crux.readTxLog()
-    // return
+    console.log('read log');
+    await crux.readTxLog();
+    return;
     const numTransaction = env
       .get('NUM_TRANSACTIONS')
       .required()
       .asIntPositive();
     let lastTx;
-    console.log('Waiting for DB to be reachable')
+    console.log('Waiting for DB to be reachable');
     while (!(await crux.status())) {
       await sleep(1000);
     }
