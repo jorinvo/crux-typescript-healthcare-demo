@@ -12,6 +12,8 @@
 // TODO: Streaming maybe
 // TODO: parse options: keywordAsString, mapAsObject
 
+import * as stream from 'stream';
+
 export type EDNVal = EDNTaggableVal | EDNTaggedVal | Date;
 export type EDNTaggableVal =
   | EDNMap
@@ -166,165 +168,214 @@ const spaceChars = [',', ' ', '\t', '\n', '\r'];
 const intRegex = /^[-+]?(0|[1-9][0-9]*)$/;
 const floatRegex = /^[-+]?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?(0|[1-9][0-9]*))?M?$/;
 
-export const parseEDNString = (
-  edn: string,
-  { mapAsObject = false, keywordAsString = false } = {},
-): EDNVal | { [key: string]: EDNVal } => {
-  const stack = [];
-  let mode = ParseMode.idle;
-  let state = '';
-  let result: EDNVal | undefined;
+export class ParseEDNListSteam extends stream.Transform {
+  stack = [];
+  mode = ParseMode.idle;
+  state = '';
+  result: EDNVal | undefined;
+  started = false;
 
-  const updateStack = () => {
-    if (stack.length === 0 || result === undefined) {
+  keywordAsString = false;
+  mapAsObject = false;
+  listAsArray = false;
+
+  constructor({
+    mapAsObject = false,
+    keywordAsString = false,
+    listAsArray = false,
+  } = {}) {
+    super({ readableObjectMode: true });
+    this.mapAsObject = mapAsObject;
+    this.keywordAsString = keywordAsString;
+    this.listAsArray = listAsArray;
+  }
+
+  updateStack() {
+    if (this.stack.length === 0 || this.result === undefined) {
       return;
     }
-    const [stackItem, prevState] = stack[stack.length - 1];
+    const [stackItem, prevState] = this.stack[this.stack.length - 1];
     if (stackItem === StackItem.vector) {
-      prevState.push(result);
+      prevState.push(this.result);
     } else if (stackItem === StackItem.list) {
-      prevState.push(result);
+      prevState.push(this.result);
     } else if (stackItem === StackItem.set) {
-      prevState.push(result);
+      prevState.push(this.result);
     } else if (stackItem === StackItem.map) {
       if (prevState[1].length > 0) {
-        prevState[0].push([prevState[1].pop(), result]);
+        prevState[0].push([prevState[1].pop(), this.result]);
       } else {
-        prevState[1].push(result);
+        prevState[1].push(this.result);
       }
     } else if (stackItem === StackItem.tag) {
-      stack.pop();
+      this.stack.pop();
       if (prevState === 'inst') {
         // TODO: what if invalid date?
-        result = new Date(result as string);
+        this.result = new Date(this.result as string);
         return;
       }
-      result = { tag: prevState, val: result };
+      this.result = { tag: prevState, val: this.result };
       return;
     }
     //   // TODO: Else error
-    result = undefined;
-  };
+    this.result = undefined;
+  }
 
-  const match = () => {
-    if (state === 'nil') {
-      result = null;
-    } else if (state === 'true') {
-      result = true;
-    } else if (state === 'false') {
-      result = false;
-    } else if (state[0] === ':') {
-      result = keywordAsString ? state.substr(1) : { key: state.substr(1) };
-    } else if (state[0] === '#') {
-      stack.push([StackItem.tag, state.substr(1)]);
-      result = undefined;
-    } else if (intRegex.test(state)) {
-      result = parseInt(state, 10);
-    } else if (floatRegex.test(state)) {
-      result = parseFloat(state);
-    } else if (state !== '') {
-      result = { sym: state };
+  match() {
+    if (this.state === 'nil') {
+      this.result = null;
+    } else if (this.state === 'true') {
+      this.result = true;
+    } else if (this.state === 'false') {
+      this.result = false;
+    } else if (this.state[0] === ':') {
+      this.result = this.keywordAsString
+        ? this.state.substr(1)
+        : { key: this.state.substr(1) };
+    } else if (this.state[0] === '#') {
+      this.stack.push([StackItem.tag, this.state.substr(1)]);
+      this.result = undefined;
+    } else if (intRegex.test(this.state)) {
+      this.result = parseInt(this.state, 10);
+    } else if (floatRegex.test(this.state)) {
+      this.result = parseFloat(this.state);
+    } else if (this.state !== '') {
+      this.result = { sym: this.state };
     }
-    state = '';
-  };
+    this.state = '';
+  }
 
-  for (let i = 0; i < edn.length; i++) {
-    const char = edn[i];
-    // for (const char of edn.split('')) {
-    if (mode === ParseMode.idle) {
-      if (char === '"') {
-        mode = ParseMode.string;
-        state = '';
-        continue;
+  _transform(chunk, encoding, callback) {
+    // TODO encoding
+    const edn = chunk.toString();
+    for (let i = 0; i < edn.length; i++) {
+      if (this.stack.length === 0 && this.result !== undefined) {
+        this.push(this.result);
+        this.result = undefined;
       }
-      if (spaceChars.includes(char)) {
-        match();
-        updateStack();
-        continue;
-      }
-      if (char === '}') {
-        match();
-        updateStack();
-        const [stackItem, prevState] = stack.pop();
-        if (stackItem === StackItem.map) {
-          // TODO: What if map is closed too early?
-          if (mapAsObject) {
-            // TODO: what if map has non-stringable keys? keys as JSON?
-            result = prevState[0].reduce((memo, [k, v]) => {
-              return { ...memo, [k]: v };
-            }, {});
-          } else {
-            result = { map: prevState[0] };
-          }
-        } else {
-          result = { set: prevState };
+
+      const char = edn[i];
+      if (this.mode === ParseMode.idle) {
+        if (char === '"') {
+          this.mode = ParseMode.string;
+          this.state = '';
+          continue;
         }
-        updateStack();
-        continue;
-      }
-      if (char === ']') {
-        match();
-        updateStack();
-        const [stackItem, prevState] = stack.pop();
-        result = prevState;
-        updateStack();
-        continue;
-      }
-      if (char === ')') {
-        match();
-        updateStack();
-        const [stackItem, prevState] = stack.pop();
-        result = { list: prevState };
-        updateStack();
-        continue;
-      }
-      if (char === '[') {
-        stack.push([StackItem.vector, []]);
-        continue;
-      } else if (char === '(') {
-        stack.push([StackItem.list, []]);
-        continue;
-      }
+        if (spaceChars.includes(char)) {
+          this.match();
+          this.updateStack();
+          continue;
+        }
+        if (char === '}') {
+          this.match();
+          this.updateStack();
+          const [stackItem, prevState] = this.stack.pop();
+          if (stackItem === StackItem.map) {
+            // TODO: What if map is closed too early?
+            if (this.mapAsObject) {
+              // TODO: what if map has non-stringable keys? keys as JSON?
+              this.result = prevState[0].reduce((memo, [k, v]) => {
+                return { ...memo, [k]: v };
+              }, {});
+            } else {
+              this.result = { map: prevState[0] };
+            }
+          } else {
+            this.result = { set: prevState };
+          }
+          this.updateStack();
+          continue;
+        }
+        if (char === ']') {
+          this.match();
+          this.updateStack();
+          const [stackItem, prevState] = this.stack.pop();
+          this.result = prevState;
+          this.updateStack();
+          continue;
+        }
+        if (char === ')') {
+          this.match();
+          this.updateStack();
+          if (this.stack.length === 0) {
+            if (this.result !== undefined) {
+              this.push(this.result);
+            }
+            this.push(null);
+            callback();
+            return;
+          }
+          const [stackItem, prevState] = this.stack.pop();
+          if (this.listAsArray) {
+            this.result = prevState;
+          } else {
+            this.result = { list: prevState };
+          }
+          this.updateStack();
+          continue;
+        }
+        if (char === '[') {
+          this.stack.push([StackItem.vector, []]);
+          continue;
+        } else if (char === '(') {
+          if (!this.started) {
+            this.started = true;
+            continue;
+          }
+          this.stack.push([StackItem.list, []]);
+          continue;
+        }
 
-      state += char;
+        this.state += char;
 
-      if (state === '{') {
-        stack.push([StackItem.map, [[], []]]);
-        state = '';
-      } else if (state === '#{') {
-        stack.push([StackItem.set, []]);
-        state = '';
-      }
-      continue;
-    } else if (mode === ParseMode.string) {
-      if (char === '\\') {
-        stack.push([mode, state]);
-        mode = ParseMode.escape;
-        state = '';
+        if (this.state === '{') {
+          this.stack.push([StackItem.map, [[], []]]);
+          this.state = '';
+        } else if (this.state === '#{') {
+          this.stack.push([StackItem.set, []]);
+          this.state = '';
+        }
         continue;
+      } else if (this.mode === ParseMode.string) {
+        if (char === '\\') {
+          this.stack.push([this.mode, this.state]);
+          this.mode = ParseMode.escape;
+          this.state = '';
+          continue;
+        }
+        if (char === '"') {
+          this.mode = ParseMode.idle;
+          this.result = this.state;
+          this.updateStack();
+          this.state = '';
+          continue;
+        }
+        this.state += char;
+      } else if (this.mode === ParseMode.escape) {
+        // TODO what should happen when escaping other char
+        const escapedChar = stringEscapeMap[char];
+        const [stackItem, prevState] = this.stack.pop();
+        this.mode = stackItem;
+        this.state = prevState + escapedChar;
       }
-      if (char === '"') {
-        mode = ParseMode.idle;
-        result = state;
-        updateStack();
-        state = '';
-        continue;
-      }
-      state += char;
-    } else if (mode === ParseMode.escape) {
-      // TODO what should happen when escaping other char
-      const escapedChar = stringEscapeMap[char];
-      const [stackItem, prevState] = stack.pop();
-      mode = stackItem;
-      state = prevState + escapedChar;
     }
+    callback();
   }
+}
 
-  if (result === undefined) {
-    match();
-    // while (stack.length > 0){
-    updateStack();
-    // }
-  }
-  return result;
+export const parseEDNListStream = ({
+  mapAsObject = false,
+  keywordAsString = false,
+  listAsArray = false,
+} = {}) => {
+  return new ParseEDNListSteam({ mapAsObject, keywordAsString, listAsArray });
+};
+
+export const parseEDNString = (
+  edn: string,
+  { mapAsObject = false, keywordAsString = false, listAsArray = false } = {},
+): EDNVal | { [key: string]: EDNVal } => {
+  const s = parseEDNListStream({ mapAsObject, keywordAsString, listAsArray });
+  s.write('(' + edn + ')');
+  return s.read();
 };

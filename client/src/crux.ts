@@ -5,6 +5,7 @@ import {
   EDNKeyword,
   toEDNString,
   parseEDNString,
+  parseEDNListStream,
   keyword,
 } from './edn';
 
@@ -54,26 +55,21 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
       };
     },
 
-    async readTxLog() {
-      const response = await httpClient.get('tx-log', {
+    async readTxLog({ withOps = false, afterTxId = 0 } = {}) {
+      const response = await httpClient.stream('tx-log', {
         headers: { 'Content-Type': 'application/edn' },
         searchParams: {
-          'with-ops': false,
-          'after-tx-id': 9998,
+          'with-ops': withOps,
+          'after-tx-id': afterTxId,
         },
       });
-      console.log('hi');
-      const parsed = parseEDNString(response.body, {
-        keywordAsString: true,
-        mapAsObject: true,
-      });
-      console.log('parsed');
-      console.log(JSON.stringify(parsed, null, 2));
-      // console.log((parsed as any).list)
-      // return {
-      //   txId: parsed['crux.tx/tx-id'],
-      //   txTime: parsed['crux.tx/tx-time'],
-      // };
+      return response.pipe(
+        parseEDNListStream({
+          keywordAsString: true,
+          mapAsObject: true,
+          listAsArray: true,
+        }),
+      );
     },
 
     async awaitTx(txId: number) {

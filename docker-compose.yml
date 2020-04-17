@@ -11,10 +11,10 @@ services:
       # JMX
       - 9010:9010
       # Prometheus metrics
-      - 8080:8080
+      # - 8080:8080
     command:
       - 'clojure'
-      - '-J-Xmx1G'
+      - '-J-Xmx4G'
       - '-J-XX:+HeapDumpOnOutOfMemoryError'
       - '-J-Dcom.sun.management.jmxremote=true'
       - '-J-Dcom.sun.management.jmxremote.local.only=false'
@@ -30,7 +30,7 @@ services:
     build: client
     environment:
       CRUX_URL: 'http://crux:3000'
-      NUM_TRANSACTIONS: 200
+      NUM_TRANSACTIONS: 2000
     volumes:
       - ./client:/home/node
     command: 'npm run all'

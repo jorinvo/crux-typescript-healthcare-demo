@@ -1,5 +1,9 @@
+import * as stream from 'stream';
+import { promisify } from 'util';
+
 import got from 'got';
 import * as env from 'env-var';
+import * as streamToArray from 'stream-to-array';
 
 import { keyword, EDNVal, EDNKeyword, tagValue } from './edn';
 import { CruxMap, setupCrux, cruxIdKeyword } from './crux';
@@ -12,6 +16,8 @@ import {
   genPutTx,
 } from './generate';
 import { departmentTitles } from './hospitalData';
+
+const pipeline = promisify(stream.pipeline);
 
 type EDNCompatible =
   | string
@@ -112,6 +118,45 @@ const genTransactions = () => {
   return transactions;
 };
 
+class CountStream extends stream.Writable {
+  count = 0;
+  _write(chunk, encoding, callback) {
+    this.count++;
+    callback();
+  }
+}
+
+class CountTxStream extends stream.Writable {
+  count = 0;
+  constructor() {
+    super({ objectMode: true });
+  }
+  _write(chunk, encoding, callback) {
+    this.count += chunk['crux.tx.event/tx-events'].length;
+    callback();
+  }
+}
+
+class LimitedStream extends stream.Transform {
+  count = 0;
+  _transform(chunk, encoding, callback) {
+    if (this.count < 1) {
+      this.push(null);
+    } else {
+      this.push(chunk);
+    }
+    this.count--;
+    callback();
+  }
+}
+const limitObjectStream = (count: number) => {
+  const s = new LimitedStream({
+    objectMode: true,
+  });
+  s.count = count;
+  return s;
+};
+
 const run = async () => {
   try {
     const crux = setupCrux({
@@ -120,8 +165,10 @@ const run = async () => {
         .default('http://localhost:3000')
         .asUrlString(),
     });
-    console.log('read log');
-    await crux.readTxLog();
+    // console.log('counting events in log');
+    // const countStream = new CountTxStream();
+    // await pipeline(await crux.readTxLog(), countStream);
+    // console.log(countStream.count);
     return;
     const numTransaction = env
       .get('NUM_TRANSACTIONS')
@@ -137,10 +184,10 @@ const run = async () => {
       console.log(`submitting batch ${i}`);
       const res = await crux.submit(transactions);
       lastTx = res.txId;
-      // await crux.awaitTx(lastTx);
+      console.log('awaiting tx', lastTx);
+      await crux.awaitTx(lastTx);
     }
     if (lastTx) {
-      console.log('awaiting tx', lastTx);
       await crux.awaitTx(lastTx);
     }
     console.log(await crux.attributeStats());

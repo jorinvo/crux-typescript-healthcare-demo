@@ -1,4 +1,7 @@
-FROM clojure:openjdk-11-tools-deps
+FROM oracle/graalvm-ce:20.0.0
+
+# Install Clojure
+RUN curl -s https://download.clojure.org/install/linux-install-1.10.1.536.sh | bash
 
 WORKDIR /usr/lib/crux
 EXPOSE 3000
