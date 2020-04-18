@@ -6,6 +6,7 @@
   "scripts": {
     "all": "npm i && npm run build && npm start",
     "start": "node .",
+    "repl": "npm run -s build && node --experimental-repl-await dist/repl.js",
     "test": "ava",
     "test:watch": "ava --watch",
     "build": "tsc",

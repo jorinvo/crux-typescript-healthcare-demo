@@ -60,7 +60,7 @@ const isEDNMap = (
   return value.map !== undefined;
 };
 
-export const isEDNSet = (
+const isEDNSet = (
   value: Record<string, EDNVal | EDNVal[]>,
 ): value is EDNSet => {
   return value.set !== undefined;

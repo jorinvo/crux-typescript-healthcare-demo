@@ -1,5 +1,6 @@
 import * as stream from 'stream';
-import { promisify } from 'util';
+import * as repl from 'repl';
+import { promisify, inspect } from 'util';
 
 import got from 'got';
 import * as env from 'env-var';
@@ -117,14 +118,6 @@ const genTransactions = () => {
   return transactions;
 };
 
-class CountStream extends stream.Writable {
-  count = 0;
-  _write(chunk, encoding, callback) {
-    this.count++;
-    callback();
-  }
-}
-
 class CountTxStream extends stream.Writable {
   count = 0;
   constructor() {
@@ -164,49 +157,26 @@ const run = async () => {
         .default('http://localhost:3000')
         .asUrlString(),
     });
-    // console.log('counting events in log');
-    // const countStream = new CountTxStream();
-    // await pipeline(await crux.readTxLog(), countStream);
-    // console.log(countStream.count);
-    console.log('patients');
-    console.log(
-      await crux.query({
-        find: ['l', 'f'],
-        where: [
-          ['id', 'patientLastName', 'l'],
-          ['id', 'patientFirstName', 'f'],
-        ],
-        // args: [ {
-        // 	c: "Antonia"
-        // },{c:'Justus'} ],
-        limit: 10,
-        orderBy: [{ asc: 'l' }, { desc: 'f' }],
-        // fullResults: true,
-      }),
-      // .length
-    );
-    return;
-    const numTransaction = env
-      .get('NUM_TRANSACTIONS')
-      .required()
-      .asIntPositive();
-    let lastTx;
-    console.log('Waiting for DB to be reachable');
-    while (!(await crux.status())) {
-      await sleep(1000);
-    }
-    for (let i = 0; i < numTransaction; i++) {
-      const transactions = genTransactions();
-      console.log(`submitting batch ${i}`);
-      const res = await crux.submit(transactions);
-      lastTx = res.txId;
-      console.log('awaiting tx', lastTx);
-      await crux.awaitTx(lastTx);
-    }
-    if (lastTx) {
-      await crux.awaitTx(lastTx);
-    }
-    console.log(await crux.attributeStats());
+    // const numTransaction = env
+    //   .get('NUM_TRANSACTIONS')
+    //   .required()
+    //   .asIntPositive();
+    // let lastTx;
+    // console.log('Waiting for DB to be reachable');
+    // while (!(await crux.status())) {
+    //   await sleep(1000);
+    // }
+    // for (let i = 0; i < numTransaction; i++) {
+    //   const transactions = genTransactions();
+    //   console.log(`submitting batch ${i}`);
+    //   const res = await crux.submit(transactions);
+    //   lastTx = res.txId;
+    //   console.log('awaiting tx', lastTx);
+    //   await crux.awaitTx(lastTx);
+    // }
+    // if (lastTx) {
+    //   await crux.awaitTx(lastTx);
+    // }
   } catch (error) {
     if (error instanceof got.HTTPError || error instanceof got.ParseError) {
       console.log(error.response.body);
