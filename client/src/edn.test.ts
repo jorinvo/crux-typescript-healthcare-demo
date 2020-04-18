@@ -1,7 +1,6 @@
-import * as stream from 'stream'
-import { promisify } from 'util'
+import { promisify } from 'util';
 
-import * as streamToArray from 'stream-to-array'
+import * as streamToArray from 'stream-to-array';
 import test from 'ava';
 
 import { EDNVal, toEDNString, parseEDNString, parseEDNListStream } from './edn';
@@ -261,7 +260,7 @@ test('crux tx response as object', (t) => {
   t.deepEqual(
     parseEDNString(
       '{:crux.tx/tx-id 2, :crux.tx/tx-time #inst "2020-04-13T08:01:14.261-00:00"}',
-      { mapAsObject: true, keywordAsString: true },
+      { mapAs: 'object', keywordAs: 'string' },
     ),
     {
       'crux.tx/tx-id': 2,
@@ -271,27 +270,27 @@ test('crux tx response as object', (t) => {
 });
 
 test('stream', (t) => {
-  const s = parseEDNListStream({mapAsObject:true, keywordAsString:true});
-  s.write(' ({:hello "world"} "how are you"')
-  s.write('"my')
-  s.write(' friend" :end false)')
-  t.deepEqual(s.read(), { hello: 'world' })
-  t.deepEqual(s.read(), "how are you")
-  t.deepEqual(s.read(), "my friend")
-  t.deepEqual(s.read(), "end")
-  t.deepEqual(s.read(), false)
+  const s = parseEDNListStream({ mapAs: 'object', keywordAs: 'string' });
+  s.write(' ({:hello "world"} "how are you"');
+  s.write('"my');
+  s.write(' friend" :end false)');
+  t.deepEqual(s.read(), { hello: 'world' });
+  t.deepEqual(s.read(), 'how are you');
+  t.deepEqual(s.read(), 'my friend');
+  t.deepEqual(s.read(), 'end');
+  t.deepEqual(s.read(), false);
 });
 
 test('stream-to-array', async (t) => {
-  const s = parseEDNListStream({mapAsObject:true, keywordAsString:true});
-  s.write(' ({:hello "world"} "how are you"')
-  s.write('"my')
-  s.write(' friend" :end false)')
+  const s = parseEDNListStream({ mapAs: 'object', keywordAs: 'string' });
+  s.write(' ({:hello "world"} "how are you"');
+  s.write('"my');
+  s.write(' friend" :end false)');
   t.deepEqual(await promisify(streamToArray)(s), [
-     { hello: 'world' },
-     'how are you',
-     'my friend',
-     'end',
-     false,
-  ])
+    { hello: 'world' },
+    'how are you',
+    'my friend',
+    'end',
+    false,
+  ]);
 });

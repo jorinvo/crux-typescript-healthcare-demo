@@ -6,13 +6,27 @@ import {
   toEDNString,
   parseEDNString,
   parseEDNListStream,
-  keyword,
+  isEDNSet,
+  toKeyword,
+  toSymbol,
 } from './edn';
 
 export type CruxMap = { map: [EDNKeyword, EDNVal][] };
 
-export const cruxIdKeyword = keyword('crux.db/id');
-const cruxPutKeyword = keyword('crux.tx/put');
+export const cruxIdKeyword = toKeyword('crux.db/id');
+const cruxPutKeyword = toKeyword('crux.tx/put');
+
+const toKeywordMap = (obj: Record<string, EDNVal>): CruxMap => {
+  return {
+    map: Object.entries(obj)
+      .filter(([k, v]) => {
+        return v !== undefined;
+      })
+      .map(([k, v]) => {
+        return [toKeyword(k), v];
+      }),
+  };
+};
 
 export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
   const httpClient = got.extend({ prefixUrl });
@@ -23,8 +37,8 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
           headers: { 'Content-Type': 'application/edn' },
         });
         const parsed = parseEDNString(response.body, {
-          keywordAsString: true,
-          mapAsObject: true,
+          keywordAs: 'string',
+          mapAs: 'object',
         });
         return parsed;
       } catch (e) {
@@ -46,13 +60,95 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
         body: toEDNString(transactions),
       });
       const parsed = parseEDNString(response.body, {
-        keywordAsString: true,
-        mapAsObject: true,
+        keywordAs: 'string',
+        mapAs: 'object',
       });
       return {
         txId: parsed['crux.tx/tx-id'],
         txTime: parsed['crux.tx/tx-time'],
       };
+    },
+
+    async query(
+      {
+        find,
+        where,
+        args,
+        // TODO: rules,
+        offset,
+        limit,
+        orderBy,
+        timeout,
+        fullResults,
+      }: {
+        find: string[];
+        where: [string, string, string][];
+        args?: { [arg: string]: EDNVal }[];
+        // rules?: string;
+        offset?: number;
+        limit?: number;
+        orderBy?: (
+          | { asc: string; desc?: undefined }
+          | { desc: string; asc?: undefined }
+        )[];
+        timeout?: number;
+        fullResults?: boolean;
+      },
+      { validTime }: { validTime?: Date } = {},
+    ) {
+      // TODO support predicates
+      const query = toKeywordMap({
+        // TODO: validate that find symbols are in where and _ is not allowed
+        find: find.map(toSymbol),
+        where: where.map(([e, a, v]) => {
+          return [toSymbol(e), toKeyword(a), toSymbol(v)];
+        }),
+        // TODO: validate that 3rd elem in where is in args
+        args:
+          args &&
+          args.map((arg) => {
+            return {
+              map: Object.entries(arg).map(([k, v]) => {
+                return [toSymbol(k), v];
+              }),
+            };
+          }),
+        // rules,
+        offset,
+        limit,
+        'order-by':
+				//TODO: assert in where clause
+          orderBy &&
+          orderBy.map((order) => {
+            if (order.asc !== undefined) {
+              return [toSymbol(order.asc), toKeyword('asc')];
+            }
+            return [toSymbol(order.desc), toKeyword('desc')];
+          }),
+        timeout,
+        'full-results?': fullResults,
+      });
+      const response = await httpClient.post('query', {
+        headers: { 'Content-Type': 'application/edn' },
+        body: toEDNString(
+          toKeywordMap({
+            query,
+            'valid-time': validTime,
+          }),
+        ),
+      });
+      const parsed = parseEDNString(response.body, {
+        keywordAs: 'string',
+        mapAs: 'object',
+      }) as any;
+      if (fullResults) {
+        return parsed.set as Record<string, EDNVal>[];
+      }
+      return (orderBy ? parsed : parsed.set).map((row) =>
+        find.reduce((memo, field, i) => {
+          return { ...memo, [field]: row[i] };
+        }, {}),
+      );
     },
 
     async readTxLog({ withOps = false, afterTxId = 0 } = {}) {
@@ -65,9 +161,9 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
       });
       return response.pipe(
         parseEDNListStream({
-          keywordAsString: true,
-          mapAsObject: true,
-          listAsArray: true,
+          keywordAs: 'string',
+          mapAs: 'object',
+          listAs: 'array',
         }),
       );
     },
@@ -78,8 +174,8 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
         searchParams: { 'tx-id': txId },
       });
       const parsed = parseEDNString(response.body, {
-        keywordAsString: true,
-        mapAsObject: true,
+        keywordAs: 'string',
+        mapAs: 'object',
       });
       return {
         txId: parsed['crux.tx/tx-id'],
@@ -92,8 +188,8 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
         headers: { 'Content-Type': 'application/edn' },
       });
       return parseEDNString(response.body, {
-        keywordAsString: true,
-        mapAsObject: true,
+        keywordAs: 'string',
+        mapAs: 'object',
       });
     },
   };

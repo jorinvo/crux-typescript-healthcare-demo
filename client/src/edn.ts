@@ -1,3 +1,4 @@
+// TODO: test ParseOptions
 // TODO: support chars
 // TODO: support bigint
 // TODO: support comment
@@ -10,7 +11,6 @@
 // TODO: What happens with empty doc
 // TODO: Error when wrong closing tag
 // TODO: Streaming maybe
-// TODO: parse options: keywordAsString, mapAsObject
 
 import * as stream from 'stream';
 
@@ -37,6 +37,15 @@ export type EDNSymbol = { sym: string };
 export type EDNList = { list: EDNVal[] };
 export type EDNTaggedVal = { tag: string; val: EDNVal };
 
+interface ParseOptions {
+  // TODO mapAs map
+  mapAs?: 'doubleArray' | 'object';
+  // TODO mapAs set
+  setAs?: 'object' | 'array';
+  keywordAs?: 'object' | 'string';
+  listAs?: 'object' | 'array';
+}
+
 const isEDNKeyword = (value: Record<string, EDNVal>): value is EDNKeyword => {
   return value.key !== undefined;
 };
@@ -51,7 +60,7 @@ const isEDNMap = (
   return value.map !== undefined;
 };
 
-const isEDNSet = (
+export const isEDNSet = (
   value: Record<string, EDNVal | EDNVal[]>,
 ): value is EDNSet => {
   return value.set !== undefined;
@@ -79,8 +88,13 @@ export const tagValue = (tag: string, value: EDNVal): EDNTaggedVal => {
 };
 
 // TODO: Keyword has char restrictions
-export const keyword = (value: string): EDNKeyword => {
+export const toKeyword = (value: string): EDNKeyword => {
   return { key: value };
+};
+
+// TODO: Symbol has char restrictions
+export const toSymbol = (value: string): EDNSymbol => {
+  return { sym: value };
 };
 
 export const toEDNString = (value: EDNVal): string => {
@@ -175,19 +189,22 @@ export class ParseEDNListSteam extends stream.Transform {
   result: EDNVal | undefined;
   started = false;
 
-  keywordAsString = false;
-  mapAsObject = false;
-  listAsArray = false;
+  mapAs: ParseOptions['mapAs'];
+  setAs: ParseOptions['setAs'];
+  keywordAs: ParseOptions['keywordAs'];
+  listAs: ParseOptions['listAs'];
 
   constructor({
-    mapAsObject = false,
-    keywordAsString = false,
-    listAsArray = false,
-  } = {}) {
+    mapAs = 'doubleArray',
+    setAs = 'object',
+    keywordAs = 'object',
+    listAs = 'object',
+  }: ParseOptions = {}) {
     super({ readableObjectMode: true });
-    this.mapAsObject = mapAsObject;
-    this.keywordAsString = keywordAsString;
-    this.listAsArray = listAsArray;
+    this.mapAs = mapAs;
+    this.setAs = setAs;
+    this.keywordAs = keywordAs;
+    this.listAs = listAs;
   }
 
   updateStack() {
@@ -229,9 +246,10 @@ export class ParseEDNListSteam extends stream.Transform {
     } else if (this.state === 'false') {
       this.result = false;
     } else if (this.state[0] === ':') {
-      this.result = this.keywordAsString
-        ? this.state.substr(1)
-        : { key: this.state.substr(1) };
+      this.result =
+        this.keywordAs === 'string'
+          ? this.state.substr(1)
+          : { key: this.state.substr(1) };
     } else if (this.state[0] === '#') {
       this.stack.push([StackItem.tag, this.state.substr(1)]);
       this.result = undefined;
@@ -272,7 +290,7 @@ export class ParseEDNListSteam extends stream.Transform {
           const [stackItem, prevState] = this.stack.pop();
           if (stackItem === StackItem.map) {
             // TODO: What if map is closed too early?
-            if (this.mapAsObject) {
+            if (this.mapAs === 'object') {
               // TODO: what if map has non-stringable keys? keys as JSON?
               this.result = prevState[0].reduce((memo, [k, v]) => {
                 return { ...memo, [k]: v };
@@ -281,7 +299,11 @@ export class ParseEDNListSteam extends stream.Transform {
               this.result = { map: prevState[0] };
             }
           } else {
-            this.result = { set: prevState };
+            if (this.setAs === 'array') {
+              this.result = prevState;
+            } else {
+              this.result = { set: prevState };
+            }
           }
           this.updateStack();
           continue;
@@ -306,7 +328,7 @@ export class ParseEDNListSteam extends stream.Transform {
             return;
           }
           const [stackItem, prevState] = this.stack.pop();
-          if (this.listAsArray) {
+          if (this.listAs === 'array') {
             this.result = prevState;
           } else {
             this.result = { list: prevState };
@@ -363,19 +385,15 @@ export class ParseEDNListSteam extends stream.Transform {
   }
 }
 
-export const parseEDNListStream = ({
-  mapAsObject = false,
-  keywordAsString = false,
-  listAsArray = false,
-} = {}) => {
-  return new ParseEDNListSteam({ mapAsObject, keywordAsString, listAsArray });
+export const parseEDNListStream = (parseOptions?: ParseOptions) => {
+  return new ParseEDNListSteam(parseOptions);
 };
 
 export const parseEDNString = (
   edn: string,
-  { mapAsObject = false, keywordAsString = false, listAsArray = false } = {},
+  parseOptions?: ParseOptions,
 ): EDNVal | { [key: string]: EDNVal } => {
-  const s = parseEDNListStream({ mapAsObject, keywordAsString, listAsArray });
+  const s = parseEDNListStream(parseOptions);
   s.write('(' + edn + ')');
   return s.read();
 };

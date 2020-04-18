@@ -3,9 +3,8 @@ import { promisify } from 'util';
 
 import got from 'got';
 import * as env from 'env-var';
-import * as streamToArray from 'stream-to-array';
 
-import { keyword, EDNVal, EDNKeyword, tagValue } from './edn';
+import { toKeyword, EDNVal, EDNKeyword, tagValue } from './edn';
 import { CruxMap, setupCrux, cruxIdKeyword } from './crux';
 import {
   genUser,
@@ -62,10 +61,10 @@ const toCruxDoc = ({
 }): CruxMap => {
   return {
     map: [
-      [cruxIdKeyword, isUUID(id) ? tagValue('uuid', id) : keyword(id)],
+      [cruxIdKeyword, isUUID(id) ? tagValue('uuid', id) : toKeyword(id)],
       ...Object.entries(doc)
         .filter(([k, v]) => v !== undefined)
-        .map(([k, v]) => [keyword(k), toEDNVal(v)] as [EDNKeyword, EDNVal]),
+        .map(([k, v]) => [toKeyword(k), toEDNVal(v)] as [EDNKeyword, EDNVal]),
     ],
   };
 };
@@ -169,6 +168,23 @@ const run = async () => {
     // const countStream = new CountTxStream();
     // await pipeline(await crux.readTxLog(), countStream);
     // console.log(countStream.count);
+    console.log('patients');
+    console.log(
+      await crux.query({
+        find: ['l', 'f'],
+        where: [
+          ['id', 'patientLastName', 'l'],
+          ['id', 'patientFirstName', 'f'],
+        ],
+        // args: [ {
+        // 	c: "Antonia"
+        // },{c:'Justus'} ],
+        limit: 10,
+        orderBy: [{ asc: 'l' }, { desc: 'f' }],
+        // fullResults: true,
+      }),
+      // .length
+    );
     return;
     const numTransaction = env
       .get('NUM_TRANSACTIONS')
