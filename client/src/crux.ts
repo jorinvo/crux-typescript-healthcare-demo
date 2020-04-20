@@ -134,6 +134,42 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
       };
     },
 
+    async getEntity(
+      entityId: string,
+      {
+        validTime,
+        transactionTime,
+      }: { validTime?: Date; transactionTime?: Date } = {},
+    ) {
+      const response = await httpClient.post('entity', {
+        headers: { 'Content-Type': 'application/edn' },
+        body: toEDNString(
+          toKeywordMap({
+            eid: entityId,
+            'valid-time': validTime,
+            'transaction-time': transactionTime,
+          }),
+        ),
+      });
+      const parsed = parseEDNString(response.body, {
+        keywordAs: 'string',
+        mapAs: 'object',
+      }) as any;
+      return parsed;
+    },
+
+    async getDocuments(contentHashes: string[]) {
+      const response = await httpClient.post('documents', {
+        headers: { 'Content-Type': 'application/edn' },
+        body: toEDNString({ set: contentHashes }),
+      });
+      const parsed = parseEDNString(response.body, {
+        keywordAs: 'string',
+        mapAs: 'object',
+      }) as any;
+      return parsed;
+    },
+
     async query(
       queryOptions: QueryOptions,
       { validTime }: { validTime?: Date } = {},

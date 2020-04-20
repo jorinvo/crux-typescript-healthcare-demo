@@ -2,7 +2,6 @@
   "name": "crux-hrtbt",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
   "scripts": {
     "all": "npm i && npm run build && npm start",
     "start": "node .",
@@ -10,10 +9,11 @@
     "repl:watch": "tsc-watch --onSuccess 'npm run -s repl'",
     "gen": "node dist/generate.js",
     "gen:watch": "tsc-watch --onSuccess 'npm run -s gen'",
+    "follow": "node dist/follow.js",
+    "follow:watch": "tsc-watch --onSuccess 'npm run -s follow'",
     "test": "ava",
     "test:watch": "ava --watch",
     "build": "tsc",
-    "dev": "tsc-watch --onSuccess 'node dist/index.js'",
     "lint": "eslint '*/**/*.ts'",
     "fix": "npm run -s lint -- --fix"
   },

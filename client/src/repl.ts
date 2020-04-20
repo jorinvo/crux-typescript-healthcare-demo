@@ -98,6 +98,8 @@ const replServer = repl.start({
     return `\u001b[90m${diff}ms\u001b[39m\n${o}`;
   },
 });
+replServer.context.pipeline = pipeline;
+replServer.context.CountStream = CountStream;
 replServer.context.crux = crux;
 replServer.context.demo = demo;
 const origEval = replServer.eval;
