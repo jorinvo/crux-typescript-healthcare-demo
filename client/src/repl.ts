@@ -4,7 +4,7 @@
 // await crux.attributeStats()
 // await demo.countLogEvents()
 //
-// paste in .editor
+// paste in .editor:
 // await crux.query({
 //   find: ['f', 'c', 'p', 'd', 'u'],
 //   where: [

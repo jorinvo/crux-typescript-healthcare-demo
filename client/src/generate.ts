@@ -134,8 +134,7 @@ export const genFormDefinition = (): FormDefinition => {
 
   return {
     type: 'formDefinition',
-    // TODO gen id from title and check for conflicts with existing forms
-    id: 'formDefinition/' + faker.random.alphaNumeric(10),
+    id: faker.random.uuid(),
     formDefinitionTitle: faker.lorem
       .words(faker.random.number({ min: 2, max: 7 }))
       .replace(/^\w/, (c) => c.toUpperCase()),
@@ -308,7 +307,6 @@ const genTransactions = () => {
     ...formDefinitions,
     ...formData,
   ].map((doc) => genPutTx(toCruxDoc(doc)));
-  console.log(JSON.stringify(patients, null, 2));
   return transactions;
 };
 

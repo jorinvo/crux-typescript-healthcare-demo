@@ -5,6 +5,7 @@ services:
     build: server
     volumes:
       - ./server/db:/usr/lib/crux/db
+      - ./server/event-log:/usr/lib/crux/event-log
     ports:
       # Crux
       - 3000:3000
