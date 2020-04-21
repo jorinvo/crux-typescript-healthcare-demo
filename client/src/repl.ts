@@ -3,6 +3,22 @@
 // await crux.status()
 // await crux.attributeStats()
 // await demo.countLogEvents()
+//
+// paste in .editor
+// await crux.query({
+//   find: ['f', 'c', 'p', 'd', 'u'],
+//   where: [
+//     ['c', 'casePatientId', 'p'],
+//     ['f', 'formDataCaseId', 'c'],
+//     ['f', 'auditUserId', 'u'],
+//     ['f', 'formDataDefinitionId', 'd']
+//   ],
+//   limit: 1,
+//   fullResults: true
+// })
+//
+// Use programatically:
+// echo 'await crux.attributeStats()' | npm run -s repl | tail -n +1
 
 import * as stream from 'stream';
 import * as repl from 'repl';
@@ -45,18 +61,18 @@ const demo = {
     await pipeline(await crux.readTxLog(), countStream);
     return countStream.count;
   },
+
   async countPatients() {
     const countStream = new CountStream();
     await pipeline(
       await crux.queryStream({
         find: ['id'],
         where: [
-          ['id', 'patientLastName', '_'],
-          ['id', 'patientFirstName', '_'],
+          ['id', 'type', 't'],
         ],
-        // limit: 2,
-        // orderBy: [{ asc: 'l' }, { desc: 'f' }],
-        // fullResults: true,
+        args: [
+          { t: 'patient' }
+        ]
       }),
       countStream,
     );
@@ -68,7 +84,11 @@ let evalStartTime: number;
 const replServer = repl.start({
   ignoreUndefined: true,
   breakEvalOnSigint: true,
+  prompt: process.stdin.isTTY ? '> ' : '',
   writer(output) {
+    if (!process.stdin.isTTY || !process.stdout.isTTY) {
+      return JSON.stringify(output, null, 2);
+    }
     const now = Date.now();
     const diff = now - evalStartTime;
     const o = inspect(output, { depth: 5, colors: true });

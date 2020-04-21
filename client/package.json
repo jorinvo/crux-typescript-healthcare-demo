@@ -6,12 +6,14 @@
   "scripts": {
     "all": "npm i && npm run build && npm start",
     "start": "node .",
-    "repl": "npm run -s build && node --experimental-repl-await dist/repl.js",
+    "repl": "node --experimental-repl-await dist/repl.js",
+    "repl:watch": "tsc-watch --onSuccess 'npm run -s repl'",
+    "gen": "node dist/generate.js",
+    "gen:watch": "tsc-watch --onSuccess 'npm run -s gen'",
     "test": "ava",
     "test:watch": "ava --watch",
     "build": "tsc",
     "dev": "tsc-watch --onSuccess 'node dist/index.js'",
-    "link": "npm run build && cd dist && npm link",
     "lint": "eslint '*/**/*.ts'",
     "fix": "npm run -s lint -- --fix"
   },
