@@ -5,7 +5,7 @@ import got from 'got';
 import * as env from 'env-var';
 
 import { setupCrux, cruxIdKeyword, putTx, CruxMap } from './crux';
-import { tagValue, toKeyword } from './edn';
+import { toKeyword } from './crux/edn';
 
 const pipeline = promisify(stream.pipeline);
 
@@ -13,26 +13,6 @@ const sleep = (ms: number) => {
   return new Promise((resolve) => {
     return setTimeout(resolve, ms);
   });
-};
-
-class LimitedStream extends stream.Transform {
-  count = 0;
-  _transform(chunk, encoding, callback) {
-    if (this.count < 1) {
-      this.push(null);
-    } else {
-      this.push(chunk);
-    }
-    this.count--;
-    callback();
-  }
-}
-const limitObjectStream = (count: number) => {
-  const s = new LimitedStream({
-    objectMode: true,
-  });
-  s.count = count;
-  return s;
 };
 
 const now = () => new Date();
@@ -98,7 +78,7 @@ const run = async () => {
                 //   console.log('Oh no! Cannot handle writes in the future');
                 //   return false;
                 // }
-                return op === 'crux.tx/put' && document.type === 'patient';
+                return op === 'crux.tx/put' && document.patientId;
               });
             for (const { document } of ops) {
               const {

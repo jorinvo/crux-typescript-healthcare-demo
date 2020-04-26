@@ -45,8 +45,7 @@ const demo = {
     await pipeline(
       await crux.queryStream({
         find: ['id'],
-        where: [['id', 'type', 't']],
-        args: [{ t: 'patient' }],
+        where: [['id', 'patientId', '_']],
       }),
       countStream,
     );

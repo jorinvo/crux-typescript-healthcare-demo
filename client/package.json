@@ -7,7 +7,7 @@
     "start": "node .",
     "repl": "node --experimental-repl-await dist/repl.js",
     "repl:watch": "tsc-watch --onSuccess 'npm run -s repl'",
-    "gen": "node dist/generate.js",
+    "gen": "node dist/gen/index.js",
     "gen:watch": "tsc-watch --onSuccess 'npm run -s gen'",
     "follow": "node dist/follow.js",
     "follow:watch": "tsc-watch --onSuccess 'npm run -s follow'",
