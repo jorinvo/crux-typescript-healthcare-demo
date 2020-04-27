@@ -12,29 +12,7 @@ services:
       # JMX
       - 9010:9010
       # Prometheus metrics
-      # - 8080:8080
-    command:
-      - 'clojure'
-      - '-J-Xmx4G'
-      - '-J-XX:+HeapDumpOnOutOfMemoryError'
-      - '-J-Dcom.sun.management.jmxremote=true'
-      - '-J-Dcom.sun.management.jmxremote.local.only=false'
-      - '-J-Dcom.sun.management.jmxremote.authenticate=false'
-      - '-J-Dcom.sun.management.jmxremote.ssl=false'
-      - '-J-Djava.rmi.server.hostname=localhost'
-      - '-J-Dcom.sun.management.jmxremote.port=9010'
-      - '-J-Dcom.sun.management.jmxremote.rmi.port=9010'
-      - '-m'
-      - 'crux.main'
-
-  client:
-    build: client
-    environment:
-      CRUX_URL: 'http://crux:3000'
-      NUM_TRANSACTIONS: 2000
-    volumes:
-      - ./client:/home/node
-    command: 'npm run all'
+      - 8080:8080
 
   prom:
     image: prom/prometheus

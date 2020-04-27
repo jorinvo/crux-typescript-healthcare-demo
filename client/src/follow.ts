@@ -1,7 +1,6 @@
 import * as stream from 'stream';
 import { promisify } from 'util';
 
-import got from 'got';
 import * as env from 'env-var';
 
 import { setupCrux, cruxIdKeyword, putTx, CruxMap } from './crux';
@@ -30,29 +29,29 @@ const now = () => new Date();
 //
 // TODO: consider writes in the future
 const run = async () => {
-  try {
-    const crux = setupCrux({
-      prefixUrl: env
-        .get('CRUX_URL')
-        .default('http://localhost:3000')
-        .asUrlString(),
-    });
-    const followerCursorKey = 'follower/cursor';
-    const followerCursorKeyword = toKeyword(followerCursorKey);
-    const followerId = toKeyword('follower/patientCreate');
-    let cursor = 0;
-    const cursorQuery = (
-      await crux.query({
-        find: ['cursor'],
-        where: [['followerId', 'follower/cursor', 'cursor']],
-        args: [{ followerId }],
-      })
-    )[0];
-    if (cursorQuery && cursorQuery.cursor) {
-      cursor = cursorQuery.cursor;
-    }
-    console.log('following patient creates and updates');
-    while (true) {
+  const crux = setupCrux({
+    prefixUrl: env
+      .get('CRUX_URL')
+      .default('http://localhost:3000')
+      .asUrlString(),
+  });
+  const followerCursorKey = 'follower/cursor';
+  const followerCursorKeyword = toKeyword(followerCursorKey);
+  const followerId = toKeyword('follower/patientCreate');
+  let cursor = 0;
+  const cursorQuery = (
+    await crux.query({
+      find: ['cursor'],
+      where: [['followerId', 'follower/cursor', 'cursor']],
+      args: [{ followerId }],
+    })
+  )[0];
+  if (cursorQuery && cursorQuery.cursor) {
+    cursor = cursorQuery.cursor;
+  }
+  console.log('following patient creates and updates');
+  while (true) {
+    try {
       await pipeline(
         await crux.readTxLog({ afterTxId: cursor }),
         new stream.Writable({
@@ -102,14 +101,10 @@ const run = async () => {
           },
         }),
       );
-      await sleep(1000);
+    } catch (e) {
+      console.log('error:', e);
     }
-  } catch (error) {
-    if (error instanceof got.HTTPError || error instanceof got.ParseError) {
-      console.log(error.response.body);
-    }
-
-    console.log(error);
+    await sleep(1000);
   }
 };
 

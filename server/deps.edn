@@ -12,7 +12,6 @@
         io.prometheus/simpleclient_dropwizard {:mvn/version "0.8.1"}
         io.prometheus/simpleclient_hotspot {:mvn/version "0.8.1"}
         clj-commons/iapetos {:mvn/version "0.1.9"}}
- :paths ["src" "resources"]
  :aliases {:run {:main-opts ["-m" "crux.main"]}
-           :dev {:extra-deps {cider/cider-nrepl {:mvn/version "0.21.1"}}
-                 :main-opts ["-m" "dev.repl"]}}}
+           :uberjar {:extra-deps {seancorfield/depstar {:mvn/version "1.0.94"}}
+                     :main-opts ["-m" "hf.depstar.uberjar" "crux.jar"]}}}
