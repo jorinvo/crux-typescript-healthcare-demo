@@ -7,6 +7,14 @@
  await demo.countLogEvents()
 
 
+
+ // Use programatically
+
+ // echo 'await crux.attributeStats()' | npm run -s repl | tail -n +1
+
+
+
+
  // paste in .editor
 
  await crux.query({
@@ -22,9 +30,52 @@
  })
 
 
- // Use programatically
+// Write a document
+doc = toCruxDoc({ id: 'mycounter', counterValue: 0 })
+tx = putTx(doc)
+await crux.submit([tx])
 
- echo 'await crux.attributeStats()' | npm run -s repl | tail -n +1
+// Read
+await crux.getEntity('mycounter')
+
+// Update
+await crux.submit([putTx(toCruxDoc({ id: 'mycounter', counterValue: 1 }))])
+
+// Read history
+await crux.getEntityHistory('mycounter', { withDocuments: true })
+
+// Read in past
+{ validTime } = (await crux.getEntityHistory('mycounter'))[1]
+await crux.getEntity('mycounter', { validTime })
+
+// Write in past
+await crux.submit([putTx(toCruxDoc({ id: 'mycounter', counterValue: 2 }), validTime)])
+await crux.getEntity('mycounter', { validTime })
+
+// Delete
+tx = deleteTx('mycounter')
+await crux.submit([tx])
+await crux.getEntity('mycounter')
+await crux.getEntity('mycounter', { validTime })
+await crux.getEntityHistory('mycounter', { withDocuments: true })
+
+// Evict
+tx = evictTx('mycounter')
+await crux.submit([tx])
+await crux.getEntityHistory('mycounter', { withDocuments: true })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

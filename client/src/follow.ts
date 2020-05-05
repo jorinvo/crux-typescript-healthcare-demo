@@ -83,7 +83,7 @@ const run = async () => {
               const {
                 patientFirstName,
                 patientLastName,
-              } = await crux.getEntity(document[cruxIdKeyword.key]);
+              } = await crux.getEntity(document[cruxIdKeyword.key].val);
               console.log(`patient: ${patientFirstName} ${patientLastName}`);
             }
             cursor = txId;

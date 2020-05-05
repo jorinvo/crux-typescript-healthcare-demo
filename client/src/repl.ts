@@ -4,7 +4,7 @@ import { promisify, inspect } from 'util';
 
 import * as env from 'env-var';
 
-import { setupCrux } from './crux';
+import { setupCrux, putTx, deleteTx, evictTx, toCruxDoc } from './crux';
 
 const pipeline = promisify(stream.pipeline);
 
@@ -55,7 +55,6 @@ const demo = {
 
 let evalStartTime: number;
 const replServer = repl.start({
-  ignoreUndefined: true,
   breakEvalOnSigint: true,
   prompt: process.stdin.isTTY ? '> ' : '',
   writer(output) {
@@ -74,6 +73,10 @@ const replServer = repl.start({
 replServer.context.pipeline = pipeline;
 replServer.context.CountStream = CountStream;
 replServer.context.crux = crux;
+replServer.context.putTx = putTx;
+replServer.context.deleteTx = deleteTx;
+replServer.context.evictTx = evictTx;
+replServer.context.toCruxDoc = toCruxDoc;
 replServer.context.demo = demo;
 const origEval = replServer.eval;
 (replServer.eval as any) = function () {

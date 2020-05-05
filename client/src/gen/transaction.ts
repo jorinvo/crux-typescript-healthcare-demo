@@ -1,7 +1,6 @@
 import * as faker from 'faker';
 
-import { toKeyword, EDNVal, EDNKeyword, tagValue } from '../crux/edn';
-import { CruxMap, putTx, cruxIdKeyword } from '../crux';
+import { CruxMap, putTx, toCruxDoc } from '../crux';
 
 import { departmentTitles } from './hospitalData';
 import { genUser } from './user';
@@ -14,53 +13,6 @@ const genPutTx = (doc: CruxMap, validTime?: Date) => {
     return putTx(doc);
   }
   return putTx(doc, faker.date.recent(180));
-};
-
-const uuidRegex = /[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
-const isUUID = (s: string) => {
-  return uuidRegex.test(s);
-};
-
-type EDNCompatible =
-  | string
-  | number
-  | Date
-  | { [key: string]: EDNCompatible | undefined };
-const toEDNVal = (value: EDNCompatible): EDNVal => {
-  if (typeof value === 'string') {
-    if (isUUID(value)) {
-      return tagValue('uuid', value);
-    }
-    return value;
-  }
-  if (typeof value === 'number' || value instanceof Date) {
-    return value;
-  }
-  if (Array.isArray(value)) {
-    return value.map(toEDNVal);
-  }
-  return { map: Object.entries(value).map(([k, v]) => [k, toEDNVal(v)]) };
-};
-
-// Objects are converted to maps with keywords as keys
-// `id` is used as Crux ID
-// if `id` is a UUID string it is tagged as such, otherwise it is converted to a keyword
-// `undefined` keys are removed from doc
-const toCruxDoc = ({
-  id,
-  ...doc
-}: {
-  [key: string]: EDNCompatible | undefined;
-  id?: string;
-}): CruxMap => {
-  return {
-    map: [
-      [cruxIdKeyword, isUUID(id) ? tagValue('uuid', id) : toKeyword(id)],
-      ...Object.entries(doc)
-        .filter(([k, v]) => v !== undefined)
-        .map(([k, v]) => [toKeyword(k), toEDNVal(v)] as [EDNKeyword, EDNVal]),
-    ],
-  };
 };
 
 export const genTransactions = () => {
