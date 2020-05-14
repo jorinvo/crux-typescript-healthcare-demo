@@ -66,7 +66,7 @@ const run = async () => {
               },
             );
             const documentsByHash = await crux.getDocuments(
-              events.map((e) => e.hash),
+              new Set(events.map((e) => e.hash)),
             );
             const ops = events
               .map((event) => {

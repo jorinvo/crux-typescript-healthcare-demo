@@ -11,8 +11,6 @@ services:
       - 3000:3000
       # JMX
       - 9010:9010
-      # Prometheus metrics
-      - 8080:8080
 
   prom:
     image: prom/prometheus

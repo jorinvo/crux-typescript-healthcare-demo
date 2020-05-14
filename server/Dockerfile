@@ -14,9 +14,7 @@ ADD crux.edn crux.edn
 CMD [ \
   "java", \
   "-XX:+UseContainerSupport", \
-  "-XX:+UnlockExperimentalVMOptions", \
-  "-XX:+UseZGC", \
-  "-Xmx4G", \
+  "-Xmx2G", \
   "-XX:+HeapDumpOnOutOfMemoryError", \
   "-Dcom.sun.management.jmxremote=true", \
   "-Dcom.sun.management.jmxremote.local.only=false", \

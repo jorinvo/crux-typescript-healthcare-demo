@@ -17,7 +17,7 @@ interface QueryOptions {
   find: string[];
   where: [string, string, string][];
   args?: { [arg: string]: EDNVal }[];
-  // rules?: string;
+  // TODO: rules?: string;
   offset?: number;
   limit?: number;
   orderBy?: (
@@ -109,10 +109,10 @@ const buildQuery = ({
 export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
   const httpClient = got.extend({ prefixUrl });
 
-  async function getDocuments(contentHashes: string[]) {
+  async function getDocuments(contentHashes: Set<string>) {
     const response = await httpClient.post('documents', {
       headers: { 'Content-Type': 'application/edn' },
-      body: toEDNString({ set: contentHashes }),
+      body: toEDNString({ set: [...contentHashes] }),
     });
     const parsed = parseEDNString(response.body, {
       keywordAs: 'string',
@@ -158,6 +158,73 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
         txId: parsed['crux.tx/tx-id'],
         txTime: parsed['crux.tx/tx-time'],
       };
+    },
+
+    async awaitTx(txId: number) {
+      const response = await httpClient.get('await-tx', {
+        headers: { 'Content-Type': 'application/edn' },
+        searchParams: { 'tx-id': txId },
+      });
+      const parsed = parseEDNString(response.body, {
+        keywordAs: 'string',
+        mapAs: 'object',
+      });
+      return {
+        txId: parsed['crux.tx/tx-id'],
+        txTime: parsed['crux.tx/tx-time'],
+      };
+    },
+
+    async query(
+      queryOptions: QueryOptions,
+      { validTime }: { validTime?: Date } = {},
+    ) {
+      // TODO support predicates
+      const query = buildQuery(queryOptions);
+      const response = await httpClient.post('query', {
+        headers: { 'Content-Type': 'application/edn' },
+        body: toEDNString(
+          toKeywordMap({
+            query,
+            'valid-time': validTime,
+          }),
+        ),
+      });
+      const parsed = parseEDNString(response.body) as any;
+      const rows = queryOptions.orderBy ? parsed : parsed.set;
+      if (queryOptions.fullResults) {
+        return rows.map((row) => {
+          return row.map((field) => {
+            if (field && field.map) {
+              return ednMapWithKeywordsToObject(field);
+            }
+            return field;
+          });
+        });
+      }
+      return rows.map((row) => {
+        return queryOptions.find.reduce((memo, field, i) => {
+          return { ...memo, [field]: row[i] };
+        }, {});
+      });
+    },
+
+    async queryStream(
+      queryOptions: QueryOptions,
+      { validTime }: { validTime?: Date } = {},
+    ) {
+      // TODO support predicates
+      const query = buildQuery(queryOptions);
+      const response = await httpClient.stream.post('query-stream', {
+        headers: { 'Content-Type': 'application/edn' },
+        body: toEDNString(
+          toKeywordMap({
+            query,
+            'valid-time': validTime,
+          }),
+        ),
+      });
+      return response.pipe(parseEDNListStream());
     },
 
     async getEntity(
@@ -214,7 +281,7 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
         return history;
       }
       const documents = await getDocuments(
-        history.map(({ contentHash }) => contentHash),
+        new Set(history.map(({ contentHash }) => contentHash)),
       );
       return history.map((item) => {
         return {
@@ -225,58 +292,6 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
     },
 
     getDocuments,
-
-    async query(
-      queryOptions: QueryOptions,
-      { validTime }: { validTime?: Date } = {},
-    ) {
-      // TODO support predicates
-      const query = buildQuery(queryOptions);
-      const response = await httpClient.post('query', {
-        headers: { 'Content-Type': 'application/edn' },
-        body: toEDNString(
-          toKeywordMap({
-            query,
-            'valid-time': validTime,
-          }),
-        ),
-      });
-      const parsed = parseEDNString(response.body) as any;
-      const rows = queryOptions.orderBy ? parsed : parsed.set;
-      if (queryOptions.fullResults) {
-        return rows.map((row) => {
-          return row.map((field) => {
-            if (field && field.map) {
-              return ednMapWithKeywordsToObject(field);
-            }
-            return field;
-          });
-        });
-      }
-      return rows.map((row) => {
-        return queryOptions.find.reduce((memo, field, i) => {
-          return { ...memo, [field]: row[i] };
-        }, {});
-      });
-    },
-
-    async queryStream(
-      queryOptions: QueryOptions,
-      { validTime }: { validTime?: Date } = {},
-    ) {
-      // TODO support predicates
-      const query = buildQuery(queryOptions);
-      const response = await httpClient.stream.post('query-stream', {
-        headers: { 'Content-Type': 'application/edn' },
-        body: toEDNString(
-          toKeywordMap({
-            query,
-            'valid-time': validTime,
-          }),
-        ),
-      });
-      return response.pipe(parseEDNListStream());
-    },
 
     async readTxLog({ withOps = false, afterTxId = 0 } = {}) {
       const response = await httpClient.stream('tx-log', {
@@ -293,21 +308,6 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
           listAs: 'array',
         }),
       );
-    },
-
-    async awaitTx(txId: number) {
-      const response = await httpClient.get('await-tx', {
-        headers: { 'Content-Type': 'application/edn' },
-        searchParams: { 'tx-id': txId },
-      });
-      const parsed = parseEDNString(response.body, {
-        keywordAs: 'string',
-        mapAs: 'object',
-      });
-      return {
-        txId: parsed['crux.tx/tx-id'],
-        txTime: parsed['crux.tx/tx-time'],
-      };
     },
 
     async attributeStats() {

@@ -7,16 +7,9 @@
  await demo.countLogEvents()
 
 
-
- // Use programatically
-
- // echo 'await crux.attributeStats()' | npm run -s repl | tail -n +1
-
-
-
-
- // paste in .editor
-
+ // First execute .editor in the REPL,
+// then pase this multi-line command,
+// then hit CTRL-D
  await crux.query({
    find: ['f', 'c', 'p', 'd', 'u'],
    where: [
@@ -53,15 +46,13 @@ await crux.submit([putTx(toCruxDoc({ id: 'mycounter', counterValue: 2 }), validT
 await crux.getEntity('mycounter', { validTime })
 
 // Delete
-tx = deleteTx('mycounter')
-await crux.submit([tx])
+await crux.submit([ deleteTx('mycounter') ])
 await crux.getEntity('mycounter')
 await crux.getEntity('mycounter', { validTime })
 await crux.getEntityHistory('mycounter', { withDocuments: true })
 
 // Evict
-tx = evictTx('mycounter')
-await crux.submit([tx])
+await crux.submit([ evictTx('mycounter') ])
 await crux.getEntityHistory('mycounter', { withDocuments: true })
 
 
