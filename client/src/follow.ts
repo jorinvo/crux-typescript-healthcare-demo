@@ -26,8 +26,6 @@ const now = () => new Date();
 // After finding a relevant operation the latest state of the entity is fetched.
 // So if the tx was in the past, we process the latest state instead.
 // The strategy might vary for each follower.
-//
-// TODO: consider writes in the future
 const run = async () => {
   const crux = setupCrux({
     prefixUrl: env
@@ -53,30 +51,20 @@ const run = async () => {
   while (true) {
     try {
       await pipeline(
-        await crux.readTxLog({ afterTxId: cursor }),
+        await crux.readTxLog({ afterTxId: cursor, withOps: true }),
         new stream.Writable({
           objectMode: true,
           async write(tx, encoding, callback) {
             const txId = tx['crux.tx/tx-id'];
-            await crux.awaitTx(txId);
-            const events = tx['crux.tx.event/tx-events'].map(
-              ([op, a, hash]) => {
-                // TODO: a is the previous hash? mostly hash of an empty doc?
-                return { op, hash };
-              },
-            );
-            const documentsByHash = await crux.getDocuments(
-              new Set(events.map((e) => e.hash)),
-            );
-            const ops = events
-              .map((event) => {
-                return { ...event, document: documentsByHash[event.hash] };
+            const ops = tx['crux.api/tx-ops']
+              .map(([op, document, validTime]) => {
+                return { op, document, validTime };
               })
-              .filter(({ op, document }) => {
-                // if (validTime > now()) {
-                //   console.log('Oh no! Cannot handle writes in the future');
-                //   return false;
-                // }
+              .filter(({ op, document, validTime }) => {
+                if (validTime > now()) {
+                  console.log('Oh no! Cannot handle writes in the future');
+                  return false;
+                }
                 return op === 'crux.tx/put' && document.patientId;
               });
             for (const { document } of ops) {

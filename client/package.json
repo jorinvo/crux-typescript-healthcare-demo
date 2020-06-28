@@ -1,7 +1,7 @@
 {
   "name": "crux-hrtbt",
   "version": "1.0.0",
-  "description": "",
+  "description": "Demo Crux Usage from TypeScript in the Healthcare Context",
   "scripts": {
     "repl": "node --experimental-repl-await dist/repl.js",
     "repl:watch": "tsc-watch --onSuccess 'npm run -s repl'",
@@ -15,8 +15,8 @@
     "lint": "eslint '*/**/*.ts'",
     "fix": "npm run -s lint -- --fix"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Jorin Vogel",
+  "license": "MIT",
   "devDependencies": {
     "@types/faker": "^4.1.11",
     "@types/got": "^9.6.9",

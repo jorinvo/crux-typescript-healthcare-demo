@@ -1,26 +1,26 @@
 // Things to do in REPL
 
- await crux.status()
+await crux.status()
 
- await crux.attributeStats()
+await crux.attributeStats()
 
- await demo.countLogEvents()
+await demo.countLogEvents()
 
 
  // First execute .editor in the REPL,
 // then pase this multi-line command,
 // then hit CTRL-D
- await crux.query({
-   find: ['f', 'c', 'p', 'd', 'u'],
-   where: [
-     ['c', 'casePatientId', 'p'],
-     ['f', 'formDataCaseId', 'c'],
-     ['f', 'auditUserId', 'u'],
-     ['f', 'formDataDefinitionId', 'd']
-   ],
-   limit: 1,
-   fullResults: true
- })
+await crux.query({
+  find: ['f', 'c', 'p', 'd', 'u'],
+  where: [
+    ['c', 'casePatientId', 'p'],
+    ['f', 'formDataCaseId', 'c'],
+    ['f', 'auditUserId', 'u'],
+    ['f', 'formDataDefinitionId', 'd']
+  ],
+  limit: 1,
+  fullResults: true
+})
 
 
 // Write a document
