@@ -4,7 +4,7 @@ import { promisify } from 'util';
 import * as env from 'env-var';
 
 import { setupCrux, cruxIdKeyword, putTx, CruxMap } from './crux';
-import { toKeyword } from './crux/edn';
+import { toKeyword } from 'edn-data';
 
 const pipeline = promisify(stream.pipeline);
 

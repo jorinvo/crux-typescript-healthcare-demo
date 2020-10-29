@@ -2,18 +2,17 @@ import * as stream from 'stream';
 import { promisify } from 'util';
 
 import got, { GotError, HTTPError } from 'got';
-
 import {
+  toKeyword,
   EDNVal,
   EDNKeyword,
   EDNTaggedVal,
+  tagValue,
+  toSymbol,
   toEDNString,
   parseEDNString,
-  parseEDNListStream,
-  toKeyword,
-  toSymbol,
-  tagValue,
-} from './edn';
+} from 'edn-data';
+import { parseEDNListStream } from 'edn-data/stream';
 
 const pipeline = promisify(stream.pipeline);
 
@@ -117,7 +116,7 @@ class RowStream extends stream.Writable {
     super({ objectMode: true });
   }
   _write(chunk, encoding, callback) {
-    this.rows.push(chunk)
+    this.rows.push(chunk);
     callback();
   }
 }
