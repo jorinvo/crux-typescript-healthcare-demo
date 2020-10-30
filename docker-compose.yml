@@ -4,8 +4,9 @@ services:
   crux:
     build: server
     volumes:
-      - ./server/db:/usr/lib/crux/db
-      - ./server/event-log:/usr/lib/crux/event-log
+      - ./server/tx-log:/usr/lib/crux/tx-log
+      - ./server/docs:/usr/lib/crux/docs
+      - ./server/indexes:/usr/lib/crux/indexes
     ports:
       # Crux
       - 3000:3000

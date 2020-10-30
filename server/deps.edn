@@ -1,10 +1,10 @@
 {:deps {org.clojure/clojure {:mvn/version "1.10.1"}
         org.clojure/test.check {:mvn/version "0.10.0-alpha4"}
-        juxt/crux-http-server {:mvn/version "20.06-1.9.1-alpha"}
-        juxt/crux-cli {:mvn/version "20.06-1.9.1-beta"}
-        juxt/crux-core {:mvn/version "20.06-1.9.1-beta"}
-        juxt/crux-rocksdb {:mvn/version "20.06-1.9.1-beta"}
-        juxt/crux-metrics {:mvn/version "20.06-1.9.1-alpha"}
+        juxt/crux-http-server {:mvn/version "20.09-1.12.1-alpha"}
+        juxt/crux-cli {:mvn/version "20.09-1.11.0-beta"}
+        juxt/crux-core {:mvn/version "20.09-1.12.1-beta"}
+        juxt/crux-rocksdb {:mvn/version "20.09-1.12.1-beta"}
+        juxt/crux-metrics {:mvn/version "20.09-1.12.1-alpha"}
         org.rocksdb/rocksdbjni {:mvn/version "6.8.1"}
         org.dhatim/dropwizard-prometheus {:mvn/version "2.2.0"}
         io.prometheus/simpleclient_pushgateway {:mvn/version "0.8.1"}
