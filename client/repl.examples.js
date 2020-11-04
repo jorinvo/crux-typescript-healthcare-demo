@@ -10,6 +10,7 @@ await demo.countLogEvents()
  // First execute .editor in the REPL,
 // then pase this multi-line command,
 // then hit CTRL-D
+//
 await crux.query({
   find: ['f', 'c', 'p', 'd', 'u'],
   where: [
@@ -20,6 +21,29 @@ await crux.query({
   ],
   limit: 1,
   fullResults: true
+})
+
+// Calculate aggregates directly in the database
+await crux.query({
+  find: [
+    ['patientCount', 'count', 'id'],
+    ['distinctLastNames', 'count-distinct', 'lastName'],
+  ],
+  where: [
+    ['id', 'patientLastName', 'lastName'],
+  ],
+})
+
+// Aggregates are automatically grouped across the selected fields
+await crux.query({
+  find: [
+    'definitionTitle',
+    ['definitionCount', 'count', 'def'],
+  ],
+  where: [
+    ['data', 'formDataDefinitionId', 'def'],
+    ['def', 'formDefinitionTitle', 'definitionTitle']
+  ],
 })
 
 

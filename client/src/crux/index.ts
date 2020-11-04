@@ -16,9 +16,25 @@ import { parseEDNListStream } from 'edn-data/stream';
 
 const pipeline = promisify(stream.pipeline);
 
+type Aggregate =
+  | [string, 'sum', string]
+  | [string, 'min', string]
+  | [string, 'min', number, string]
+  | [string, 'max', string]
+  | [string, 'max', number, string]
+  | [string, 'count', string]
+  | [string, 'count-distinct', string]
+  | [string, 'avg', string]
+  | [string, 'median', string]
+  | [string, 'variance', string]
+  | [string, 'stddev', string]
+  | [string, 'rand', number, string]
+  | [string, 'sample', number, string]
+  | [string, 'distinct', string];
+
 export type CruxMap = { map: [EDNKeyword, EDNVal][] };
 interface QueryOptions {
-  find: string[];
+  find: (string | Aggregate)[];
   where: [string, string, string][];
   args?: { [arg: string]: EDNVal }[];
   // TODO: rules?: string;
@@ -79,7 +95,15 @@ const buildQuery = ({
 }: QueryOptions) => {
   return toKeywordMap({
     // TODO: validate that find symbols are in where and _ is not allowed
-    find: find.map(toSymbol),
+    find: find.map((arg) => {
+      if (Array.isArray(arg)) {
+        if (arg.length === 4) {
+          return { list: [toSymbol(arg[1]), arg[2], toSymbol(arg[3])] };
+        }
+        return { list: [toSymbol(arg[1]), toSymbol(arg[2])] };
+      }
+      return toSymbol(arg);
+    }),
     where: where.map(([e, a, v]) => {
       return [toSymbol(e), toKeyword(a), toSymbol(v)];
     }),
@@ -216,7 +240,7 @@ export const setupCrux = ({ prefixUrl }: { prefixUrl: string }) => {
       }
       return rows.map((row) => {
         return queryOptions.find.reduce((memo, field, i) => {
-          return { ...memo, [field]: row[i] };
+          return { ...memo, [Array.isArray(field) ? field[0] : field]: row[i] };
         }, {});
       });
     },
